@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     )
 
     # ── E5 (Memory / RAG) ────────────────────────────────────────────────
-    E5_MODEL_NAME: str = "intfloat/multilingual-e5-large"
+    E5_MODEL_NAME: str = "intfloat/multilingual-e5-small"
 
     # ── Trust Engine ─────────────────────────────────────────────────────
     TRUST_THRESHOLD: float = 0.5         # below → virtual sensing
