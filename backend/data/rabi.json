@@ -1,0 +1,432 @@
+{
+  "season": "Rabi",
+  "period": "November–April",
+  "sowing_start": "October",
+  "sowing_end": "December",
+  "harvest_start": "March",
+  "harvest_end": "April",
+  "temperature_range_c": "10-25",
+  "rainfall_requirement_mm": "100-500",
+  "humidity_range": "40-60%",
+  "description": "Winter season crops requiring cool climate for growth",
+  "crops": [
+    {
+      "name": "Tomato",
+      "scientific_name": "Solanum lycopersicum",
+      "category": "Vegetables",
+      "total_duration_days": 120,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "20-25",
+      "growth_stages": [
+        { "stage": "Nursery", "days_start": 0, "days_end": 25, "soil_moisture_min": 60, "soil_moisture_max": 80, "irrigation_frequency": "Daily", "critical_operations": ["Damping off control"] },
+        { "stage": "Transplanting", "days_start": 26, "days_end": 35, "soil_moisture_min": 65, "soil_moisture_max": 85, "irrigation_frequency": "Every 2-3 days", "critical_operations": ["Gap filling"] },
+        { "stage": "Vegetative", "days_start": 36, "days_end": 60, "soil_moisture_min": 60, "soil_moisture_max": 80, "irrigation_frequency": "Every 5-7 days", "critical_operations": ["Staking", "Weeding"] },
+        { "stage": "Flowering", "days_start": 61, "days_end": 85, "soil_moisture_min": 70, "soil_moisture_max": 90, "irrigation_frequency": "Every 5-7 days", "critical_operations": ["Boron spray"] },
+        { "stage": "Fruiting", "days_start": 86, "days_end": 110, "soil_moisture_min": 65, "soil_moisture_max": 85, "irrigation_frequency": "Every 5-7 days", "critical_operations": ["Pest control"] },
+        { "stage": "Harvest", "days_start": 111, "days_end": 120, "soil_moisture_min": 50, "soil_moisture_max": 70, "irrigation_frequency": "Reduce", "critical_operations": ["Grading"] }
+      ]
+    },
+    {
+      "name": "Wheat",
+      "scientific_name": "Triticum aestivum",
+      "category": "Cereals",
+      "total_duration_days": 145,
+      "water_requirement_mm": 450,
+      "temperature_optimal_c": "12-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 10, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": ["Seed treatment"] },
+        { "stage": "Seedling", "days_start": 11, "days_end": 30, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15-20 days", "critical_operations": ["First irrigation"] },
+        { "stage": "Tillering", "days_start": 31, "days_end": 60, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15-20 days", "critical_operations": ["Second irrigation", "Fertilizer"] },
+        { "stage": "Stem Elongation", "days_start": 61, "days_end": 85, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 15 days", "critical_operations": ["Third irrigation"] },
+        { "stage": "Booting", "days_start": 86, "days_end": 100, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 15 days", "critical_operations": ["Fourth irrigation"] },
+        { "stage": "Heading", "days_start": 101, "days_end": 110, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 10-15 days", "critical_operations": ["Fifth irrigation"] },
+        { "stage": "Grain Filling", "days_start": 111, "days_end": 130, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 15 days", "critical_operations": ["Sixth irrigation"] },
+        { "stage": "Harvest", "days_start": 131, "days_end": 145, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Barley",
+      "scientific_name": "Hordeum vulgare",
+      "category": "Cereals",
+      "total_duration_days": 130,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Seedling", "days_start": 8, "days_end": 25, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Tillering", "days_start": 26, "days_end": 55, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Stem Elongation", "days_start": 56, "days_end": 80, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Booting", "days_start": 81, "days_end": 95, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Grain Filling", "days_start": 96, "days_end": 120, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 121, "days_end": 130, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Oats",
+      "scientific_name": "Avena sativa",
+      "category": "Cereals",
+      "total_duration_days": 120,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "10-20",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Seedling", "days_start": 8, "days_end": 25, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Tillering", "days_start": 26, "days_end": 55, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Stem Elongation", "days_start": 56, "days_end": 80, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Grain Filling", "days_start": 81, "days_end": 110, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 111, "days_end": 120, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Chickpea",
+      "scientific_name": "Cicer arietinum",
+      "category": "Pulses",
+      "total_duration_days": 130,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "20-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 10, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 11, "days_end": 50, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 51, "days_end": 80, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 12-15 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Pod Formation", "days_start": 81, "days_end": 120, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 121, "days_end": 130, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Lentil",
+      "scientific_name": "Lens culinaris",
+      "category": "Pulses",
+      "total_duration_days": 120,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "15-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 8, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 9, "days_end": 45, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 46, "days_end": 75, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 12-15 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Pod Formation", "days_start": 76, "days_end": 110, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 111, "days_end": 120, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Field Pea",
+      "scientific_name": "Pisum sativum",
+      "category": "Pulses",
+      "total_duration_days": 110,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "15-20",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 8, "days_end": 40, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 41, "days_end": 65, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 12-15 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Pod Formation", "days_start": 66, "days_end": 100, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 101, "days_end": 110, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Lathyrus",
+      "scientific_name": "Lathyrus sativus",
+      "category": "Pulses",
+      "total_duration_days": 120,
+      "water_requirement_mm": 300,
+      "temperature_optimal_c": "15-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 8, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 9, "days_end": 50, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 51, "days_end": 80, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": [] },
+        { "stage": "Pod Formation", "days_start": 81, "days_end": 110, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 111, "days_end": 120, "soil_moisture_min": 20, "soil_moisture_max": 30, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Mustard",
+      "scientific_name": "Brassica juncea",
+      "category": "Oilseeds",
+      "total_duration_days": 140,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 8, "days_end": 50, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 51, "days_end": 90, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Pod Formation", "days_start": 91, "days_end": 130, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 131, "days_end": 140, "soil_moisture_min": 20, "soil_moisture_max": 30, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Rapeseed",
+      "scientific_name": "Brassica campestris",
+      "category": "Oilseeds",
+      "total_duration_days": 135,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 8, "days_end": 45, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 46, "days_end": 85, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Pod Formation", "days_start": 86, "days_end": 125, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 126, "days_end": 135, "soil_moisture_min": 20, "soil_moisture_max": 30, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Linseed",
+      "scientific_name": "Linum usitatissimum",
+      "category": "Oilseeds",
+      "total_duration_days": 150,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "15-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 10, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 11, "days_end": 60, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 61, "days_end": 100, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Capsule Formation", "days_start": 101, "days_end": 140, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 141, "days_end": 150, "soil_moisture_min": 20, "soil_moisture_max": 30, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Safflower",
+      "scientific_name": "Carthamus tinctorius",
+      "category": "Oilseeds",
+      "total_duration_days": 140,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 8, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 9, "days_end": 60, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 61, "days_end": 100, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 15 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Seed Development", "days_start": 101, "days_end": 130, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 131, "days_end": 140, "soil_moisture_min": 20, "soil_moisture_max": 30, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Sunflower",
+      "scientific_name": "Helianthus annuus",
+      "category": "Oilseeds",
+      "total_duration_days": 110,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "20-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 8, "days_end": 40, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 10-12 days", "critical_operations": [] },
+        { "stage": "Bud Formation", "days_start": 41, "days_end": 60, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 10 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Flowering", "days_start": 61, "days_end": 80, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 8-10 days", "critical_operations": ["Pollination"] },
+        { "stage": "Seed Filling", "days_start": 81, "days_end": 105, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 10-12 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 106, "days_end": 110, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Sugarcane",
+      "scientific_name": "Saccharum officinarum",
+      "category": "Commercial Crops",
+      "total_duration_days": 365,
+      "water_requirement_mm": 1800,
+      "temperature_optimal_c": "22-32",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 30, "soil_moisture_min": 70, "soil_moisture_max": 80, "irrigation_frequency": "Every 5-7 days", "critical_operations": [] },
+        { "stage": "Tillering", "days_start": 31, "days_end": 120, "soil_moisture_min": 65, "soil_moisture_max": 75, "irrigation_frequency": "Every 7-10 days", "critical_operations": [] },
+        { "stage": "Grand Growth", "days_start": 121, "days_end": 270, "soil_moisture_min": 60, "soil_moisture_max": 70, "irrigation_frequency": "Every 10-15 days", "critical_operations": [] },
+        { "stage": "Maturity", "days_start": 271, "days_end": 365, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 15-20 days", "critical_operations": [] }
+      ]
+    },
+    {
+      "name": "Tobacco",
+      "scientific_name": "Nicotiana tabacum",
+      "category": "Commercial Crops",
+      "total_duration_days": 130,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "20-30",
+      "growth_stages": [
+        { "stage": "Nursery", "days_start": 0, "days_end": 45, "soil_moisture_min": 60, "soil_moisture_max": 70, "irrigation_frequency": "Daily", "critical_operations": [] },
+        { "stage": "Transplanting", "days_start": 46, "days_end": 60, "soil_moisture_min": 55, "soil_moisture_max": 65, "irrigation_frequency": "Every 5-7 days", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 61, "days_end": 100, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Topping", "Desuckering"] },
+        { "stage": "Maturity", "days_start": 101, "days_end": 125, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Reduce", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 126, "days_end": 130, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting", "Curing"] }
+      ]
+    },
+    {
+      "name": "Potato",
+      "scientific_name": "Solanum tuberosum",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-20",
+      "growth_stages": [
+        { "stage": "Sprouting", "days_start": 0, "days_end": 15, "soil_moisture_min": 60, "soil_moisture_max": 70, "irrigation_frequency": "At planting", "critical_operations": ["Seed tuber treatment"] },
+        { "stage": "Vegetative", "days_start": 16, "days_end": 45, "soil_moisture_min": 55, "soil_moisture_max": 65, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Earthing up"] },
+        { "stage": "Tuber Initiation", "days_start": 46, "days_end": 65, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Tuber Bulking", "days_start": 66, "days_end": 90, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 7-10 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 91, "days_end": 100, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Onion",
+      "scientific_name": "Allium cepa",
+      "category": "Vegetables",
+      "total_duration_days": 140,
+      "water_requirement_mm": 600,
+      "temperature_optimal_c": "13-25",
+      "growth_stages": [
+        { "stage": "Nursery", "days_start": 0, "days_end": 45, "soil_moisture_min": 65, "soil_moisture_max": 75, "irrigation_frequency": "Daily", "critical_operations": [] },
+        { "stage": "Transplanting", "days_start": 46, "days_end": 60, "soil_moisture_min": 60, "soil_moisture_max": 70, "irrigation_frequency": "Every 5-7 days", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 61, "days_end": 100, "soil_moisture_min": 55, "soil_moisture_max": 65, "irrigation_frequency": "Every 7-10 days", "critical_operations": [] },
+        { "stage": "Bulb Initiation", "days_start": 101, "days_end": 120, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Bulb Maturity", "days_start": 121, "days_end": 135, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Reduce", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 136, "days_end": 140, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting", "Curing"] }
+      ]
+    },
+    {
+      "name": "Garlic",
+      "scientific_name": "Allium sativum",
+      "category": "Vegetables",
+      "total_duration_days": 120,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "12-20",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 15, "soil_moisture_min": 55, "soil_moisture_max": 65, "irrigation_frequency": "At planting", "critical_operations": ["Clove planting"] },
+        { "stage": "Vegetative", "days_start": 16, "days_end": 60, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "Every 7-10 days", "critical_operations": [] },
+        { "stage": "Bulb Initiation", "days_start": 61, "days_end": 90, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Bulb Development", "days_start": 91, "days_end": 115, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Reduce", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 116, "days_end": 120, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Carrot",
+      "scientific_name": "Daucus carota",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "water_requirement_mm": 450,
+      "temperature_optimal_c": "15-20",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 10, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 11, "days_end": 50, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Thinning"] },
+        { "stage": "Root Development", "days_start": 51, "days_end": 90, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Harvest", "days_start": 91, "days_end": 100, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Radish",
+      "scientific_name": "Raphanus sativus",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "15-20",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 5, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 6, "days_end": 25, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 5-7 days", "critical_operations": [] },
+        { "stage": "Root Development", "days_start": 26, "days_end": 55, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 5-7 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Harvest", "days_start": 56, "days_end": 60, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Cabbage",
+      "scientific_name": "Brassica oleracea var. capitata",
+      "category": "Vegetables",
+      "total_duration_days": 110,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-20",
+      "growth_stages": [
+        { "stage": "Nursery", "days_start": 0, "days_end": 35, "soil_moisture_min": 55, "soil_moisture_max": 65, "irrigation_frequency": "Daily", "critical_operations": [] },
+        { "stage": "Transplanting", "days_start": 36, "days_end": 50, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "Every 5-7 days", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 51, "days_end": 80, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 7-10 days", "critical_operations": [] },
+        { "stage": "Head Formation", "days_start": 81, "days_end": 105, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Harvest", "days_start": 106, "days_end": 110, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Cauliflower",
+      "scientific_name": "Brassica oleracea var. botrytis",
+      "category": "Vegetables",
+      "total_duration_days": 110,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-20",
+      "growth_stages": [
+        { "stage": "Nursery", "days_start": 0, "days_end": 35, "soil_moisture_min": 55, "soil_moisture_max": 65, "irrigation_frequency": "Daily", "critical_operations": [] },
+        { "stage": "Transplanting", "days_start": 36, "days_end": 50, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "Every 5-7 days", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 51, "days_end": 80, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 7-10 days", "critical_operations": [] },
+        { "stage": "Curd Formation", "days_start": 81, "days_end": 105, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Harvest", "days_start": 106, "days_end": 110, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Spinach",
+      "scientific_name": "Spinacia oleracea",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-20",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 8, "days_end": 50, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 5-7 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 51, "days_end": 60, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Fenugreek",
+      "scientific_name": "Trigonella foenum-graecum",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 8, "days_end": 50, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 5-7 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 51, "days_end": 60, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Beetroot",
+      "scientific_name": "Beta vulgaris",
+      "category": "Vegetables",
+      "total_duration_days": 90,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "15-20",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 10, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 11, "days_end": 40, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 7-10 days", "critical_operations": [] },
+        { "stage": "Root Development", "days_start": 41, "days_end": 80, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "Every 7-10 days", "critical_operations": ["Irrigation critical"] },
+        { "stage": "Harvest", "days_start": 81, "days_end": 90, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting"] }
+      ]
+    },
+    {
+      "name": "Berseem",
+      "scientific_name": "Trifolium alexandrinum",
+      "category": "Fodder Crops",
+      "total_duration_days": 120,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 8, "days_end": 50, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 10-12 days", "critical_operations": [] },
+        { "stage": "Regrowth (Multiple Cuts)", "days_start": 51, "days_end": 115, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "After each cut", "critical_operations": ["Cutting"] },
+        { "stage": "Harvest", "days_start": 116, "days_end": 120, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Final harvest"] }
+      ]
+    },
+    {
+      "name": "Lucerne",
+      "scientific_name": "Medicago sativa",
+      "category": "Fodder Crops",
+      "total_duration_days": 180,
+      "water_requirement_mm": 800,
+      "temperature_optimal_c": "15-25",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 10, "soil_moisture_min": 50, "soil_moisture_max": 60, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 11, "days_end": 60, "soil_moisture_min": 45, "soil_moisture_max": 55, "irrigation_frequency": "Every 10-12 days", "critical_operations": [] },
+        { "stage": "Regrowth (Multiple Cuts)", "days_start": 61, "days_end": 175, "soil_moisture_min": 40, "soil_moisture_max": 50, "irrigation_frequency": "After each cut", "critical_operations": ["Cutting every 30-40 days"] },
+        { "stage": "Harvest", "days_start": 176, "days_end": 180, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Stop", "critical_operations": ["Final harvest"] }
+      ]
+    },
+    {
+      "name": "Oats (fodder)",
+      "scientific_name": "Avena sativa",
+      "category": "Fodder Crops",
+      "total_duration_days": 100,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "10-20",
+      "growth_stages": [
+        { "stage": "Germination", "days_start": 0, "days_end": 7, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "At sowing", "critical_operations": [] },
+        { "stage": "Vegetative", "days_start": 8, "days_end": 60, "soil_moisture_min": 30, "soil_moisture_max": 40, "irrigation_frequency": "Every 12-15 days", "critical_operations": [] },
+        { "stage": "Flowering", "days_start": 61, "days_end": 90, "soil_moisture_min": 35, "soil_moisture_max": 45, "irrigation_frequency": "Every 12-15 days", "critical_operations": [] },
+        { "stage": "Harvest", "days_start": 91, "days_end": 100, "soil_moisture_min": 25, "soil_moisture_max": 35, "irrigation_frequency": "Stop", "critical_operations": ["Harvesting for fodder"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3216 @@
+{
+  "version": "1.0",
+  "kc_source": "FAO-56",
+  "crops": [
+    {
+      "name": "Tomato",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 120,
+      "kc_initial": 0.6,
+      "kc_mid": 1.15,
+      "kc_end": 0.8,
+      "kc_average": 0.85,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 25,
+          "kc": 0.6,
+          "soil_moisture_min": 60,
+          "soil_moisture_max": 80
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 26,
+          "days_end": 35,
+          "kc": 0.7,
+          "soil_moisture_min": 65,
+          "soil_moisture_max": 85
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 36,
+          "days_end": 60,
+          "kc": 0.9,
+          "soil_moisture_min": 60,
+          "soil_moisture_max": 80
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 61,
+          "days_end": 85,
+          "kc": 1.15,
+          "soil_moisture_min": 70,
+          "soil_moisture_max": 90
+        },
+        {
+          "stage": "Fruiting",
+          "days_start": 86,
+          "days_end": 110,
+          "kc": 0.9,
+          "soil_moisture_min": 65,
+          "soil_moisture_max": 85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 111,
+          "days_end": 120,
+          "kc": 0.8,
+          "soil_moisture_min": 50,
+          "soil_moisture_max": 70
+        }
+      ]
+    },
+    {
+      "name": "Rice",
+      "season": "kharif",
+      "category": "Cereals",
+      "total_duration_days": 150,
+      "kc_initial": 1.05,
+      "kc_mid": 1.25,
+      "kc_end": 0.75,
+      "kc_average": 1.09,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 21,
+          "kc": 1.05
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 22,
+          "days_end": 35,
+          "kc": 1.1
+        },
+        {
+          "stage": "Tillering",
+          "days_start": 36,
+          "days_end": 70,
+          "kc": 1.2
+        },
+        {
+          "stage": "Panicle Initiation",
+          "days_start": 71,
+          "days_end": 95,
+          "kc": 1.2
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 96,
+          "days_end": 110,
+          "kc": 1.25
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 111,
+          "days_end": 135,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 136,
+          "days_end": 150,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Maize",
+      "season": "kharif",
+      "category": "Cereals",
+      "total_duration_days": 110,
+      "kc_initial": 0.4,
+      "kc_mid": 1.2,
+      "kc_end": 0.6,
+      "kc_average": 0.81,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.4
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 9,
+          "days_end": 25,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 26,
+          "days_end": 55,
+          "kc": 0.85
+        },
+        {
+          "stage": "Tasseling",
+          "days_start": 56,
+          "days_end": 70,
+          "kc": 1.15
+        },
+        {
+          "stage": "Silking",
+          "days_start": 71,
+          "days_end": 80,
+          "kc": 1.2
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 81,
+          "days_end": 100,
+          "kc": 1.05
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 101,
+          "days_end": 110,
+          "kc": 0.6
+        }
+      ]
+    },
+    {
+      "name": "Sorghum",
+      "season": "kharif",
+      "category": "Cereals",
+      "total_duration_days": 110,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 8,
+          "days_end": 30,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 31,
+          "days_end": 60,
+          "kc": 0.75
+        },
+        {
+          "stage": "Booting",
+          "days_start": 61,
+          "days_end": 75,
+          "kc": 1.05
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 76,
+          "days_end": 85,
+          "kc": 1.1
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 86,
+          "days_end": 105,
+          "kc": 0.95
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 106,
+          "days_end": 110,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Pearl Millet",
+      "season": "kharif",
+      "category": "Cereals",
+      "total_duration_days": 85,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.67,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.35
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 6,
+          "days_end": 25,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 26,
+          "days_end": 50,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 51,
+          "days_end": 65,
+          "kc": 1.1
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 66,
+          "days_end": 80,
+          "kc": 0.95
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 81,
+          "days_end": 85,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Finger Millet",
+      "season": "kharif",
+      "category": "Cereals",
+      "total_duration_days": 120,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.69,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 8,
+          "days_end": 30,
+          "kc": 0.4
+        },
+        {
+          "stage": "Tillering",
+          "days_start": 31,
+          "days_end": 60,
+          "kc": 0.8
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 61,
+          "days_end": 80,
+          "kc": 1.1
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 81,
+          "days_end": 115,
+          "kc": 0.95
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 116,
+          "days_end": 120,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Pigeon Pea",
+      "season": "kharif",
+      "category": "Pulses",
+      "total_duration_days": 180,
+      "kc_initial": 0.4,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 60,
+          "kc": 0.7
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 61,
+          "days_end": 100,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 101,
+          "days_end": 140,
+          "kc": 0.85
+        },
+        {
+          "stage": "Pod Maturity",
+          "days_start": 141,
+          "days_end": 175,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 176,
+          "days_end": 180,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Green Gram",
+      "season": "kharif",
+      "category": "Pulses",
+      "total_duration_days": 75,
+      "kc_initial": 0.4,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.72,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 25,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 26,
+          "days_end": 45,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 46,
+          "days_end": 65,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 66,
+          "days_end": 75,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Black Gram",
+      "season": "kharif",
+      "category": "Pulses",
+      "total_duration_days": 90,
+      "kc_initial": 0.4,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.72,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 30,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 31,
+          "days_end": 55,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 56,
+          "days_end": 80,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 81,
+          "days_end": 90,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Cowpea",
+      "season": "kharif",
+      "category": "Pulses",
+      "total_duration_days": 80,
+      "kc_initial": 0.4,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.71,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 6,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 7,
+          "days_end": 25,
+          "kc": 0.7
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 26,
+          "days_end": 50,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 51,
+          "days_end": 70,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 71,
+          "days_end": 80,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Horse Gram",
+      "season": "kharif",
+      "category": "Pulses",
+      "total_duration_days": 120,
+      "kc_initial": 0.35,
+      "kc_mid": 1.0,
+      "kc_end": 0.5,
+      "kc_average": 0.67,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 45,
+          "kc": 0.65
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 46,
+          "days_end": 75,
+          "kc": 1.0
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 76,
+          "days_end": 110,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 111,
+          "days_end": 120,
+          "kc": 0.5
+        }
+      ]
+    },
+    {
+      "name": "Soybean",
+      "season": "kharif",
+      "category": "Oilseeds",
+      "total_duration_days": 110,
+      "kc_initial": 0.4,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.76,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 40,
+          "kc": 0.8
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 41,
+          "days_end": 65,
+          "kc": 1.1
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 66,
+          "days_end": 90,
+          "kc": 0.85
+        },
+        {
+          "stage": "Seed Maturity",
+          "days_start": 91,
+          "days_end": 105,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 106,
+          "days_end": 110,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Groundnut",
+      "season": "kharif",
+      "category": "Oilseeds",
+      "total_duration_days": 120,
+      "kc_initial": 0.45,
+      "kc_mid": 1.1,
+      "kc_end": 0.65,
+      "kc_average": 0.8,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 40,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering & Pegging",
+          "days_start": 41,
+          "days_end": 75,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Development",
+          "days_start": 76,
+          "days_end": 105,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 106,
+          "days_end": 120,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Sesame",
+      "season": "kharif",
+      "category": "Oilseeds",
+      "total_duration_days": 90,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 35,
+          "kc": 0.8
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 60,
+          "kc": 1.1
+        },
+        {
+          "stage": "Capsule Formation",
+          "days_start": 61,
+          "days_end": 85,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Castor",
+      "season": "kharif",
+      "category": "Oilseeds",
+      "total_duration_days": 180,
+      "kc_initial": 0.35,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.71,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 60,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 61,
+          "days_end": 100,
+          "kc": 1.05
+        },
+        {
+          "stage": "Capsule Development",
+          "days_start": 101,
+          "days_end": 160,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 161,
+          "days_end": 180,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Niger Seed",
+      "season": "kharif",
+      "category": "Oilseeds",
+      "total_duration_days": 120,
+      "kc_initial": 0.35,
+      "kc_mid": 1.0,
+      "kc_end": 0.5,
+      "kc_average": 0.67,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 50,
+          "kc": 0.65
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 51,
+          "days_end": 80,
+          "kc": 1.0
+        },
+        {
+          "stage": "Seed Formation",
+          "days_start": 81,
+          "days_end": 115,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 116,
+          "days_end": 120,
+          "kc": 0.5
+        }
+      ]
+    },
+    {
+      "name": "Cotton",
+      "season": "kharif",
+      "category": "Commercial Crops",
+      "total_duration_days": 180,
+      "kc_initial": 0.35,
+      "kc_mid": 1.2,
+      "kc_end": 0.65,
+      "kc_average": 0.79,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 12,
+          "kc": 0.35
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 13,
+          "days_end": 40,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 41,
+          "days_end": 70,
+          "kc": 0.75
+        },
+        {
+          "stage": "Squaring",
+          "days_start": 71,
+          "days_end": 95,
+          "kc": 1.0
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 96,
+          "days_end": 120,
+          "kc": 1.2
+        },
+        {
+          "stage": "Boll Development",
+          "days_start": 121,
+          "days_end": 160,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 161,
+          "days_end": 180,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Jute",
+      "season": "kharif",
+      "category": "Commercial Crops",
+      "total_duration_days": 120,
+      "kc_initial": 0.4,
+      "kc_mid": 1.1,
+      "kc_end": 0.6,
+      "kc_average": 0.71,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.4
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 8,
+          "days_end": 30,
+          "kc": 0.55
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 31,
+          "days_end": 90,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 91,
+          "days_end": 110,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 111,
+          "days_end": 120,
+          "kc": 0.6
+        }
+      ]
+    },
+    {
+      "name": "Sugarcane",
+      "season": "kharif",
+      "category": "Commercial Crops",
+      "total_duration_days": 365,
+      "kc_initial": 0.4,
+      "kc_mid": 1.25,
+      "kc_end": 0.85,
+      "kc_average": 0.82,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 30,
+          "kc": 0.4
+        },
+        {
+          "stage": "Tillering",
+          "days_start": 31,
+          "days_end": 120,
+          "kc": 0.8
+        },
+        {
+          "stage": "Grand Growth",
+          "days_start": 121,
+          "days_end": 270,
+          "kc": 1.25
+        },
+        {
+          "stage": "Maturity",
+          "days_start": 271,
+          "days_end": 365,
+          "kc": 0.85
+        }
+      ]
+    },
+    {
+      "name": "Tobacco",
+      "season": "kharif",
+      "category": "Commercial Crops",
+      "total_duration_days": 130,
+      "kc_initial": 0.8,
+      "kc_mid": 0.9,
+      "kc_end": 0.65,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 45,
+          "kc": 0.8
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 46,
+          "days_end": 60,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 61,
+          "days_end": 100,
+          "kc": 0.9
+        },
+        {
+          "stage": "Maturity",
+          "days_start": 101,
+          "days_end": 125,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 126,
+          "days_end": 130,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Okra",
+      "season": "kharif",
+      "category": "Vegetables",
+      "total_duration_days": 90,
+      "kc_initial": 0.4,
+      "kc_mid": 1.05,
+      "kc_end": 0.7,
+      "kc_average": 0.81,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 40,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 41,
+          "days_end": 60,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Development",
+          "days_start": 61,
+          "days_end": 85,
+          "kc": 1.0
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.7
+        }
+      ]
+    },
+    {
+      "name": "Brinjal",
+      "season": "kharif",
+      "category": "Vegetables",
+      "total_duration_days": 140,
+      "kc_initial": 0.8,
+      "kc_mid": 1.1,
+      "kc_end": 0.7,
+      "kc_average": 0.85,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 35,
+          "kc": 0.8
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 36,
+          "days_end": 50,
+          "kc": 0.55
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 51,
+          "days_end": 80,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 81,
+          "days_end": 100,
+          "kc": 1.1
+        },
+        {
+          "stage": "Fruiting",
+          "days_start": 101,
+          "days_end": 130,
+          "kc": 1.05
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 131,
+          "days_end": 140,
+          "kc": 0.7
+        }
+      ]
+    },
+    {
+      "name": "Tomato",
+      "season": "kharif",
+      "category": "Vegetables",
+      "total_duration_days": 120,
+      "kc_initial": 0.8,
+      "kc_mid": 1.15,
+      "kc_end": 0.75,
+      "kc_average": 0.88,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 25,
+          "kc": 0.8
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 26,
+          "days_end": 40,
+          "kc": 0.55
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 41,
+          "days_end": 70,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 71,
+          "days_end": 85,
+          "kc": 1.15
+        },
+        {
+          "stage": "Fruiting",
+          "days_start": 86,
+          "days_end": 115,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 116,
+          "days_end": 120,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Chilli",
+      "season": "kharif",
+      "category": "Vegetables",
+      "total_duration_days": 150,
+      "kc_initial": 0.8,
+      "kc_mid": 1.1,
+      "kc_end": 0.7,
+      "kc_average": 0.85,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 30,
+          "kc": 0.8
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 31,
+          "days_end": 45,
+          "kc": 0.55
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 46,
+          "days_end": 80,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 81,
+          "days_end": 100,
+          "kc": 1.1
+        },
+        {
+          "stage": "Fruiting",
+          "days_start": 101,
+          "days_end": 140,
+          "kc": 1.05
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 141,
+          "days_end": 150,
+          "kc": 0.7
+        }
+      ]
+    },
+    {
+      "name": "Bottle Gourd",
+      "season": "kharif",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "kc_initial": 0.45,
+      "kc_mid": 1.1,
+      "kc_end": 0.75,
+      "kc_average": 0.81,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 40,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 41,
+          "days_end": 60,
+          "kc": 1.1
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 61,
+          "days_end": 95,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 96,
+          "days_end": 100,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Bitter Gourd",
+      "season": "kharif",
+      "category": "Vegetables",
+      "total_duration_days": 110,
+      "kc_initial": 0.45,
+      "kc_mid": 1.1,
+      "kc_end": 0.75,
+      "kc_average": 0.81,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 45,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 46,
+          "days_end": 65,
+          "kc": 1.1
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 66,
+          "days_end": 105,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 106,
+          "days_end": 110,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Ridge Gourd",
+      "season": "kharif",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "kc_initial": 0.45,
+      "kc_mid": 1.05,
+      "kc_end": 0.75,
+      "kc_average": 0.8,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 40,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 41,
+          "days_end": 60,
+          "kc": 1.05
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 61,
+          "days_end": 95,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 96,
+          "days_end": 100,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Pumpkin",
+      "season": "kharif",
+      "category": "Vegetables",
+      "total_duration_days": 120,
+      "kc_initial": 0.45,
+      "kc_mid": 1.05,
+      "kc_end": 0.75,
+      "kc_average": 0.8,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 50,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 51,
+          "days_end": 75,
+          "kc": 1.05
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 76,
+          "days_end": 115,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 116,
+          "days_end": 120,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Watermelon",
+      "season": "kharif",
+      "category": "Fruits (Seasonal Plantation)",
+      "total_duration_days": 90,
+      "kc_initial": 0.4,
+      "kc_mid": 1.0,
+      "kc_end": 0.75,
+      "kc_average": 0.77,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 35,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 55,
+          "kc": 1.0
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 56,
+          "days_end": 85,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Muskmelon",
+      "season": "kharif",
+      "category": "Fruits (Seasonal Plantation)",
+      "total_duration_days": 90,
+      "kc_initial": 0.4,
+      "kc_mid": 1.0,
+      "kc_end": 0.75,
+      "kc_average": 0.77,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 35,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 55,
+          "kc": 1.0
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 56,
+          "days_end": 85,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Turmeric",
+      "season": "kharif",
+      "category": "Spices & Others",
+      "total_duration_days": 240,
+      "kc_initial": 0.85,
+      "kc_mid": 1.0,
+      "kc_end": 0.65,
+      "kc_average": 0.84,
+      "stages": [
+        {
+          "stage": "Sprouting",
+          "days_start": 0,
+          "days_end": 30,
+          "kc": 0.85
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 31,
+          "days_end": 120,
+          "kc": 0.85
+        },
+        {
+          "stage": "Rhizome Development",
+          "days_start": 121,
+          "days_end": 200,
+          "kc": 1.0
+        },
+        {
+          "stage": "Maturity",
+          "days_start": 201,
+          "days_end": 235,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 236,
+          "days_end": 240,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Ginger",
+      "season": "kharif",
+      "category": "Spices & Others",
+      "total_duration_days": 210,
+      "kc_initial": 0.85,
+      "kc_mid": 1.0,
+      "kc_end": 0.65,
+      "kc_average": 0.84,
+      "stages": [
+        {
+          "stage": "Sprouting",
+          "days_start": 0,
+          "days_end": 30,
+          "kc": 0.85
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 31,
+          "days_end": 100,
+          "kc": 0.85
+        },
+        {
+          "stage": "Rhizome Development",
+          "days_start": 101,
+          "days_end": 180,
+          "kc": 1.0
+        },
+        {
+          "stage": "Maturity",
+          "days_start": 181,
+          "days_end": 205,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 206,
+          "days_end": 210,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Wheat",
+      "season": "rabi",
+      "category": "Cereals",
+      "total_duration_days": 145,
+      "kc_initial": 0.4,
+      "kc_mid": 1.15,
+      "kc_end": 0.65,
+      "kc_average": 0.79,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.4
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 11,
+          "days_end": 30,
+          "kc": 0.4
+        },
+        {
+          "stage": "Tillering",
+          "days_start": 31,
+          "days_end": 60,
+          "kc": 0.7
+        },
+        {
+          "stage": "Stem Elongation",
+          "days_start": 61,
+          "days_end": 85,
+          "kc": 0.85
+        },
+        {
+          "stage": "Booting",
+          "days_start": 86,
+          "days_end": 100,
+          "kc": 1.15
+        },
+        {
+          "stage": "Heading",
+          "days_start": 101,
+          "days_end": 110,
+          "kc": 1.15
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 111,
+          "days_end": 130,
+          "kc": 1.0
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 131,
+          "days_end": 145,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Barley",
+      "season": "rabi",
+      "category": "Cereals",
+      "total_duration_days": 130,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.45,
+      "kc_average": 0.69,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 8,
+          "days_end": 25,
+          "kc": 0.35
+        },
+        {
+          "stage": "Tillering",
+          "days_start": 26,
+          "days_end": 55,
+          "kc": 0.75
+        },
+        {
+          "stage": "Stem Elongation",
+          "days_start": 56,
+          "days_end": 80,
+          "kc": 0.85
+        },
+        {
+          "stage": "Booting",
+          "days_start": 81,
+          "days_end": 95,
+          "kc": 1.1
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 96,
+          "days_end": 120,
+          "kc": 0.95
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 121,
+          "days_end": 130,
+          "kc": 0.45
+        }
+      ]
+    },
+    {
+      "name": "Oats",
+      "season": "rabi",
+      "category": "Cereals",
+      "total_duration_days": 120,
+      "kc_initial": 0.35,
+      "kc_mid": 1.0,
+      "kc_end": 0.55,
+      "kc_average": 0.66,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Seedling",
+          "days_start": 8,
+          "days_end": 25,
+          "kc": 0.4
+        },
+        {
+          "stage": "Tillering",
+          "days_start": 26,
+          "days_end": 55,
+          "kc": 0.8
+        },
+        {
+          "stage": "Stem Elongation",
+          "days_start": 56,
+          "days_end": 80,
+          "kc": 0.85
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 81,
+          "days_end": 110,
+          "kc": 1.0
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 111,
+          "days_end": 120,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Chickpea",
+      "season": "rabi",
+      "category": "Pulses",
+      "total_duration_days": 130,
+      "kc_initial": 0.4,
+      "kc_mid": 1.0,
+      "kc_end": 0.55,
+      "kc_average": 0.7,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 50,
+          "kc": 0.7
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 51,
+          "days_end": 80,
+          "kc": 1.0
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 81,
+          "days_end": 120,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 121,
+          "days_end": 130,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Lentil",
+      "season": "rabi",
+      "category": "Pulses",
+      "total_duration_days": 120,
+      "kc_initial": 0.4,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.71,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 45,
+          "kc": 0.7
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 46,
+          "days_end": 75,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 76,
+          "days_end": 110,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 111,
+          "days_end": 120,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Field Pea",
+      "season": "rabi",
+      "category": "Pulses",
+      "total_duration_days": 110,
+      "kc_initial": 0.4,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 40,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 41,
+          "days_end": 65,
+          "kc": 1.1
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 66,
+          "days_end": 100,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 101,
+          "days_end": 110,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Lathyrus",
+      "season": "rabi",
+      "category": "Pulses",
+      "total_duration_days": 120,
+      "kc_initial": 0.4,
+      "kc_mid": 1.0,
+      "kc_end": 0.55,
+      "kc_average": 0.7,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 50,
+          "kc": 0.7
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 51,
+          "days_end": 80,
+          "kc": 1.0
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 81,
+          "days_end": 110,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 111,
+          "days_end": 120,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Mustard",
+      "season": "rabi",
+      "category": "Oilseeds",
+      "total_duration_days": 140,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.74,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 50,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 51,
+          "days_end": 90,
+          "kc": 1.1
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 91,
+          "days_end": 130,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 131,
+          "days_end": 140,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Rapeseed",
+      "season": "rabi",
+      "category": "Oilseeds",
+      "total_duration_days": 135,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.74,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 45,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 46,
+          "days_end": 85,
+          "kc": 1.1
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 86,
+          "days_end": 125,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 126,
+          "days_end": 135,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Linseed",
+      "season": "rabi",
+      "category": "Oilseeds",
+      "total_duration_days": 150,
+      "kc_initial": 0.35,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.71,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 60,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 61,
+          "days_end": 100,
+          "kc": 1.05
+        },
+        {
+          "stage": "Capsule Formation",
+          "days_start": 101,
+          "days_end": 140,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 141,
+          "days_end": 150,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Safflower",
+      "season": "rabi",
+      "category": "Oilseeds",
+      "total_duration_days": 140,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.71,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 60,
+          "kc": 0.7
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 61,
+          "days_end": 100,
+          "kc": 1.1
+        },
+        {
+          "stage": "Seed Development",
+          "days_start": 101,
+          "days_end": 130,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 131,
+          "days_end": 140,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Sunflower",
+      "season": "rabi",
+      "category": "Oilseeds",
+      "total_duration_days": 110,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.76,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 40,
+          "kc": 0.75
+        },
+        {
+          "stage": "Bud Formation",
+          "days_start": 41,
+          "days_end": 60,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 61,
+          "days_end": 80,
+          "kc": 1.1
+        },
+        {
+          "stage": "Seed Filling",
+          "days_start": 81,
+          "days_end": 105,
+          "kc": 0.95
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 106,
+          "days_end": 110,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Sugarcane",
+      "season": "rabi",
+      "category": "Commercial Crops",
+      "total_duration_days": 365,
+      "kc_initial": 0.4,
+      "kc_mid": 1.25,
+      "kc_end": 0.85,
+      "kc_average": 0.82,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 30,
+          "kc": 0.4
+        },
+        {
+          "stage": "Tillering",
+          "days_start": 31,
+          "days_end": 120,
+          "kc": 0.8
+        },
+        {
+          "stage": "Grand Growth",
+          "days_start": 121,
+          "days_end": 270,
+          "kc": 1.25
+        },
+        {
+          "stage": "Maturity",
+          "days_start": 271,
+          "days_end": 365,
+          "kc": 0.85
+        }
+      ]
+    },
+    {
+      "name": "Tobacco",
+      "season": "rabi",
+      "category": "Commercial Crops",
+      "total_duration_days": 130,
+      "kc_initial": 0.8,
+      "kc_mid": 0.9,
+      "kc_end": 0.65,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 45,
+          "kc": 0.8
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 46,
+          "days_end": 60,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 61,
+          "days_end": 100,
+          "kc": 0.9
+        },
+        {
+          "stage": "Maturity",
+          "days_start": 101,
+          "days_end": 125,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 126,
+          "days_end": 130,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Potato",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "kc_initial": 0.85,
+      "kc_mid": 1.15,
+      "kc_end": 0.8,
+      "kc_average": 0.93,
+      "stages": [
+        {
+          "stage": "Sprouting",
+          "days_start": 0,
+          "days_end": 15,
+          "kc": 0.85
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 16,
+          "days_end": 45,
+          "kc": 0.75
+        },
+        {
+          "stage": "Tuber Initiation",
+          "days_start": 46,
+          "days_end": 65,
+          "kc": 1.1
+        },
+        {
+          "stage": "Tuber Bulking",
+          "days_start": 66,
+          "days_end": 90,
+          "kc": 1.15
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 91,
+          "days_end": 100,
+          "kc": 0.8
+        }
+      ]
+    },
+    {
+      "name": "Onion",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 140,
+      "kc_initial": 0.8,
+      "kc_mid": 1.0,
+      "kc_end": 0.8,
+      "kc_average": 0.81,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 45,
+          "kc": 0.8
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 46,
+          "days_end": 60,
+          "kc": 0.55
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 61,
+          "days_end": 100,
+          "kc": 0.85
+        },
+        {
+          "stage": "Bulb Initiation",
+          "days_start": 101,
+          "days_end": 120,
+          "kc": 1.0
+        },
+        {
+          "stage": "Bulb Maturity",
+          "days_start": 121,
+          "days_end": 135,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 136,
+          "days_end": 140,
+          "kc": 0.8
+        }
+      ]
+    },
+    {
+      "name": "Garlic",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 120,
+      "kc_initial": 0.5,
+      "kc_mid": 0.95,
+      "kc_end": 0.75,
+      "kc_average": 0.77,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 15,
+          "kc": 0.5
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 16,
+          "days_end": 60,
+          "kc": 0.8
+        },
+        {
+          "stage": "Bulb Initiation",
+          "days_start": 61,
+          "days_end": 90,
+          "kc": 0.95
+        },
+        {
+          "stage": "Bulb Development",
+          "days_start": 91,
+          "days_end": 115,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 116,
+          "days_end": 120,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Carrot",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "kc_initial": 0.45,
+      "kc_mid": 1.05,
+      "kc_end": 0.8,
+      "kc_average": 0.78,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 50,
+          "kc": 0.8
+        },
+        {
+          "stage": "Root Development",
+          "days_start": 51,
+          "days_end": 90,
+          "kc": 1.05
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 91,
+          "days_end": 100,
+          "kc": 0.8
+        }
+      ]
+    },
+    {
+      "name": "Radish",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "kc_initial": 0.45,
+      "kc_mid": 1.0,
+      "kc_end": 0.8,
+      "kc_average": 0.78,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 25,
+          "kc": 0.85
+        },
+        {
+          "stage": "Root Development",
+          "days_start": 26,
+          "days_end": 55,
+          "kc": 1.0
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 56,
+          "days_end": 60,
+          "kc": 0.8
+        }
+      ]
+    },
+    {
+      "name": "Cabbage",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 110,
+      "kc_initial": 0.8,
+      "kc_mid": 1.05,
+      "kc_end": 0.9,
+      "kc_average": 0.79,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 35,
+          "kc": 0.8
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 36,
+          "days_end": 50,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 51,
+          "days_end": 80,
+          "kc": 0.75
+        },
+        {
+          "stage": "Head Formation",
+          "days_start": 81,
+          "days_end": 105,
+          "kc": 1.05
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 106,
+          "days_end": 110,
+          "kc": 0.9
+        }
+      ]
+    },
+    {
+      "name": "Cauliflower",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 110,
+      "kc_initial": 0.8,
+      "kc_mid": 1.05,
+      "kc_end": 0.9,
+      "kc_average": 0.79,
+      "stages": [
+        {
+          "stage": "Nursery",
+          "days_start": 0,
+          "days_end": 35,
+          "kc": 0.8
+        },
+        {
+          "stage": "Transplanting",
+          "days_start": 36,
+          "days_end": 50,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 51,
+          "days_end": 80,
+          "kc": 0.75
+        },
+        {
+          "stage": "Curd Formation",
+          "days_start": 81,
+          "days_end": 105,
+          "kc": 1.05
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 106,
+          "days_end": 110,
+          "kc": 0.9
+        }
+      ]
+    },
+    {
+      "name": "Spinach",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "kc_initial": 0.7,
+      "kc_mid": 1.0,
+      "kc_end": 0.95,
+      "kc_average": 0.88,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.7
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 50,
+          "kc": 1.0
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 51,
+          "days_end": 60,
+          "kc": 0.95
+        }
+      ]
+    },
+    {
+      "name": "Fenugreek",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "kc_initial": 0.6,
+      "kc_mid": 0.9,
+      "kc_end": 0.85,
+      "kc_average": 0.78,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.6
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 50,
+          "kc": 0.9
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 51,
+          "days_end": 60,
+          "kc": 0.85
+        }
+      ]
+    },
+    {
+      "name": "Beetroot",
+      "season": "rabi",
+      "category": "Vegetables",
+      "total_duration_days": 90,
+      "kc_initial": 0.5,
+      "kc_mid": 1.05,
+      "kc_end": 0.85,
+      "kc_average": 0.81,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.5
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 40,
+          "kc": 0.85
+        },
+        {
+          "stage": "Root Development",
+          "days_start": 41,
+          "days_end": 80,
+          "kc": 1.05
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 81,
+          "days_end": 90,
+          "kc": 0.85
+        }
+      ]
+    },
+    {
+      "name": "Berseem",
+      "season": "rabi",
+      "category": "Fodder Crops",
+      "total_duration_days": 120,
+      "kc_initial": 0.45,
+      "kc_mid": 0.95,
+      "kc_end": 0.65,
+      "kc_average": 0.72,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 50,
+          "kc": 0.95
+        },
+        {
+          "stage": "Regrowth (Multiple Cuts)",
+          "days_start": 51,
+          "days_end": 115,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 116,
+          "days_end": 120,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Lucerne",
+      "season": "rabi",
+      "category": "Fodder Crops",
+      "total_duration_days": 180,
+      "kc_initial": 0.45,
+      "kc_mid": 0.95,
+      "kc_end": 0.65,
+      "kc_average": 0.72,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 60,
+          "kc": 0.95
+        },
+        {
+          "stage": "Regrowth (Multiple Cuts)",
+          "days_start": 61,
+          "days_end": 175,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 176,
+          "days_end": 180,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Oats (fodder)",
+      "season": "rabi",
+      "category": "Fodder Crops",
+      "total_duration_days": 100,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.7,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 60,
+          "kc": 0.8
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 61,
+          "days_end": 90,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 91,
+          "days_end": 100,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Maize",
+      "season": "zaid",
+      "category": "Cereals",
+      "total_duration_days": 90,
+      "kc_initial": 0.4,
+      "kc_mid": 1.1,
+      "kc_end": 0.6,
+      "kc_average": 0.8,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 35,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 55,
+          "kc": 1.1
+        },
+        {
+          "stage": "Grain Filling",
+          "days_start": 56,
+          "days_end": 85,
+          "kc": 1.05
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.6
+        }
+      ]
+    },
+    {
+      "name": "Sorghum (fodder)",
+      "season": "zaid",
+      "category": "Cereals",
+      "total_duration_days": 75,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.65,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 40,
+          "kc": 0.8
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 41,
+          "days_end": 60,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 61,
+          "days_end": 75,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Moong (short duration)",
+      "season": "zaid",
+      "category": "Pulses",
+      "total_duration_days": 65,
+      "kc_initial": 0.4,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.72,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 25,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 26,
+          "days_end": 45,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 46,
+          "days_end": 60,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 61,
+          "days_end": 65,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Urad (short duration)",
+      "season": "zaid",
+      "category": "Pulses",
+      "total_duration_days": 70,
+      "kc_initial": 0.4,
+      "kc_mid": 1.05,
+      "kc_end": 0.55,
+      "kc_average": 0.72,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 25,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 26,
+          "days_end": 50,
+          "kc": 1.05
+        },
+        {
+          "stage": "Pod Formation",
+          "days_start": 51,
+          "days_end": 65,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 66,
+          "days_end": 70,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Sunflower",
+      "season": "zaid",
+      "category": "Oilseeds",
+      "total_duration_days": 90,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.74,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 35,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 60,
+          "kc": 1.1
+        },
+        {
+          "stage": "Seed Filling",
+          "days_start": 61,
+          "days_end": 85,
+          "kc": 0.95
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Sesame (early summer)",
+      "season": "zaid",
+      "category": "Oilseeds",
+      "total_duration_days": 85,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.55,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 30,
+          "kc": 0.8
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 31,
+          "days_end": 55,
+          "kc": 1.1
+        },
+        {
+          "stage": "Capsule Formation",
+          "days_start": 56,
+          "days_end": 80,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 81,
+          "days_end": 85,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Watermelon",
+      "season": "zaid",
+      "category": "Fruits",
+      "total_duration_days": 90,
+      "kc_initial": 0.4,
+      "kc_mid": 1.0,
+      "kc_end": 0.75,
+      "kc_average": 0.77,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 35,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 55,
+          "kc": 1.0
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 56,
+          "days_end": 85,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Muskmelon",
+      "season": "zaid",
+      "category": "Fruits",
+      "total_duration_days": 90,
+      "kc_initial": 0.4,
+      "kc_mid": 1.0,
+      "kc_end": 0.75,
+      "kc_average": 0.77,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 7,
+          "kc": 0.4
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 8,
+          "days_end": 35,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 55,
+          "kc": 1.0
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 56,
+          "days_end": 85,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Cucumber",
+      "season": "zaid",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "kc_initial": 0.45,
+      "kc_mid": 1.0,
+      "kc_end": 0.75,
+      "kc_average": 0.78,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 25,
+          "kc": 0.85
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 26,
+          "days_end": 40,
+          "kc": 1.0
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 41,
+          "days_end": 55,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 56,
+          "days_end": 60,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Bitter Gourd",
+      "season": "zaid",
+      "category": "Vegetables",
+      "total_duration_days": 90,
+      "kc_initial": 0.45,
+      "kc_mid": 1.1,
+      "kc_end": 0.75,
+      "kc_average": 0.81,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 35,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 55,
+          "kc": 1.1
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 56,
+          "days_end": 85,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Bottle Gourd",
+      "season": "zaid",
+      "category": "Vegetables",
+      "total_duration_days": 90,
+      "kc_initial": 0.45,
+      "kc_mid": 1.1,
+      "kc_end": 0.75,
+      "kc_average": 0.81,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 35,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 36,
+          "days_end": 55,
+          "kc": 1.1
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 56,
+          "days_end": 85,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 86,
+          "days_end": 90,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Ridge Gourd",
+      "season": "zaid",
+      "category": "Vegetables",
+      "total_duration_days": 80,
+      "kc_initial": 0.45,
+      "kc_mid": 1.05,
+      "kc_end": 0.75,
+      "kc_average": 0.8,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 8,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 9,
+          "days_end": 30,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 31,
+          "days_end": 50,
+          "kc": 1.05
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 51,
+          "days_end": 75,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 76,
+          "days_end": 80,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Pumpkin",
+      "season": "zaid",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "kc_initial": 0.45,
+      "kc_mid": 1.05,
+      "kc_end": 0.75,
+      "kc_average": 0.8,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 10,
+          "kc": 0.45
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 11,
+          "days_end": 40,
+          "kc": 0.9
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 41,
+          "days_end": 60,
+          "kc": 1.05
+        },
+        {
+          "stage": "Fruit Development",
+          "days_start": 61,
+          "days_end": 95,
+          "kc": 0.85
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 96,
+          "days_end": 100,
+          "kc": 0.75
+        }
+      ]
+    },
+    {
+      "name": "Cowpea (fodder)",
+      "season": "zaid",
+      "category": "Fodder Crops",
+      "total_duration_days": 70,
+      "kc_initial": 0.35,
+      "kc_mid": 0.95,
+      "kc_end": 0.55,
+      "kc_average": 0.65,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 40,
+          "kc": 0.75
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 41,
+          "days_end": 60,
+          "kc": 0.95
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 61,
+          "days_end": 70,
+          "kc": 0.55
+        }
+      ]
+    },
+    {
+      "name": "Maize (fodder)",
+      "season": "zaid",
+      "category": "Fodder Crops",
+      "total_duration_days": 65,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.65,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 40,
+          "kc": 0.8
+        },
+        {
+          "stage": "Tasseling",
+          "days_start": 41,
+          "days_end": 55,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 56,
+          "days_end": 65,
+          "kc": 0.65
+        }
+      ]
+    },
+    {
+      "name": "Sorghum (fodder)",
+      "season": "zaid",
+      "category": "Fodder Crops",
+      "total_duration_days": 70,
+      "kc_initial": 0.35,
+      "kc_mid": 1.1,
+      "kc_end": 0.65,
+      "kc_average": 0.73,
+      "stages": [
+        {
+          "stage": "Germination",
+          "days_start": 0,
+          "days_end": 5,
+          "kc": 0.35
+        },
+        {
+          "stage": "Vegetative",
+          "days_start": 6,
+          "days_end": 45,
+          "kc": 0.8
+        },
+        {
+          "stage": "Flowering",
+          "days_start": 46,
+          "days_end": 60,
+          "kc": 1.1
+        },
+        {
+          "stage": "Harvest",
+          "days_start": 61,
+          "days_end": 70,
+          "kc": 0.65
+        }
+      ]
+    }
+  ]
+}

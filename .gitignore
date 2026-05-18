@@ -15,7 +15,8 @@ db.sqlite3
 # Large Datasets (Optional to ignore, but keeps repo under 100MB)
 dataset_lstm.json
 dataset_xgb.json
-backend/data/
+backend/data/bio_dataset_*.json
+backend/data/dataset_*.json
 
 # ─── Flutter Mobile App Ignored Files ──────────────────────────────────────
 aquasol_app/.dart_tool/

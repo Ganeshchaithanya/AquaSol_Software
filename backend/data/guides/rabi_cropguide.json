@@ -1,0 +1,2768 @@
+{
+  "season": "Rabi",
+  "period": "November–April",
+  "sowing_start": "October",
+  "sowing_end": "December",
+  "harvest_start": "March",
+  "harvest_end": "April",
+  "temperature_range_c": "10-25",
+  "rainfall_requirement_mm": "100-500",
+  "humidity_range": "40-60%",
+  "description": "Winter season crops requiring cool climate for growth",
+  "crops": [
+    {
+      "crop_name": "Wheat",
+      "scientific_name": "Triticum aestivum",
+      "category": "Cereals",
+      "total_duration_days": 145,
+      "water_requirement_mm": 450,
+      "temperature_optimal_c": "12-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Wheat",
+          "timing": "October–November (2-3 weeks before sowing)",
+          "steps": [
+            "Select well-drained loamy or clay loam soil with pH 6.5–7.5.",
+            "Deep plough with disc plough to 25–30 cm depth to break hardpan.",
+            "Apply 10 tonnes/hectare of well-decomposed FYM (farmyard manure) and incorporate.",
+            "Cross harrow 2–3 times to achieve fine tilth; use cultivator followed by planking.",
+            "Ensure soil is weed-free and has good moisture retention.",
+            "Pre-sowing irrigation (rauni) 7–10 days before sowing for proper germination."
+          ]
+        },
+        "step_2_seed_selection_and_treatment": {
+          "title": "Seed Selection & Treatment",
+          "timing": "1 week before sowing",
+          "steps": [
+            "Select certified high-yielding variety suitable for your region (HD-2967, PBW-343, GW-322).",
+            "Seed rate: 100–125 kg/ha for normal sowing; 150 kg/ha for late sowing.",
+            "Treat seeds with Carbendazim 50 WP @ 2g/kg seed OR Thiram 75 WS @ 2.5g/kg seed to prevent loose smut.",
+            "For termite control, treat with Chlorpyriphos 20 EC @ 4 ml/kg seed.",
+            "Bio-inoculate with Azotobacter 600 g/ha + PSB 600 g/ha mixed in 10% jaggery solution.",
+            "Dry treated seeds in shade for 30 minutes before sowing."
+          ]
+        },
+        "step_3_sowing": {
+          "title": "Sowing Method",
+          "timing": "October 25–November 25 (optimal window)",
+          "steps": [
+            "Use seed-cum-fertilizer drill for precise sowing at 4–5 cm depth.",
+            "Row spacing: 20–22.5 cm for normal sowing; 18 cm for late sowing.",
+            "Ensure continuous seed drop without gaps; target plant population of 125–150 plants/sq.m.",
+            "Apply basal fertilizer: DAP 125 kg/ha + MOP 33 kg/ha + Urea 65 kg/ha in furrows.",
+            "After sowing, plank the field to press soil for better seed-soil contact.",
+            "If soil moisture is inadequate, give light irrigation immediately after sowing."
+          ]
+        },
+        "step_4_irrigation_schedule": {
+          "title": "Irrigation Management",
+          "timing": "Throughout crop period (5-6 irrigations total)",
+          "steps": [
+            "Irrigation 1 (Crown Root Initiation - CRI): Day 20–25 after sowing; critical stage for tillering.",
+            "Irrigation 2 (Tillering): Day 40–45; apply 75 mm water.",
+            "Irrigation 3 (Late Tillering): Day 60–65; maintain soil moisture.",
+            "Irrigation 4 (Flowering): Day 85–90; most critical — do not allow moisture stress.",
+            "Irrigation 5 (Grain Filling): Day 110–115; apply light irrigation 50 mm.",
+            "Irrigation 6 (Dough stage): Day 130–135 (optional; depends on soil moisture).",
+            "Stop irrigation 15 days before harvest for uniform ripening.",
+            "Each irrigation: 60–75 mm water; total 450 mm."
+          ]
+        },
+        "step_5_fertilizer_application": {
+          "title": "Fertilizer Schedule",
+          "timing": "As per growth stages",
+          "schedule": [
+            {
+              "stage": "Basal (at sowing)",
+              "fertilizers": "DAP 125 kg/ha + MOP 33 kg/ha + Urea 65 kg/ha (N:P:K = 30:60:20 kg/ha)",
+              "method": "Apply in furrows below seed level"
+            },
+            {
+              "stage": "1st Top Dressing (CRI stage, Day 20-25)",
+              "fertilizers": "Urea 87 kg/ha (40 kg N/ha)",
+              "method": "Broadcast in standing crop before irrigation"
+            },
+            {
+              "stage": "2nd Top Dressing (Tillering, Day 45-50)",
+              "fertilizers": "Urea 65 kg/ha (30 kg N/ha)",
+              "method": "Broadcast followed by light irrigation"
+            },
+            {
+              "stage": "3rd Top Dressing (Flag leaf stage, Day 75-80)",
+              "fertilizers": "Urea 43 kg/ha (20 kg N/ha) - optional for high-yield varieties",
+              "method": "Foliar spray or broadcast"
+            },
+            {
+              "stage": "Micronutrients",
+              "fertilizers": "Zinc Sulphate 25 kg/ha basal if Zn deficiency; Boron 0.2% foliar at flowering",
+              "method": "Soil application or foliar spray"
+            }
+          ]
+        },
+        "step_6_weed_management": {
+          "title": "Weed Control",
+          "timing": "Early stage (Day 20-40)",
+          "steps": [
+            "Identify major weeds: Phalaris minor (canary grass), Chenopodium, Anagallis.",
+            "Pre-emergence: Apply Pendimethalin 30 EC @ 3 litres/ha within 3 days of sowing.",
+            "Post-emergence (Day 30-35): Apply Clodinafop-propargyl 15 WP @ 400 g/ha + Metsulfuron 20 WP @ 20 g/ha for mixed weeds.",
+            "For Phalaris minor resistant strains: Use Sulfosulfuron 75 WG @ 250 g/ha at Day 30-35.",
+            "Manual weeding at Day 30 and Day 50 for residual weeds.",
+            "Ensure herbicide application at proper soil moisture for best absorption."
+          ]
+        },
+        "step_7_pest_management": {
+          "title": "Pest Control",
+          "timing": "As per pest appearance",
+          "pests": [
+            {
+              "pest": "Aphid (Macrosiphum miscanthi)",
+              "symptoms": "Honeydew secretion, sooty mold, stunted growth",
+              "economic_threshold": "5-8 aphids per tiller",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha OR Dimethoate 30 EC @ 500 ml/ha; spray when threshold reached",
+              "timing": "January–February when temperature rises"
+            },
+            {
+              "pest": "Termite (Microtermes spp.)",
+              "symptoms": "Drying of plants; can pull plants easily",
+              "control": "Chlorpyriphos 20 EC @ 4 litres/ha as soil drench; or Phorate 10G @ 10 kg/ha at sowing",
+              "timing": "At sowing or when symptoms appear"
+            },
+            {
+              "pest": "Gujhia Weevil (Tanymecus indicus)",
+              "symptoms": "Leaf notching; defoliation",
+              "control": "Spray Chlorpyriphos 20 EC @ 1.5 litres/ha OR Quinalphos 25 EC @ 1.5 litres/ha",
+              "timing": "At seedling stage"
+            },
+            {
+              "pest": "Army Worm (Mythimna separata)",
+              "symptoms": "Leaves skeletonized; caterpillars visible",
+              "control": "Chlorantraniliprole 18.5 SC @ 150 ml/ha OR Spinosad 45 SC @ 73 ml/ha",
+              "timing": "When caterpillar infestation observed"
+            }
+          ]
+        },
+        "step_8_disease_management": {
+          "title": "Disease Control",
+          "timing": "As per weather conditions",
+          "diseases": [
+            {
+              "disease": "Rust (Stem/Yellow/Leaf Rust)",
+              "symptoms": "Brown/yellow pustules on leaves and stems",
+              "favorable_conditions": "Humid weather, temperature 15-25°C",
+              "control": "Propiconazole 25 EC @ 500 ml/ha OR Tebuconazole 250 EC @ 500 ml/ha; spray at appearance of first pustules",
+              "timing": "January–February; repeat at 15-day interval"
+            },
+            {
+              "disease": "Loose Smut (Ustilago tritici)",
+              "symptoms": "Black powdery mass replaces grain",
+              "control": "Seed treatment with Carbendazim 50 WP @ 2g/kg seed OR Vitavax 200 @ 2g/kg",
+              "timing": "Pre-sowing (seed treatment)"
+            },
+            {
+              "disease": "Karnal Bunt (Tilletia indica)",
+              "symptoms": "Partial blackening of grain; fishy odor",
+              "control": "Spray Propiconazole 25 EC @ 500 ml/ha at ear emergence; use resistant varieties",
+              "timing": "At heading stage"
+            },
+            {
+              "disease": "Powdery Mildew (Erysiphe graminis)",
+              "symptoms": "White powdery growth on leaves",
+              "control": "Wettable Sulphur 80 WP @ 2 kg/ha OR Tebuconazole 250 EC @ 400 ml/ha",
+              "timing": "When mildew spots appear"
+            },
+            {
+              "disease": "Leaf Blight (Alternaria triticina)",
+              "symptoms": "Brown spots with concentric rings",
+              "control": "Mancozeb 75 WP @ 2 kg/ha OR Chlorothalonil 75 WP @ 1.5 kg/ha",
+              "timing": "At disease appearance; repeat after 10 days"
+            }
+          ]
+        },
+        "step_9_harvesting": {
+          "title": "Harvesting",
+          "timing": "March–April (Day 136–145 after sowing)",
+          "steps": [
+            "Harvest when grain moisture is 20-25% and straw turns golden yellow.",
+            "Check maturity: Grains hard, not easily pressed; straw brittle.",
+            "Use combine harvester for large fields; manual harvesting with sickle for small farms.",
+            "Cut at 10-15 cm above ground level.",
+            "For manual harvest: Bind into small sheaves; stack for 3-5 days for drying.",
+            "Thresh using power thresher @ 500-600 RPM to avoid grain cracking.",
+            "Winnow to separate grain from chaff using winnowing fan or combine's cleaning system.",
+            "Expected yield: 4.5–6 tonnes/ha (irrigated); 2.5–3.5 tonnes/ha (rainfed)."
+          ]
+        },
+        "step_10_post_harvest": {
+          "title": "Post-Harvest Management",
+          "timing": "Immediately after harvest",
+          "steps": [
+            "Sun-dry grain on clean tarpaulin to reduce moisture to 12% (takes 3-5 days).",
+            "Test moisture: Grain should crack when bitten, not flatten.",
+            "Clean grain using seed cleaner/grader to remove weed seeds and broken grains.",
+            "Grade by size and test weight (minimum 78 kg/hl).",
+            "Store in jute bags lined with polythene or in metallic silos.",
+            "Treat storage area with Malathion 50 EC @ 5 ml/litre on walls and floor.",
+            "Fumigate with Aluminium Phosphide tablets (1 tablet/tonne) in sealed storage for 5 days.",
+            "Stack bags on wooden pallets, 20 cm away from walls for ventilation.",
+            "Monitor temperature and moisture monthly; moisture >12% requires re-drying.",
+            "Straw management: Chop straw; use as cattle feed or incorporate into soil."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Barley",
+      "scientific_name": "Hordeum vulgare",
+      "category": "Cereals",
+      "total_duration_days": 130,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Barley",
+          "timing": "October–November",
+          "steps": [
+            "Select well-drained sandy loam to loamy soil; pH 6.0–8.0; tolerates salinity better than wheat.",
+            "Deep plough to 20-25 cm using disc plough.",
+            "Apply 5-8 tonnes/ha FYM and incorporate with cultivator.",
+            "Cross harrow 2-3 times for fine tilth; planking for level field.",
+            "Ensure field is weed-free and has adequate moisture for germination."
+          ]
+        },
+        "step_2_seed_selection_and_treatment": {
+          "title": "Seed Selection & Treatment",
+          "timing": "1 week before sowing",
+          "steps": [
+            "Select certified varieties: BH-902, BH-393, RD-2035 (feed barley) or DWRUB-52 (malt barley).",
+            "Seed rate: 100 kg/ha for normal; 120 kg/ha for late sowing.",
+            "Treat with Carbendazim 50 WP @ 2g/kg seed OR Thiram 75 WS @ 2.5g/kg seed.",
+            "For loose smut control, Vitavax 200 @ 2g/kg seed.",
+            "Bio-inoculate with Azospirillum 600 g/ha + PSB 600 g/ha in jaggery solution."
+          ]
+        },
+        "step_3_sowing": {
+          "title": "Sowing Method",
+          "timing": "October 25–November 30",
+          "steps": [
+            "Use seed drill or broadcast method for small fields.",
+            "Row spacing: 22-25 cm for grain; 18 cm for fodder barley.",
+            "Sowing depth: 3-5 cm in heavy soil; 4-6 cm in light soil.",
+            "Seed rate: 100 kg/ha; target 250-300 plants/sq.m.",
+            "Apply basal: DAP 100 kg/ha + Urea 43 kg/ha + MOP 20 kg/ha in furrows.",
+            "Plank after sowing for moisture conservation."
+          ]
+        },
+        "step_4_irrigation_schedule": {
+          "title": "Irrigation Management",
+          "timing": "3-4 irrigations total",
+          "steps": [
+            "Irrigation 1 (CRI stage): Day 20-25 after sowing — critical for tillering.",
+            "Irrigation 2 (Late tillering): Day 45-50; apply 60 mm water.",
+            "Irrigation 3 (Flowering): Day 75-80; most critical for grain formation.",
+            "Irrigation 4 (Grain filling): Day 105-110 (optional; depends on rainfall).",
+            "Stop irrigation 10-12 days before harvest.",
+            "Barley requires 30-40% less water than wheat; avoid over-irrigation."
+          ]
+        },
+        "step_5_fertilizer_application": {
+          "title": "Fertilizer Schedule",
+          "schedule": [
+            {
+              "stage": "Basal (at sowing)",
+              "fertilizers": "N:P:K = 40:40:20 kg/ha (DAP 87 kg + Urea 43 kg + MOP 33 kg)",
+              "method": "Band placement in furrows"
+            },
+            {
+              "stage": "1st Top Dressing (CRI stage)",
+              "fertilizers": "Urea 65 kg/ha (30 kg N)",
+              "method": "Broadcast before irrigation"
+            },
+            {
+              "stage": "2nd Top Dressing (Tillering)",
+              "fertilizers": "Urea 43 kg/ha (20 kg N) - for malt barley reduce to 10 kg N",
+              "method": "Broadcast"
+            }
+          ]
+        },
+        "step_6_weed_management": {
+          "title": "Weed Control",
+          "steps": [
+            "Pre-emergence: Pendimethalin 30 EC @ 2.5 litres/ha within 3 days of sowing.",
+            "Post-emergence (Day 30-35): Apply Sulfosulfuron 75 WG @ 250 g/ha for Phalaris minor.",
+            "For broadleaf weeds: 2,4-D 80 WP @ 1 kg/ha at Day 30-35.",
+            "Manual weeding: One hand weeding at Day 35-40 if herbicides not used."
+          ]
+        },
+        "step_7_pest_and_disease_management": {
+          "title": "Pest & Disease Control",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha; occurs during February-March"
+            },
+            {
+              "pest": "Termite",
+              "control": "Chlorpyriphos 20 EC @ 4 litres/ha soil drench"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Rust (all types)",
+              "control": "Propiconazole 25 EC @ 500 ml/ha at appearance"
+            },
+            {
+              "disease": "Loose Smut",
+              "control": "Seed treatment with Carbendazim 2g/kg"
+            },
+            {
+              "disease": "Powdery Mildew",
+              "control": "Wettable Sulphur 80 WP @ 2 kg/ha"
+            },
+            {
+              "disease": "Leaf Blight",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            }
+          ]
+        },
+        "step_8_harvesting": {
+          "title": "Harvesting",
+          "timing": "March–April (Day 126–130)",
+          "steps": [
+            "Harvest when grain moisture is 18-20%; straw turns yellow, ears droop.",
+            "Use combine harvester for large fields.",
+            "For malt barley: Harvest at 14-15% moisture to preserve germination.",
+            "Thresh at 500 RPM to avoid grain cracking.",
+            "Expected yield: 3.5–5 tonnes/ha (feed); 3–4 tonnes/ha (malt)."
+          ]
+        },
+        "step_9_post_harvest": {
+          "title": "Post-Harvest Management",
+          "steps": [
+            "Dry grain to 12% moisture for feed; 11% for malt barley.",
+            "Clean and grade; remove barley awns (beards).",
+            "Store in gunny bags; fumigate with Aluminium Phosphide.",
+            "Malt barley requires separate storage at 10-15°C, 60% RH.",
+            "Straw used as cattle feed; malt barley processed for brewing."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Oats",
+      "scientific_name": "Avena sativa",
+      "category": "Cereals",
+      "total_duration_days": 120,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "10-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Oats",
+          "timing": "October–November",
+          "steps": [
+            "Select well-drained loamy to clay loam soil; pH 5.5–7.0.",
+            "Deep plough to 20-25 cm once; cross harrow 2-3 times.",
+            "Apply 8-10 tonnes/ha FYM and incorporate.",
+            "Form fine tilth; level with planking."
+          ]
+        },
+        "step_2_seed_selection": {
+          "title": "Seed Selection & Treatment",
+          "steps": [
+            "Use certified varieties: OS-6, OS-7, Kent, JHO-822 (grain) or OL-9 (fodder).",
+            "Seed rate: 100-120 kg/ha for grain; 120-150 kg/ha for fodder.",
+            "Treat with Thiram 75 WS @ 2.5g/kg seed + Carbendazim 1g/kg.",
+            "No Rhizobium needed (cereal)."
+          ]
+        },
+        "step_3_sowing": {
+          "title": "Sowing Method",
+          "timing": "October 15–November 30",
+          "steps": [
+            "Row spacing: 25-30 cm for grain; 20-25 cm for fodder.",
+            "Sowing depth: 3-5 cm using seed drill.",
+            "Basal: N:P:K = 40:40:20 kg/ha.",
+            "Target plant population: 200-250 plants/sq.m."
+          ]
+        },
+        "step_4_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "CRI irrigation: Day 20-25 after sowing.",
+            "2nd irrigation: Tillering stage (Day 45-50).",
+            "3rd irrigation: Flowering (Day 75-80) — critical.",
+            "Total 3-4 irrigations; stop 10 days before harvest."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 40:40:20 kg/ha"
+            },
+            {
+              "stage": "1st Top Dressing (Day 25)",
+              "fertilizers": "Urea 65 kg/ha (30 kg N)"
+            },
+            {
+              "stage": "2nd Top Dressing (Day 50)",
+              "fertilizers": "Urea 43 kg/ha (20 kg N) - optional"
+            }
+          ]
+        },
+        "step_5_pest_and_disease": {
+          "title": "Pest & Disease Control",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha"
+            },
+            {
+              "pest": "Armyworm",
+              "control": "Chlorpyriphos 20 EC @ 1.5 litres/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Rust",
+              "control": "Propiconazole 25 EC @ 500 ml/ha"
+            },
+            {
+              "disease": "Powdery Mildew",
+              "control": "Wettable Sulphur @ 2 kg/ha"
+            },
+            {
+              "disease": "Loose Smut",
+              "control": "Carbendazim seed treatment"
+            }
+          ]
+        },
+        "step_6_harvesting": {
+          "title": "Harvesting",
+          "timing": "March (Day 116–120)",
+          "steps": [
+            "Harvest when grain is hard and straw turns light yellow.",
+            "For fodder: Harvest at 50% flowering stage (Day 80-90).",
+            "Use combine harvester for grain; sickle for fodder.",
+            "Expected grain yield: 2.5-4 tonnes/ha; fodder yield: 25-35 tonnes/ha green."
+          ]
+        },
+        "step_7_post_harvest": {
+          "title": "Post-Harvest",
+          "steps": [
+            "Dry grain to 12% moisture.",
+            "Store in gunny bags; oats store well due to hulls.",
+            "Fodder: Make silage or dry as hay for cattle feed."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Chickpea",
+      "scientific_name": "Cicer arietinum",
+      "category": "Pulses",
+      "total_duration_days": 130,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "20-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Chickpea (Gram/Chana)",
+          "timing": "September–October",
+          "steps": [
+            "Select well-drained sandy loam to loamy soil; pH 6.0–7.5.",
+            "Avoid waterlogged or saline soils; chickpea is sensitive to waterlogging.",
+            "Deep plough once to 20-25 cm; cross harrow 2-3 times.",
+            "Apply 5-6 tonnes/ha FYM; incorporate with final harrowing.",
+            "Form broad beds and furrows (BBF) for drainage in heavy soils.",
+            "Ensure fine tilth and weed-free seedbed."
+          ]
+        },
+        "step_2_seed_selection_and_treatment": {
+          "title": "Seed Selection & Treatment",
+          "timing": "1 week before sowing",
+          "steps": [
+            "Select certified varieties: Desi type (BG-256, JG-11) or Kabuli (L-550, JGK-1).",
+            "Seed rate: 80-100 kg/ha for Desi; 100-120 kg/ha for Kabuli.",
+            "Treat with Carbendazim 50 WP @ 2g/kg + Thiram 75 WS @ 2g/kg for wilt control.",
+            "Inoculate with Mesorhizobium (strain IC-76) @ 200 g/10 kg seed in 10% jaggery solution.",
+            "Inoculate with PSB 200 g/10 kg seed simultaneously.",
+            "Dry inoculated seed in shade for 30 minutes before sowing."
+          ]
+        },
+        "step_3_sowing": {
+          "title": "Sowing Method",
+          "timing": "October 15–November 15 (optimal)",
+          "steps": [
+            "Use seed drill or desi plough for line sowing.",
+            "Row spacing: 30-45 cm (Desi); 45-60 cm (Kabuli).",
+            "Plant spacing: 10-12 cm (thinning to 8-10 cm at Day 15-20).",
+            "Sowing depth: 5-6 cm in light soil; 3-4 cm in heavy soil.",
+            "Apply basal: P2O5 40-50 kg/ha + K2O 20 kg/ha; starter N 15 kg/ha.",
+            "Do not apply high N (reduces nodulation).",
+            "Target population: 33-40 plants/sq.m."
+          ]
+        },
+        "step_4_irrigation_management": {
+          "title": "Irrigation Schedule",
+          "timing": "1-2 irrigations only (chickpea is drought tolerant)",
+          "steps": [
+            "Pre-sowing irrigation if soil moisture is low.",
+            "Critical irrigation 1: At flowering (Day 50-60) — essential for pod set.",
+            "Critical irrigation 2: At pod filling (Day 80-90) if prolonged dry spell.",
+            "Avoid irrigation at vegetative stage — promotes excessive growth and disease.",
+            "Avoid waterlogging at all stages — causes root rot.",
+            "Stop irrigation 15-20 days before harvest."
+          ]
+        },
+        "step_5_fertilizer_application": {
+          "title": "Fertilizer Schedule",
+          "schedule": [
+            {
+              "stage": "Basal (at sowing)",
+              "fertilizers": "SSP 250-312 kg/ha + MOP 33 kg/ha (P2O5 40-50 kg + K2O 20 kg)",
+              "method": "Band placement 5 cm below and 5 cm beside seed"
+            },
+            {
+              "stage": "Starter Nitrogen",
+              "fertilizers": "Urea 33 kg/ha (15 kg N) - do not exceed",
+              "method": "Broadcast in furrows at sowing"
+            },
+            {
+              "stage": "Micronutrients (foliar at flowering)",
+              "fertilizers": "Borax 0.2% + ZnSO4 0.5% spray",
+              "method": "Foliar application during flowering"
+            },
+            {
+              "stage": "Gypsum application",
+              "fertilizers": "Gypsum 200 kg/ha if calcium deficiency (poor pod filling)",
+              "method": "Broadcast at pre-flowering stage"
+            }
+          ]
+        },
+        "step_6_weed_management": {
+          "title": "Weed Control",
+          "timing": "Early stage (Day 20-40)",
+          "steps": [
+            "Pre-emergence: Pendimethalin 30 EC @ 3 litres/ha within 3 days of sowing.",
+            "Pre-emergence alternative: Metolachlor 50 EC @ 2 litres/ha for broad spectrum.",
+            "Post-emergence (Day 25-30): Quizalofop-ethyl 5 EC @ 1 litre/ha for grassy weeds.",
+            "For broadleaf weeds: Imazethapyr 10 SL @ 1 litre/ha at Day 25-30.",
+            "Manual weeding: One hand weeding at Day 25-30, second at Day 45-50.",
+            "Avoid deep cultivation near roots (nodule damage)."
+          ]
+        },
+        "step_7_pest_management": {
+          "title": "Pest Control",
+          "pests": [
+            {
+              "pest": "Gram Pod Borer (Helicoverpa armigera)",
+              "symptoms": "Larvae bore into pods; feeds on developing grains",
+              "economic_threshold": "2 larvae per plant",
+              "control": "Chlorantraniliprole 18.5 SC @ 150 ml/ha OR Indoxacarb 14.5 SC @ 500 ml/ha at pod initiation",
+              "timing": "December–January (pod formation stage)",
+              "alternative": "HaNPV 250 LE/ha + 0.1% Teepol; apply at evening hours"
+            },
+            {
+              "pest": "Semilooper (Autographa nigrisigna)",
+              "symptoms": "Leaves skeletonized; green larvae present",
+              "control": "Quinalphos 25 EC @ 1.5 litres/ha OR Spinosad 45 SC @ 73 ml/ha"
+            },
+            {
+              "pest": "Aphid (Aphis craccivora)",
+              "symptoms": "Stunted growth; sooty mold on leaves",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha OR Dimethoate 30 EC @ 500 ml/ha"
+            },
+            {
+              "pest": "Cutworm (Agrotis spp.)",
+              "symptoms": "Plants cut at base near ground level",
+              "control": "Chlorpyriphos 20 EC @ 2 litres/ha soil drench at base"
+            }
+          ]
+        },
+        "step_8_disease_management": {
+          "title": "Disease Control",
+          "diseases": [
+            {
+              "disease": "Wilt (Fusarium oxysporum)",
+              "symptoms": "Sudden wilting; yellowing; vascular discoloration",
+              "control": "Use resistant varieties (JG-11, BG-256); Carbendazim seed treatment; Trichoderma soil application @ 2.5 kg/ha in FYM",
+              "timing": "Pre-sowing and at early growth"
+            },
+            {
+              "disease": "Dry Root Rot (Rhizoctonia bataticola)",
+              "symptoms": "Black lesions on taproot; plant wilting",
+              "control": "Seed treatment with Trichoderma viride 4g/kg; soil drenching with Carbendazim 0.1%"
+            },
+            {
+              "disease": "Ascochyta Blight (Ascochyta rabiei)",
+              "symptoms": "Circular brown spots with concentric rings on leaves; girdling of stem",
+              "favorable_conditions": "Cool, humid weather (December-January)",
+              "control": "Chlorothalonil 75 WP @ 2 kg/ha OR Mancozeb 75 WP @ 2.5 kg/ha; spray at 10-day intervals",
+              "timing": "Start at first symptom; 2-3 sprays"
+            },
+            {
+              "disease": "Botrytis Gray Mold (Botrytis cinerea)",
+              "symptoms": "Grayish fungal growth on branches and pods",
+              "control": "Carbendazim 50 WP @ 500 g/ha + Mancozeb 75 WP @ 1.5 kg/ha; avoid dense sowing"
+            },
+            {
+              "disease": "Stunt (Phytoplasma)",
+              "symptoms": "Yellowing; stunting; small leaves",
+              "control": "Rogue out infected plants; control leafhopper vectors"
+            }
+          ]
+        },
+        "step_9_harvesting": {
+          "title": "Harvesting",
+          "timing": "February–March (Day 125–130)",
+          "steps": [
+            "Harvest when 80% pods turn brown and leaves start shedding.",
+            "Grains should be hard and rattling inside pods.",
+            "Cut plants 10-15 cm above ground using sickle.",
+            "Windrow plants in small heaps for 5-7 days for complete drying.",
+            "Thresh using thresher @ 400-500 RPM (slow speed to avoid grain cracking).",
+            "For Kabuli chickpea, extra care to avoid seed coat peeling.",
+            "Winnow to separate grain from chaff using winnowing fan.",
+            "Expected yield: 1.5–2.5 tonnes/ha (irrigated); 1–1.5 tonnes/ha (rainfed)."
+          ]
+        },
+        "step_10_post_harvest": {
+          "title": "Post-Harvest Management",
+          "timing": "Immediately after harvest",
+          "steps": [
+            "Sun-dry grain to 10-12% moisture (grains should break with snap, not bend).",
+            "Grading: Kabuli > 8mm diameter; Desi > 6mm.",
+            "Store in clean, dry, cool godowns (20-25°C).",
+            "Treat storage area with Malathion 50 EC @ 5 ml/litre.",
+            "For long-term storage, fumigate with Aluminium Phosphide (1 tablet/tonne) for 5-7 days.",
+            "Store in gunny bags stacked on wooden pallets; avoid direct floor contact.",
+            "For seed purpose, treat with Carbendazim + Thiram before storage.",
+            "Pulse beetle (Callosobruchus): Add Neem leaf powder @ 1% to stored grain."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Lentil",
+      "scientific_name": "Lens culinaris",
+      "category": "Pulses",
+      "total_duration_days": 120,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "15-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Lentil (Masoor)",
+          "timing": "October–November",
+          "steps": [
+            "Select well-drained sandy loam to loamy soil; pH 6.0–7.5.",
+            "Lentil sensitive to waterlogging; avoid heavy clay soils.",
+            "Deep plough once to 20-25 cm; cross harrow 2-3 times.",
+            "Apply 4-5 tonnes/ha FYM and incorporate.",
+            "Form fine tilth; level field with planking."
+          ]
+        },
+        "step_2_seed_treatment": {
+          "title": "Seed Selection & Treatment",
+          "steps": [
+            "Use certified varieties: PL-5, PL-406, IPL-81, HUL-57.",
+            "Seed rate: 40-50 kg/ha (bold); 30-40 kg/ha (small seeded).",
+            "Treat with Carbendazim 50 WP @ 2g/kg + Thiram 75 WS @ 2g/kg for wilt and root rot.",
+            "Inoculate with Rhizobium leguminosarum @ 200 g/10 kg seed.",
+            "Inoculate with PSB 200 g/10 kg seed.",
+            "Shade-dry inoculated seed for 30 minutes."
+          ]
+        },
+        "step_3_sowing": {
+          "title": "Sowing Method",
+          "timing": "October 20–November 20",
+          "steps": [
+            "Row spacing: 25-30 cm (normal); 20-25 cm (late sowing).",
+            "Plant spacing: 8-10 cm after thinning.",
+            "Sowing depth: 3-4 cm (lentil has small seeds).",
+            "Seed rate: 40 kg/ha; target 150-200 plants/sq.m.",
+            "Basal: P2O5 40-50 kg/ha + K2O 20 kg/ha; starter N 15 kg/ha.",
+            "Do not apply basal N >20 kg/ha (inhibits nodulation)."
+          ]
+        },
+        "step_4_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer Schedule",
+          "irrigation_steps": [
+            "Lentil requires only 1-2 irrigations (drought tolerant).",
+            "Irrigation 1: At pre-flowering (Day 45-50) — critical.",
+            "Irrigation 2: At pod filling (Day 70-80) if severe dry spell.",
+            "Avoid irrigation at vegetative stage and near maturity."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "SSP 250 kg/ha + MOP 33 kg/ha + Urea 22 kg/ha"
+            },
+            {
+              "stage": "Foliar at flowering",
+              "fertilizers": "2% DAP + 0.2% Borax spray"
+            }
+          ]
+        },
+        "step_5_pest_and_disease": {
+          "title": "Pest & Disease Control",
+          "pests": [
+            {
+              "pest": "Pod Borer (Helicoverpa)",
+              "control": "Chlorantraniliprole 18.5 SC @ 150 ml/ha at pod initiation"
+            },
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha"
+            },
+            {
+              "pest": "Leaf Miner",
+              "control": "Triazophos 40 EC @ 800 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Rust (Uromyces fabae)",
+              "control": "Propiconazole 25 EC @ 500 ml/ha at first appearance"
+            },
+            {
+              "disease": "Powdery Mildew",
+              "control": "Wettable Sulphur @ 2 kg/ha"
+            },
+            {
+              "disease": "Wilt (Fusarium)",
+              "control": "Carbendazim seed treatment; use resistant variety"
+            },
+            {
+              "disease": "Ascochyta Blight",
+              "control": "Mancozeb 75 WP @ 2 kg/ha at 10-day intervals"
+            }
+          ]
+        },
+        "step_6_harvesting": {
+          "title": "Harvesting",
+          "timing": "March (Day 116–120)",
+          "steps": [
+            "Harvest when 80% pods turn brown and plants dry.",
+            "Cut plants at base; dry in sun for 5-7 days.",
+            "Thresh carefully (lentil seeds crack easily).",
+            "Expected yield: 1–1.8 tonnes/ha."
+          ]
+        },
+        "step_7_post_harvest": {
+          "title": "Post-Harvest",
+          "steps": [
+            "Dry to 10-12% moisture.",
+            "Clean to remove broken seeds and stones.",
+            "Store in gunny bags; fumigate with Aluminium Phosphide.",
+            "Lentil has good storage life (12-18 months)."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Field Pea",
+      "scientific_name": "Pisum sativum",
+      "category": "Pulses",
+      "total_duration_days": 110,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "15-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Field Pea (Matar)",
+          "timing": "October–November",
+          "steps": [
+            "Select well-drained sandy loam to clay loam; pH 6.0–7.5.",
+            "Deep plough once; cross harrow 2 times.",
+            "Apply 6-8 tonnes/ha FYM.",
+            "Form fine, level seedbed."
+          ]
+        },
+        "step_2_seed_treatment": {
+          "title": "Seed Selection & Treatment",
+          "steps": [
+            "Use varieties: Pusa Pragati, Pusa Mukta, Kashi Nandini (vegetable pea).",
+            "Seed rate: 80-100 kg/ha (for grain); 120-150 kg/ha (for vegetable).",
+            "Treat with Carbendazim 50 WP @ 2g/kg + Thiram 75 WS @ 2g/kg.",
+            "Inoculate with Rhizobium leguminosarum @ 200 g/10 kg seed + PSB 200 g/10 kg seed.",
+            "For vegetable pea, treat with Tebuconazole 2 ml/kg for powdery mildew."
+          ]
+        },
+        "step_3_sowing": {
+          "title": "Sowing Method",
+          "timing": "October 15–November 15 (early maturing); November 1–30 (late maturing)",
+          "steps": [
+            "Row spacing: 30-45 cm (grain); 45-60 cm (vegetable with trellis).",
+            "Plant spacing: 10-12 cm after thinning.",
+            "Sowing depth: 4-5 cm.",
+            "Basal: N:P:K = 20:50:30 kg/ha (P2O5 50 kg, K2O 30 kg).",
+            "Target 50-60 plants/sq.m. for grain; 30-40 for vegetable."
+          ]
+        },
+        "step_4_irrigation": {
+          "title": "Irrigation Schedule",
+          "steps": [
+            "Irrigation 1: Pre-sowing for germination.",
+            "Irrigation 2: At pre-flowering (Day 40-45) — critical.",
+            "Irrigation 3: At pod formation (Day 65-70).",
+            "Irrigation 4: At pod filling (Day 85-90) if dry.",
+            "Avoid waterlogging; pea is sensitive to excess water.",
+            "For vegetable pea, maintain even moisture for tender pods."
+          ]
+        },
+        "step_5_fertilizer": {
+          "title": "Fertilizer Schedule",
+          "schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "SSP 312 kg/ha + MOP 50 kg/ha + Urea 43 kg/ha"
+            },
+            {
+              "stage": "Foliar at flowering",
+              "fertilizers": "2% DAP + 0.2% Borax spray"
+            },
+            {
+              "stage": "Top dressing (vegetable pea)",
+              "fertilizers": "Urea 65 kg/ha at pod initiation for better yield"
+            }
+          ]
+        },
+        "step_6_pest_and_disease": {
+          "title": "Pest & Disease Control",
+          "pests": [
+            {
+              "pest": "Pod Borer (Helicoverpa)",
+              "control": "Chlorantraniliprole 18.5 SC @ 150 ml/ha"
+            },
+            {
+              "pest": "Aphid (vector of Pea Enation Mosaic)",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha"
+            },
+            {
+              "pest": "Leaf Miner",
+              "control": "Cyromazine 75 WP @ 300 g/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Powdery Mildew (Erysiphe polygoni)",
+              "control": "Tebuconazole 250 EC @ 500 ml/ha OR Wettable Sulphur @ 2 kg/ha"
+            },
+            {
+              "disease": "Downy Mildew",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre"
+            },
+            {
+              "disease": "Wilt (Fusarium oxysporum)",
+              "control": "Seed treatment with Carbendazim; use wilt-resistant varieties"
+            },
+            {
+              "disease": "Pea Enation Mosaic Virus (PEMV)",
+              "control": "Control aphid vector; rogue infected plants"
+            }
+          ]
+        },
+        "step_7_harvesting": {
+          "title": "Harvesting",
+          "timing": "Grain pea: Day 106–110; Vegetable pea: Day 60–80",
+          "steps": [
+            "Grain pea: Harvest when 85% pods dry and brown.",
+            "Vegetable pea: Harvest tender, bright green pods before seeds mature.",
+            "Pick pods every 5-7 days for vegetable pea.",
+            "Thresh grain pea at 400-500 RPM.",
+            "Expected yield: 2-3 tonnes/ha (grain); 8-12 tonnes/ha (green pods)."
+          ]
+        },
+        "step_8_post_harvest": {
+          "title": "Post-Harvest",
+          "steps": [
+            "Dry grain to 10-12% moisture; store in gunny bags.",
+            "Vegetable pea: Pre-cool to 4°C within 2 hours; store at 0-2°C, 95% RH for 2-3 weeks.",
+            "Frozen or canned for processing; garden peas dried for later use."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Lathyrus",
+      "scientific_name": "Lathyrus sativus",
+      "category": "Pulses",
+      "total_duration_days": 120,
+      "water_requirement_mm": 300,
+      "temperature_optimal_c": "15-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Lathyrus (Khesari)",
+          "timing": "October–November",
+          "steps": [
+            "Tolerates poor, heavy clay, and even waterlogged soils.",
+            "Minimum tillage sufficient (rice fallow crop).",
+            "Direct drilling in rice stubble is common.",
+            "No ploughing needed if following rice; just remove stubble."
+          ]
+        },
+        "step_2_seed_treatment": {
+          "title": "Seed Selection & Treatment",
+          "steps": [
+            "Use varieties: Nirmal, Prateek, Mahateora (low ODAP content).",
+            "Seed rate: 60-80 kg/ha.",
+            "Treat with Carbendazim 2g/kg seed for wilt control.",
+            "Rhizobium inoculation recommended but not mandatory (crop has native rhizobia)."
+          ]
+        },
+        "step_3_sowing": {
+          "title": "Sowing Method",
+          "timing": "November–December (rice fallow)",
+          "steps": [
+            "Sow directly into standing rice stubble (relay cropping).",
+            "Row spacing: 25-30 cm; depth 3-4 cm.",
+            "Basal: P2O5 30 kg/ha + K2O 15 kg/ha; no N required.",
+            "No irrigation (grown on residual moisture)."
+          ]
+        },
+        "step_4_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "steps": [
+            "No irrigation required — grown entirely on residual soil moisture.",
+            "If severe drought, one irrigation at flowering beneficial.",
+            "Fertilizer: Only basal P and K; no N needed."
+          ]
+        },
+        "step_5_pest_and_disease": {
+          "title": "Pest & Disease Control",
+          "pests": [
+            {
+              "pest": "Pod Borer",
+              "control": "Chlorpyriphos 20 EC @ 1.5 litres/ha if severe"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Rust",
+              "control": "Propiconazole 25 EC @ 500 ml/ha"
+            },
+            {
+              "disease": "Powdery Mildew",
+              "control": "Sulphur dust @ 25 kg/ha"
+            }
+          ]
+        },
+        "step_6_harvesting": {
+          "title": "Harvesting",
+          "timing": "March–April (Day 116–120)",
+          "steps": [
+            "Harvest when 90% pods turn brown.",
+            "Cut plants at base; sun-dry for 5-7 days.",
+            "Thresh by beating; winnow.",
+            "Expected yield: 1–1.8 tonnes/ha."
+          ]
+        },
+        "step_7_post_harvest": {
+          "title": "Post-Harvest",
+          "steps": [
+            "Dry to 10% moisture.",
+            "Store in gunny bags; good storage life.",
+            "WARNING: Prolonged consumption causes lathyrism (neurological disorder) — consume as part of mixed diet, not as staple.",
+            "Low-ODAP varieties (Nirmal) are safe for consumption."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Mustard",
+      "scientific_name": "Brassica juncea",
+      "category": "Oilseeds",
+      "total_duration_days": 140,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Mustard (Sarson)",
+          "timing": "September–October",
+          "steps": [
+            "Select well-drained loamy to clay loam soil; pH 6.0–7.5.",
+            "Deep plough once to 25-30 cm; cross harrow 2-3 times.",
+            "Apply 5-8 tonnes/ha FYM and incorporate.",
+            "Form fine tilth; level with planking.",
+            "For irrigated condition, make ridges and furrows at 45 cm spacing."
+          ]
+        },
+        "step_2_seed_selection_and_treatment": {
+          "title": "Seed Selection & Treatment",
+          "timing": "1 week before sowing",
+          "steps": [
+            "Select certified varieties: Pusa Bold, Pusa Mustard-21, RH-30, RH-749.",
+            "Seed rate: 4-5 kg/ha (irrigated); 5-6 kg/ha (rainfed).",
+            "Treat with Carbendazim 50 WP @ 2g/kg + Thiram 75 WS @ 2g/kg seed.",
+            "For aphid control, treat with Imidacloprid 70 WS @ 5 ml/kg seed.",
+            "Bio-inoculate with Azotobacter 600 g/ha + PSB 600 g/ha."
+          ]
+        },
+        "step_3_sowing": {
+          "title": "Sowing Method",
+          "timing": "October 15–November 15",
+          "steps": [
+            "Use seed drill or broadcasting (broadcast followed by planking).",
+            "Row spacing: 45 cm (irrigated); 30 cm (rainfed).",
+            "Plant spacing: 10-12 cm after thinning.",
+            "Sowing depth: 2-4 cm (mustard has small seeds).",
+            "Basal: N:P:K = 40:40:20 kg/ha.",
+            "Target 50-60 plants/sq.m."
+          ]
+        },
+        "step_4_irrigation_schedule": {
+          "title": "Irrigation Management",
+          "timing": "3-4 irrigations total",
+          "steps": [
+            "Irrigation 1: Pre-sowing (rauni) for germination.",
+            "Irrigation 2: At rosette stage (Day 25-30).",
+            "Irrigation 3: At flowering (Day 60-65) — most critical.",
+            "Irrigation 4: At pod filling (Day 100-105) — improves oil content.",
+            "Avoid irrigation during maturity (10-15 days before harvest)."
+          ]
+        },
+        "step_5_fertilizer_application": {
+          "title": "Fertilizer Schedule",
+          "schedule": [
+            {
+              "stage": "Basal (at sowing)",
+              "fertilizers": "DAP 87 kg + MOP 33 kg + Urea 43 kg per ha (N:P:K = 40:40:20)",
+              "method": "Broadcast or band placement"
+            },
+            {
+              "stage": "1st Top Dressing (Day 25-30)",
+              "fertilizers": "Urea 87 kg/ha (40 kg N)",
+              "method": "Broadcast before irrigation"
+            },
+            {
+              "stage": "2nd Top Dressing (Day 55-60, pre-flowering)",
+              "fertilizers": "Urea 43 kg/ha (20 kg N) - optional for high-yield",
+              "method": "Broadcast"
+            },
+            {
+              "stage": "Micronutrients (foliar)",
+              "fertilizers": "Borax 0.2% spray at flowering + ZnSO4 0.5%",
+              "method": "Foliar application"
+            },
+            {
+              "stage": "Sulphur application",
+              "fertilizers": "Gypsum 200 kg/ha OR Elemental Sulphur 40 kg/ha",
+              "method": "Basal application (mustard is S-responsive)"
+            }
+          ]
+        },
+        "step_6_weed_management": {
+          "title": "Weed Control",
+          "timing": "Day 20-40 after sowing",
+          "steps": [
+            "Identify weeds: Chenopodium, Anagallis, Vicia, Phalaris minor.",
+            "Pre-emergence: Pendimethalin 30 EC @ 3 litres/ha within 3 days of sowing.",
+            "Alternative pre-emergence: Oxyfluorfen 23.5 EC @ 0.5 litres/ha.",
+            "Post-emergence (Day 25-30): Quizalofop-ethyl 5 EC @ 1 litre/ha for grassy weeds.",
+            "For broadleaf weeds: Clopyralid 30 EC @ 200 ml/ha at Day 25-30.",
+            "Manual weeding: One inter-cultivation at Day 30, another at Day 50."
+          ]
+        },
+        "step_7_pest_management": {
+          "title": "Pest Control",
+          "pests": [
+            {
+              "pest": "Mustard Aphid (Lipaphis erysimi)",
+              "symptoms": "Honeydew secretion; sooty mold; stunted plants",
+              "economic_threshold": "5-10 aphids/plant",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha OR Dimethoate 30 EC @ 500 ml/ha",
+              "timing": "December–January (flowering stage); repeat after 10-15 days if needed",
+              "biological": "Release Coccinella (ladybird beetle) if available"
+            },
+            {
+              "pest": "Sawfly (Athalia proxima)",
+              "symptoms": "Leaf skeletonization; larvae feed on leaves",
+              "control": "Chlorpyriphos 20 EC @ 1.5 litres/ha OR Quinalphos 25 EC @ 1.5 litres/ha",
+              "timing": "At seedling to vegetative stage"
+            },
+            {
+              "pest": "Painted Bug (Bagrada cruciferarum)",
+              "symptoms": "Yellowing of leaves; wilting",
+              "control": "Spray Cypermethrin 10 EC @ 500 ml/ha OR Deltamethrin 2.8 EC @ 300 ml/ha"
+            },
+            {
+              "pest": "Pod Borer (Helicoverpa armigera)",
+              "symptoms": "Bore holes in pods; missing seeds",
+              "control": "Chlorantraniliprole 18.5 SC @ 150 ml/ha at pod formation"
+            }
+          ]
+        },
+        "step_8_disease_management": {
+          "title": "Disease Control",
+          "diseases": [
+            {
+              "disease": "White Rust (Albugo candida)",
+              "symptoms": "White pustules on leaves and stems; staghead on inflorescence",
+              "favorable_conditions": "Cool, humid weather (15-20°C)",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre OR Ridomil MZ @ 2.5 kg/ha",
+              "timing": "At appearance; 2-3 sprays at 10-day intervals"
+            },
+            {
+              "disease": "Downy Mildew (Peronospora parasitica)",
+              "symptoms": "Yellow patches on upper leaf; purple-white down on lower surface",
+              "control": "Mancozeb 75 WP @ 2 kg/ha OR Fosetyl-Al 80 WP @ 2.5 kg/ha"
+            },
+            {
+              "disease": "Alternaria Blight (Alternaria brassicae)",
+              "symptoms": "Dark brown concentric spots on leaves and pods",
+              "control": "Mancozeb 75 WP @ 2 kg/ha + Carbendazim 50 WP @ 500 g/ha",
+              "timing": "Spray at 10-day intervals from flowering"
+            },
+            {
+              "disease": "Sclerotinia Rot (Sclerotinia sclerotiorum)",
+              "symptoms": "Watery soft rot of stem; white mycelium",
+              "control": "Carbendazim 50 WP @ 1 kg/ha drench; avoid dense sowing"
+            }
+          ]
+        },
+        "step_9_harvesting": {
+          "title": "Harvesting",
+          "timing": "February–March (Day 136–140)",
+          "steps": [
+            "Harvest when 75-80% pods turn yellow-brown and seeds become hard.",
+            "Cut plants at base using sickle.",
+            "Windrow for 5-7 days for complete drying.",
+            "Thresh using thresher at 400-500 RPM.",
+            "Winnow to separate seed from chaff.",
+            "Expected yield: 1.5–2.5 tonnes/ha (irrigated); 1–1.5 tonnes/ha (rainfed).",
+            "Oil content: 38-42% of seed weight."
+          ]
+        },
+        "step_10_post_harvest": {
+          "title": "Post-Harvest Management",
+          "steps": [
+            "Sun-dry seed to 6-8% moisture for safe storage.",
+            "Clean using seed cleaner to remove broken seeds and debris.",
+            "Store in cool, dry, well-ventilated warehouse.",
+            "Treat storage area with Malathion 50 EC @ 5 ml/litre on walls.",
+            "Fumigate with Aluminium Phosphide (1 tablet/tonne) for 5-7 days.",
+            "Mustard oil extraction: Cold press (kachi ghani) or solvent extraction.",
+            "Oil cake (meal) used as cattle feed (contains 30-35% protein).",
+            "Market price depends on oil content (higher oil → premium)."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Rapeseed",
+      "scientific_name": "Brassica campestris",
+      "category": "Oilseeds",
+      "total_duration_days": 135,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Rapeseed",
+          "steps": [
+            "Same as mustard; prefers light to medium loamy soil.",
+            "Deep plough once; harrow 2-3 times.",
+            "Apply 5-6 tonnes/ha FYM."
+          ]
+        },
+        "step_2_seed_treatment_and_sowing": {
+          "title": "Seed Treatment & Sowing",
+          "steps": [
+            "Varieties: T-9, Bhavani, Pusa Kranti.",
+            "Seed rate: 5-6 kg/ha.",
+            "Treat with Carbendazim 2g/kg + Thiram 2g/kg.",
+            "Row spacing: 30-40 cm; depth 2-3 cm.",
+            "Sowing window: October 15–November 15."
+          ]
+        },
+        "step_3_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "3 irrigations: pre-sowing, flowering (Day 55-60), pod filling (Day 90-95)."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 40:40:20 kg/ha"
+            },
+            {
+              "stage": "Top Dressing",
+              "fertilizers": "Urea 87 kg/ha at Day 25-30"
+            }
+          ]
+        },
+        "step_4_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            },
+            {
+              "pest": "Sawfly",
+              "control": "Chlorpyriphos 1.5 litres/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "White Rust",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre"
+            },
+            {
+              "disease": "Alternaria Blight",
+              "control": "Mancozeb @ 2 kg/ha"
+            }
+          ]
+        },
+        "step_5_harvesting": {
+          "title": "Harvesting",
+          "timing": "February (Day 131–135)",
+          "steps": [
+            "Harvest when pods turn yellow-brown.",
+            "Thresh and winnow.",
+            "Expected yield: 1.2–2 tonnes/ha."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Linseed",
+      "scientific_name": "Linum usitatissimum",
+      "category": "Oilseeds",
+      "total_duration_days": 150,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "15-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Linseed (Flaxseed)",
+          "steps": [
+            "Deep, well-drained loamy soil; pH 5.5–7.0.",
+            "Deep plough to 25-30 cm; harrow 2-3 times.",
+            "Apply 5 tonnes/ha FYM.",
+            "Fine, weed-free seedbed required."
+          ]
+        },
+        "step_2_seed_treatment_and_sowing": {
+          "title": "Seed Treatment & Sowing",
+          "steps": [
+            "Varieties: Neelum, Kiran, Garima (oil type); Jawahar-7 (fiber type).",
+            "Seed rate: 40-50 kg/ha (oil); 80-100 kg/ha (fiber).",
+            "Treat with Carbendazim 2g/kg + Thiram 2g/kg.",
+            "Row spacing: 25-30 cm (oil); 15-20 cm (fiber).",
+            "Depth: 2-3 cm; sowing window: October–November."
+          ]
+        },
+        "step_3_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "Critical at flowering (Day 60-70) and capsule formation (Day 90-100).",
+            "Total 2-3 irrigations only."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 40:30:20 kg/ha"
+            },
+            {
+              "stage": "Top Dressing",
+              "fertilizers": "Urea 65 kg/ha at Day 30-35"
+            }
+          ]
+        },
+        "step_4_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            },
+            {
+              "pest": "Cutworm",
+              "control": "Chlorpyriphos soil drench"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Rust (Melampsora lini)",
+              "control": "Propiconazole 25 EC @ 500 ml/ha"
+            },
+            {
+              "disease": "Wilt (Fusarium)",
+              "control": "Carbendazim seed treatment"
+            },
+            {
+              "disease": "Powdery Mildew",
+              "control": "Wettable Sulphur @ 2 kg/ha"
+            }
+          ]
+        },
+        "step_5_harvesting": {
+          "title": "Harvesting",
+          "timing": "March–April (Day 146–150)",
+          "steps": [
+            "Oil flax: Harvest when 80% capsules turn brown.",
+            "Fiber flax: Harvest at 50% capsule maturity (straw quality declines after).",
+            "Pull entire plant (not cut) for fiber type to retain fiber length.",
+            "Thresh for oil seed; retting for fiber extraction.",
+            "Expected yield: 1–1.5 tonnes/ha seed; 5–7 tonnes/ha straw (fiber)."
+          ]
+        },
+        "step_6_post_harvest": {
+          "title": "Post-Harvest",
+          "steps": [
+            "Dry seed to 8% moisture.",
+            "Store in cool, dark place (high oil content — prone to rancidity).",
+            "Oil extraction: Cold pressed (flaxseed oil) high in omega-3.",
+            "Fiber: Water retting 10-14 days → scutching → combing."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Safflower",
+      "scientific_name": "Carthamus tinctorius",
+      "category": "Oilseeds",
+      "total_duration_days": 140,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Safflower (Kusum)",
+          "steps": [
+            "Deep, well-drained black cotton soil or red loam; pH 7.0–8.0.",
+            "Deep plough to 30-35 cm (deep-rooted).",
+            "Apply 5-6 tonnes/ha FYM.",
+            "Form ridges and furrows for drainage."
+          ]
+        },
+        "step_2_seed_treatment_and_sowing": {
+          "title": "Seed Treatment & Sowing",
+          "steps": [
+            "Varieties: A-1, Bhima, NARI-6, PBNS-12.",
+            "Seed rate: 12-15 kg/ha.",
+            "Treat with Carbendazim 2g/kg + Thiram 2g/kg.",
+            "Row spacing: 45-60 cm; plant spacing: 15-20 cm.",
+            "Depth: 5-6 cm; sowing: October–November."
+          ]
+        },
+        "step_3_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "Critical at rosette stage, flowering (Day 60-80), and capitulum formation.",
+            "3-4 irrigations; drought tolerant but responds to irrigation."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 40:40:20 kg/ha"
+            },
+            {
+              "stage": "Top Dressing",
+              "fertilizers": "Urea 65 kg/ha at Day 30-35"
+            }
+          ]
+        },
+        "step_4_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            },
+            {
+              "pest": "Capsule Borer",
+              "control": "Chlorpyriphos 2 litres/ha at heading"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Rust",
+              "control": "Propiconazole 25 EC @ 500 ml/ha"
+            },
+            {
+              "disease": "Alternaria Leaf Spot",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            },
+            {
+              "disease": "Wilt (Fusarium)",
+              "control": "Carbendazim seed treatment; resistant varieties"
+            }
+          ]
+        },
+        "step_5_harvesting": {
+          "title": "Harvesting",
+          "timing": "March–April (Day 136–140)",
+          "steps": [
+            "Harvest when 90% leaves dry and seeds rattle in capitulum.",
+            "Cut capitula with 10-15 cm stalk.",
+            "Sun-dry; thresh by beating.",
+            "Expected yield: 1.2–2 tonnes/ha seed.",
+            "Safflower oil: 28-32% oil content; high in linoleic acid."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Sunflower",
+      "scientific_name": "Helianthus annuus",
+      "category": "Oilseeds",
+      "total_duration_days": 110,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "20-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Sunflower (Rabi Type)",
+          "steps": [
+            "Well-drained sandy loam to clay loam; pH 6.0–8.0.",
+            "Deep plough once; harrow 2-3 times.",
+            "Apply 8-10 tonnes/ha FYM.",
+            "Form fine seedbed."
+          ]
+        },
+        "step_2_seed_treatment_and_sowing": {
+          "title": "Seed Selection & Sowing",
+          "steps": [
+            "Use hybrid varieties: KBSH-44, KBSH-53, DRSH-1, LSFH-171.",
+            "Seed rate: 6-8 kg/ha (hybrid); 10-12 kg/ha (OPV).",
+            "Treat with Carbendazim 2g/kg + Thiram 2g/kg.",
+            "Row spacing: 60 cm; plant spacing: 30 cm.",
+            "Sowing depth: 3-5 cm; sowing: October–November."
+          ]
+        },
+        "step_3_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "Critical: At button stage (Day 35-40), flowering (Day 55-60), and seed filling.",
+            "Total 4-5 irrigations; each 50 mm.",
+            "Drip irrigation highly beneficial (30% water saving)."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 40:60:40 kg/ha"
+            },
+            {
+              "stage": "Top Dressing (Button stage)",
+              "fertilizers": "Urea 87 kg/ha (40 kg N)"
+            },
+            {
+              "stage": "Top Dressing (Flowering)",
+              "fertilizers": "Urea 43 kg/ha (20 kg N) - optional"
+            },
+            {
+              "stage": "Micronutrients",
+              "fertilizers": "Boron 0.2% + ZnSO4 0.5% spray at flowering"
+            }
+          ]
+        },
+        "step_4_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Sunflower Moth (Homoeosoma electellum)",
+              "control": "Chlorantraniliprole 18.5 SC @ 150 ml/ha at flowering"
+            },
+            {
+              "pest": "Cutworm",
+              "control": "Chlorpyriphos soil drench"
+            },
+            {
+              "pest": "Whitefly",
+              "control": "Imidacloprid 100 ml/ha"
+            },
+            {
+              "pest": "Jassid",
+              "control": "Dimethoate 30 EC @ 500 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Rust",
+              "control": "Propiconazole 25 EC @ 500 ml/ha"
+            },
+            {
+              "disease": "Alternaria Blight",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            },
+            {
+              "disease": "Powdery Mildew",
+              "control": "Wettable Sulphur @ 2 kg/ha"
+            },
+            {
+              "disease": "Sunflower Necrosis Virus (SNV)",
+              "control": "Control whitefly; rogue infected plants"
+            }
+          ]
+        },
+        "step_5_harvesting": {
+          "title": "Harvesting",
+          "timing": "February–March (Day 106–110)",
+          "steps": [
+            "Harvest when back of head turns yellow-brown and seeds have black stripes.",
+            "Cut heads with 20-30 cm stalk.",
+            "Sun-dry heads for 3-5 days; thresh by beating or using maize sheller.",
+            "Expected yield: 1.5–2.5 tonnes/ha."
+          ]
+        },
+        "step_6_post_harvest": {
+          "title": "Post-Harvest",
+          "steps": [
+            "Dry seed to 8-10% moisture.",
+            "Store in gunny bags; fumigate with Aluminium Phosphide.",
+            "Oil content: 40-45%; high-quality edible oil."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Sugarcane",
+      "scientific_name": "Saccharum officinarum",
+      "category": "Commercial Crops",
+      "total_duration_days": 365,
+      "water_requirement_mm": 1800,
+      "temperature_optimal_c": "22-32",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Sugarcane (Rabi/Spring Planting)",
+          "timing": "January–February (spring planting)",
+          "steps": [
+            "Deep, well-drained loamy or black cotton soil; pH 6.5–7.5.",
+            "Deep plough to 35-40 cm using disc plough; subsoiling every 3 years.",
+            "Apply 25 tonnes/ha FYM + 2 tonnes/ha compost.",
+            "Form furrows at 75-90 cm spacing (depending on variety).",
+            "Incorporate lime if pH < 6.0 @ 2 tonnes/ha."
+          ]
+        },
+        "step_2_sett_preparation": {
+          "title": "Seed Sett (Cane) Preparation",
+          "steps": [
+            "Select disease-free, healthy 8-10 month old canes from certified nursery.",
+            "Cut 2-3 budded setts (25-30 cm long) using sharp, disinfected blade.",
+            "Treat setts with Aretan 6 0.25% OR Bavistin 0.1% solution for 5 minutes.",
+            "Hot Water Treatment: 50°C for 2 hours for ratoon stunting disease.",
+            "Sett rate: 35,000-40,000 setts/ha (3-budded, 30 cm gap)."
+          ]
+        },
+        "step_3_planting": {
+          "title": "Planting Method",
+          "timing": "February–March (spring); October–November (autumn)",
+          "steps": [
+            "Place setts end-to-end in furrows at 5-8 cm depth.",
+            "Spacing: 75-90 cm between rows; setts touching end-to-end in row.",
+            "Cover with 5 cm soil; firm with foot.",
+            "Basal: N:P:K = 80:80:80 kg/ha.",
+            "Apply 500 kg/ha gypsum in furrows for calcium.",
+            "Light irrigation immediately after planting to settle soil."
+          ]
+        },
+        "step_4_irrigation_management": {
+          "title": "Irrigation Schedule",
+          "steps": [
+            "Germination (Day 0-30): Irrigate every 5-7 days (70-80% SMC).",
+            "Tillering (Day 31-120): Every 7-10 days; 75 mm each.",
+            "Grand Growth (Day 121-270): Every 10-15 days; 80 mm each.",
+            "Maturity (Day 271-365): Reduce to every 15-20 days.",
+            "Total: 20-25 irrigations; each 60-80 mm.",
+            "Drip irrigation at 80% ETc saves 30-40% water.",
+            "Stop irrigation 3-4 weeks before harvest."
+          ]
+        },
+        "step_5_fertilizer_application": {
+          "title": "Fertilizer Schedule (for 12-month crop)",
+          "schedule": [
+            {
+              "stage": "Basal at planting",
+              "fertilizers": "SSP 500 kg/ha + MOP 133 kg/ha + Urea 87 kg/ha (N:P:K = 40:80:80)"
+            },
+            {
+              "stage": "1st Top Dressing (Day 45)",
+              "fertilizers": "Urea 174 kg/ha (80 kg N)"
+            },
+            {
+              "stage": "2nd Top Dressing (Day 90)",
+              "fertilizers": "Urea 174 kg/ha (80 kg N) + MOP 67 kg/ha (40 kg K)"
+            },
+            {
+              "stage": "3rd Top Dressing (Day 150)",
+              "fertilizers": "Urea 87 kg/ha (40 kg N)"
+            },
+            {
+              "stage": "Micronutrients",
+              "fertilizers": "ZnSO4 25 kg/ha + FeSO4 20 kg/ha + Borax 10 kg/ha at planting"
+            },
+            {
+              "stage": "Silica application",
+              "fertilizers": "Silica 100 kg/ha at planting (improves stalk strength)"
+            }
+          ]
+        },
+        "step_6_weed_management": {
+          "title": "Weed Control",
+          "steps": [
+            "Pre-emergence (Day 0-3): Atrazine 50 WP @ 2 kg/ha + Alachlor 50 EC @ 2 litres/ha.",
+            "Post-emergence (Day 30): 2,4-D 80 WP @ 1.25 kg/ha for broadleaf weeds.",
+            "Manual weeding at Day 30, 60, and 90.",
+            "Earthing up at Day 90-120 (suppresses weeds, supports stalks).",
+            "Trash mulching after 1st year suppresses subsequent weeds."
+          ]
+        },
+        "step_7_pest_management": {
+          "title": "Pest Control",
+          "pests": [
+            {
+              "pest": "Early Shoot Borer (Chilo infuscatellus)",
+              "control": "Carbofuran 3G @ 33 kg/ha at Day 30-45; drench Chlorpyriphos 20 EC 2 litres/ha"
+            },
+            {
+              "pest": "Top Shoot Borer (Scirpophaga excerptalis)",
+              "control": "Chlorpyriphos 20 EC @ 2 litres/ha foliar at Day 90-120"
+            },
+            {
+              "pest": "Root Grub (White Grub)",
+              "control": "Phorate 10G @ 25 kg/ha at planting; Chlorpyriphos soil drench"
+            },
+            {
+              "pest": "Pyrilla (Sugarcane leafhopper)",
+              "control": "Endosulfan 35 EC @ 1.5 litres/ha OR Imidacloprid 100 ml/ha"
+            },
+            {
+              "pest": "Scale Insects",
+              "control": "Quinalphos 25 EC @ 2 litres/ha; release Epiricania melanoleuca (biocontrol)"
+            },
+            {
+              "pest": "Mealy Bug",
+              "control": "Profenofos 50 EC @ 1.5 litres/ha; avoid waterlogging"
+            }
+          ]
+        },
+        "step_8_disease_management": {
+          "title": "Disease Control",
+          "diseases": [
+            {
+              "disease": "Red Rot (Colletotrichum falcatum)",
+              "control": "Hot water sett treatment 50°C/2hrs; Carbendazim 0.1% sett dip; use resistant variety"
+            },
+            {
+              "disease": "Smut (Ustilago scitaminea)",
+              "control": "Hot water treatment; rogue out infected plants (whip stage)"
+            },
+            {
+              "disease": "Ratoon Stunting Disease (RSD)",
+              "control": "Use HWT (50°C, 2 hrs); use disease-free planting material"
+            },
+            {
+              "disease": "Wilt (Fusarium sacchari)",
+              "control": "Use resistant variety; Carbendazim 0.1% sett treatment"
+            },
+            {
+              "disease": "Grassy Shoot",
+              "control": "Rogue infected plants; control leafhopper vectors"
+            }
+          ]
+        },
+        "step_9_harvesting": {
+          "title": "Harvesting",
+          "timing": "January–March (12-14 months after planting)",
+          "steps": [
+            "Check maturity: Brix > 18% and pol% > 14% using refractometer.",
+            "De-trash (remove dry leaves) 2-3 months before harvest.",
+            "Stop irrigation 3-4 weeks before harvest.",
+            "Cut canes at ground level; remove tops and leaves.",
+            "Transport to mill within 24 hours (sucrose reduces with time).",
+            "Expected yield: 80-120 tonnes/ha cane.",
+            "Sugar recovery: 10-12% of cane weight."
+          ]
+        },
+        "step_10_ratoon_management": {
+          "title": "Ratoon Crop Management (for next 2-3 years)",
+          "steps": [
+            "After harvest, cut stubs flush with ground using sharp blade.",
+            "Apply 25 tonnes/ha FYM around stubs.",
+            "Gap filling: plant fresh setts in gaps where germination poor.",
+            "Apply full fertilizer dose same as plant crop.",
+            "Irrigate immediately after harvest for sprouting.",
+            "Ratoon yield: 60-80% of plant crop; maximum 3 ratoons recommended."
+          ]
+        },
+        "step_11_post_harvest": {
+          "title": "Post-Harvest & Mill Processing",
+          "steps": [
+            "Trash (dry leaves) used for mulching next crop.",
+            "Press mud (mill byproduct) returned to field as manure (5-10 tonnes/ha).",
+            "Bagasse used for co-generation in mill (electricity).",
+            "Molasses used for alcohol/ethanol production.",
+            "Sugar processing: Crushing → Clarification → Evaporation → Crystallization → Centrifugation."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Tobacco",
+      "scientific_name": "Nicotiana tabacum",
+      "category": "Commercial Crops",
+      "total_duration_days": 130,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "20-30",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Tobacco (Rabi Type)",
+          "timing": "September–October",
+          "steps": [
+            "Light sandy loam to medium loam soil; pH 5.5–7.0.",
+            "Deep plough to 30 cm; 3-4 harrowings for fine tilth.",
+            "Apply 10 tonnes/ha FYM; incorporate.",
+            "Form raised beds 1.2 m wide for drainage."
+          ]
+        },
+        "step_2_nursery_preparation": {
+          "title": "Nursery (Seedling Raising)",
+          "timing": "August–September",
+          "steps": [
+            "Prepare raised nursery beds: 1 m × 10 m size.",
+            "Sterilize soil with Formalin 2% solution 15 days before sowing; cover with polythene for 7 days.",
+            "Sow seeds very thinly: 6-8 g/100 sq.m; cover with fine soil.",
+            "Spray Captan 0.2% after sowing.",
+            "Transplant at 45-55 days (height 15-20 cm, 4-5 leaves)."
+          ]
+        },
+        "step_3_transplanting": {
+          "title": "Transplanting",
+          "timing": "October–November",
+          "steps": [
+            "Transplant in cool hours (morning or evening).",
+            "Spacing: 90 cm × 60 cm (flue-cured); 75 cm × 45 cm (burley).",
+            "Apply basal fertilizer in furrows: N:P:K = 80:60:80 kg/ha.",
+            "Drench transplanted seedlings with Carbendazim 0.1% for root protection.",
+            "Light irrigation immediately after transplanting."
+          ]
+        },
+        "step_4_irrigation": {
+          "title": "Irrigation Management",
+          "steps": [
+            "At transplanting: Light irrigation immediately.",
+            "Vegetative (Day 61-100): Every 7-10 days; 40-50 mm each.",
+            "Maturity (Day 101-125): Reduce water.",
+            "Stop 2 weeks before harvest.",
+            "Total 6-8 irrigations."
+          ]
+        },
+        "step_5_fertilizer": {
+          "title": "Fertilizer Schedule",
+          "schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "SSP 375 kg/ha + MOP 133 kg/ha + Urea 87 kg/ha"
+            },
+            {
+              "stage": "Top Dressing Day 30",
+              "fertilizers": "Urea 87 kg/ha (40 kg N)"
+            },
+            {
+              "stage": "Top Dressing Day 60",
+              "fertilizers": "KNO3 1% foliar for quality"
+            }
+          ],
+          "note": "Do NOT over-apply N — reduces leaf quality and burning characteristics."
+        },
+        "step_6_cultural_practices": {
+          "title": "Special Cultural Practices",
+          "steps": [
+            "Topping (Day 70-75): Remove growing apex when 50% plants start flowering.",
+            "Desuckering (weekly after topping): Remove suckers from leaf axils.",
+            "Apply MH-30 (Maleic Hydrazide 0.35%) to retard sucker growth.",
+            "Remove lowest 2-3 ground leaves (sand leaves) — they reduce quality."
+          ]
+        },
+        "step_7_pest_and_disease": {
+          "title": "Pest & Disease Control",
+          "pests": [
+            {
+              "pest": "Budworm (Helicoverpa)",
+              "control": "Chlorantraniliprole 18.5 SC @ 150 ml/ha"
+            },
+            {
+              "pest": "Aphid (virus vector)",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha"
+            },
+            {
+              "pest": "Tobacco Caterpillar (Spodoptera)",
+              "control": "SLNPV 250 LE/ha OR Chlorpyriphos 20 EC @ 2 litres/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Black Root Rot (Thielaviopsis)",
+              "control": "Soil drenching with Thiram 0.2%"
+            },
+            {
+              "disease": "Mosaic Virus (TMV)",
+              "control": "Wash hands with soap before handling; remove infected plants"
+            },
+            {
+              "disease": "Blue Mold (Peronospora)",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre"
+            },
+            {
+              "disease": "Frog Eye (Cercospora)",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            }
+          ]
+        },
+        "step_8_harvesting_and_curing": {
+          "title": "Harvesting & Curing",
+          "timing": "Day 126–130; leaves harvested bottom to top over 8-10 weeks",
+          "steps": [
+            "Harvest leaves at 75-80% maturity (light green to yellow-green).",
+            "Pick 2-3 leaves per plant per week from bottom upwards.",
+            "Flue-cured tobacco: String leaves on sticks; cure in barn at 35°C → 70°C over 5-7 days.",
+            "Air-cured (burley): Hang in open barn for 30-45 days.",
+            "Sun-cured: Spread on tarpaulin; 2-3 weeks sun drying.",
+            "Expected yield: 1.5-2.5 tonnes/ha cured leaf."
+          ]
+        },
+        "step_9_post_harvest": {
+          "title": "Post-Harvest Management",
+          "steps": [
+            "Sort/grade leaves by size, colour, and texture.",
+            "Bale into 50-60 kg bales; press using tobacco press.",
+            "Store in humid warehouse (65% RH) to prevent brittleness.",
+            "Fermentation/aging for 1-2 years for flue-cured tobacco.",
+            "Market through Tobacco Board auctions."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Potato",
+      "scientific_name": "Solanum tuberosum",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Potato",
+          "timing": "September–October",
+          "steps": [
+            "Well-drained sandy loam to loam; pH 5.5–6.5.",
+            "Deep plough to 25-30 cm; cross harrow 2-3 times.",
+            "Apply 20-25 tonnes/ha FYM; incorporate.",
+            "Form ridges 50-60 cm apart (for planting tubers on ridges)."
+          ]
+        },
+        "step_2_seed_tuber_selection": {
+          "title": "Seed Tuber Selection & Treatment",
+          "steps": [
+            "Use certified disease-free seed tubers (30-50 g weight).",
+            "Varieties: Kufri Jyoti, Kufri Pukhraj, Kufri Chandramukhi.",
+            "Seed rate: 2-2.5 tonnes/ha.",
+            "Pre-sprouting: Store at 15-20°C for 20-25 days in diffused light.",
+            "Treat with Mancozeb 0.2% + Streptocycline 100 ppm for 15 minutes.",
+            "Cut large tubers into 40-50 g pieces with 2-3 eyes."
+          ]
+        },
+        "step_3_planting": {
+          "title": "Planting",
+          "timing": "October–November",
+          "steps": [
+            "Plant on ridges at 50-60 cm row spacing.",
+            "Plant spacing: 20-25 cm within row.",
+            "Depth: 5-7 cm; cover with 3-4 cm soil.",
+            "Basal: N:P:K = 120:80:100 kg/ha."
+          ]
+        },
+        "step_4_irrigation": {
+          "title": "Irrigation Schedule",
+          "steps": [
+            "Irrigate immediately after planting for sprouting.",
+            "Critical: At tuber initiation (Day 40-50) and tuber bulking (Day 60-80).",
+            "Irrigate every 5-7 days in winter; 7-10 days in spring.",
+            "Stop irrigation 10-15 days before harvest.",
+            "Avoid waterlogging — causes tuber rot."
+          ]
+        },
+        "step_5_fertilizer": {
+          "title": "Fertilizer Schedule",
+          "schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "DAP 174 kg/ha + MOP 167 kg/ha + Urea 130 kg/ha (N:P:K = 120:80:100)"
+            },
+            {
+              "stage": "Top Dressing Day 30",
+              "fertilizers": "Urea 87 kg/ha (40 kg N)"
+            },
+            {
+              "stage": "Top Dressing Day 55",
+              "fertilizers": "Urea 65 kg/ha (30 kg N)"
+            },
+            {
+              "stage": "Earthing up Day 30 and Day 45",
+              "fertilizers": "Earth up soil around plants to cover tubers; prevents greening"
+            }
+          ]
+        },
+        "step_6_pest_and_disease": {
+          "title": "Pest & Disease Control",
+          "pests": [
+            {
+              "pest": "Aphid (virus vector)",
+              "control": "Imidacloprid 17.8 SL @ 100 ml/ha"
+            },
+            {
+              "pest": "Whitefly",
+              "control": "Spray Dimethoate 30 EC @ 500 ml/ha"
+            },
+            {
+              "pest": "Leaf Miner",
+              "control": "Triazophos 40 EC @ 800 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Late Blight (Phytophthora infestans)",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre; spray at 5-7 day intervals in humid weather"
+            },
+            {
+              "disease": "Early Blight (Alternaria solani)",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            },
+            {
+              "disease": "Black Scurf (Rhizoctonia)",
+              "control": "Seed treatment with Carbendazim + Thiram"
+            },
+            {
+              "disease": "Bacterial Wilt (Ralstonia)",
+              "control": "Use disease-free seed; crop rotation with non-solanaceous crops"
+            }
+          ]
+        },
+        "step_7_harvesting": {
+          "title": "Harvesting",
+          "timing": "February–March (Day 96–100)",
+          "steps": [
+            "Harvest when leaves turn yellow and dry.",
+            "Stop irrigation 10-15 days before harvest.",
+            "Cut haulms (above ground parts) 10 days before harvest to toughen skin.",
+            "Dig with spade or potato digger.",
+            "Sort tubers; grade by size.",
+            "Expected yield: 25-35 tonnes/ha."
+          ]
+        },
+        "step_8_post_harvest": {
+          "title": "Post-Harvest Management",
+          "steps": [
+            "Dry tubers in shade for 4-5 hours (not sun — greening).",
+            "Cure at 15-20°C, 85-90% RH for 10-15 days to heal wounds.",
+            "Store in cool, dark, ventilated store at 2-4°C, 85-90% RH.",
+            "Grade: Size A > 55 mm; Size B 35-55 mm; Size C < 35 mm.",
+            "Market fresh or process into chips/fries."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Onion",
+      "scientific_name": "Allium cepa",
+      "category": "Vegetables",
+      "total_duration_days": 140,
+      "water_requirement_mm": 600,
+      "temperature_optimal_c": "13-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Onion (Rabi Type)",
+          "timing": "September–October",
+          "steps": [
+            "Well-drained sandy loam to loam; pH 6.0–7.0.",
+            "Deep plough once; cross harrow 2-3 times.",
+            "Apply 15-20 tonnes/ha FYM; incorporate.",
+            "Form raised beds (1 m wide × 10 m long) for irrigation."
+          ]
+        },
+        "step_2_nursery_and_seed_treatment": {
+          "title": "Nursery Preparation",
+          "timing": "October–November",
+          "steps": [
+            "Seed rate: 8-10 kg/ha.",
+            "Treat seeds with Carbendazim 2g/kg + Thiram 2g/kg.",
+            "Soak seeds in water for 12 hours before sowing for uniform germination.",
+            "Sow on raised nursery beds at spacing 5-6 cm × 2 cm.",
+            "Cover with fine soil + FYM mixture."
+          ]
+        },
+        "step_3_transplanting": {
+          "title": "Transplanting",
+          "timing": "November–December (at 40-45 days age)",
+          "steps": [
+            "Transplant seedlings at 15 cm × 10 cm spacing.",
+            "Irrigate immediately after transplanting.",
+            "Basal: N:P:K = 50:60:50 kg/ha."
+          ]
+        },
+        "step_4_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer Schedule",
+          "irrigation_steps": [
+            "Weekly irrigation during bulb initiation (Day 60-90).",
+            "Reduce irrigation during bulb maturity (Day 120-140).",
+            "Stop irrigation 15 days before harvest."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "SSP 375 kg + MOP 83 kg + Urea 109 kg per ha"
+            },
+            {
+              "stage": "Top Dressing Day 30",
+              "fertilizers": "Urea 87 kg/ha (40 kg N)"
+            },
+            {
+              "stage": "Top Dressing Day 60",
+              "fertilizers": "Urea 65 kg/ha (30 kg N)"
+            },
+            {
+              "stage": "Sulphur application",
+              "fertilizers": "Gypsum 200 kg/ha basal (onion is S-responsive)"
+            }
+          ]
+        },
+        "step_5_pest_and_disease": {
+          "title": "Pest & Disease Control",
+          "pests": [
+            {
+              "pest": "Thrips (Thrips tabaci)",
+              "control": "Spinosad 45 SC @ 73 ml/ha OR Fipronil 5 SC @ 600 ml/ha"
+            },
+            {
+              "pest": "Onion Maggot",
+              "control": "Chlorpyriphos 20 EC soil drench"
+            },
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Purple Blotch (Alternaria porri)",
+              "control": "Mancozeb 75 WP @ 2 kg/ha + Chlorothalonil @ 1.5 kg/ha"
+            },
+            {
+              "disease": "Downy Mildew",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre"
+            },
+            {
+              "disease": "Stemphylium Blight",
+              "control": "Propiconazole 25 EC @ 500 ml/ha"
+            },
+            {
+              "disease": "Basal Rot (Fusarium)",
+              "control": "Carbendazim seed treatment; avoid waterlogging"
+            }
+          ]
+        },
+        "step_6_harvesting": {
+          "title": "Harvesting",
+          "timing": "March–April (Day 136–140)",
+          "steps": [
+            "Harvest when 50-60% tops fall over (neck softening).",
+            "Pull bulbs manually or with mechanical harvester.",
+            "Dry in field for 2-3 days (curing).",
+            "Trim roots and leaves leaving 2-3 cm neck.",
+            "Expected yield: 25-40 tonnes/ha."
+          ]
+        },
+        "step_7_post_harvest": {
+          "title": "Post-Harvest Management",
+          "steps": [
+            "Complete curing: 15-20 days in shade with good ventilation.",
+            "Store in well-ventilated, dry store at 25-30°C, 65-70% RH.",
+            "Grade by bulb size: Extra Large > 80 mm; Large 60-80 mm; Medium 40-60 mm.",
+            "Shelf life: 3-4 months for Rabi onion.",
+            "Market fresh or process into dehydrated onion flakes/powder."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Garlic",
+      "scientific_name": "Allium sativum",
+      "category": "Vegetables",
+      "total_duration_days": 120,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "12-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Garlic",
+          "steps": [
+            "Sandy loam to loam; pH 6.0–7.0.",
+            "Deep plough once; 2-3 harrowings.",
+            "Apply 15 tonnes/ha FYM; incorporate."
+          ]
+        },
+        "step_2_clove_selection_and_treatment": {
+          "title": "Clove Selection & Treatment",
+          "steps": [
+            "Select large, healthy cloves from certified seed.",
+            "Varieties: Yamuna Safed-3, G-50, Agrifound White.",
+            "Seed rate: 400-500 kg/ha.",
+            "Soak cloves in Carbendazim 0.1% for 12 hours before planting.",
+            "Soak in water for 8 hours before planting for better germination."
+          ]
+        },
+        "step_3_planting": {
+          "title": "Planting",
+          "timing": "October–November",
+          "steps": [
+            "Row spacing: 15-20 cm; plant spacing: 7-10 cm.",
+            "Plant cloves at 3-4 cm depth with pointed side up.",
+            "Basal: N:P:K = 60:50:100 kg/ha."
+          ]
+        },
+        "step_4_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "Irrigate immediately after planting.",
+            "Weekly irrigation during bulb formation (Day 50-90).",
+            "Stop irrigation 15 days before harvest."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "SSP 312 kg + MOP 167 kg + Urea 130 kg per ha"
+            },
+            {
+              "stage": "Top Dressing Day 30",
+              "fertilizers": "Urea 87 kg/ha (40 kg N)"
+            },
+            {
+              "stage": "Top Dressing Day 60",
+              "fertilizers": "Urea 43 kg/ha (20 kg N)"
+            }
+          ]
+        },
+        "step_5_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Thrips",
+              "control": "Spinosad 45 SC @ 73 ml/ha"
+            },
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Purple Blotch",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            },
+            {
+              "disease": "White Rot (Sclerotium)",
+              "control": "Carbendazim soil drench; crop rotation"
+            },
+            {
+              "disease": "Downy Mildew",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre"
+            }
+          ]
+        },
+        "step_6_harvesting": {
+          "title": "Harvesting",
+          "timing": "February–March (Day 116–120)",
+          "steps": [
+            "Harvest when 50-60% leaves turn yellow and dry.",
+            "Pull bulbs manually.",
+            "Dry in field for 5-7 days.",
+            "Trim roots and leaves.",
+            "Expected yield: 8-12 tonnes/ha."
+          ]
+        },
+        "step_7_post_harvest": {
+          "title": "Post-Harvest",
+          "steps": [
+            "Complete curing: 15-20 days in shade.",
+            "Store in ventilated bags at 20-25°C, 60-65% RH.",
+            "Shelf life: 5-6 months.",
+            "Grade by clove size for seed purpose."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Carrot",
+      "scientific_name": "Daucus carota",
+      "category": "Vegetables",
+      "total_duration_days": 100,
+      "water_requirement_mm": 450,
+      "temperature_optimal_c": "15-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Carrot",
+          "steps": [
+            "Deep, well-drained sandy loam; pH 6.0–7.0.",
+            "Deep plough to 30-40 cm (remove stones for straight roots).",
+            "Apply 20-25 tonnes/ha FYM.",
+            "Form raised beds."
+          ]
+        },
+        "step_2_seed_treatment_and_sowing": {
+          "title": "Seed Treatment & Sowing",
+          "steps": [
+            "Varieties: Pusa Kesar, Nantes, Pusa Rudhira.",
+            "Seed rate: 8-10 kg/ha.",
+            "Treat with Thiram 3g/kg seed.",
+            "Row spacing: 30 cm; plant spacing: 7-10 cm.",
+            "Sowing depth: 1-2 cm (seeds small).",
+            "Mix seeds with sand 1:4 for uniform sowing."
+          ]
+        },
+        "step_3_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "Light irrigation immediately after sowing.",
+            "Irrigate every 5-7 days during root development (Day 50-90).",
+            "Avoid water stress at root initiation."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 50:50:50 kg/ha"
+            },
+            {
+              "stage": "Top Dressing Day 30",
+              "fertilizers": "Urea 65 kg/ha (30 kg N)"
+            },
+            {
+              "stage": "Potash",
+              "fertilizers": "KNO3 1% foliar at root bulking for sweetness"
+            }
+          ]
+        },
+        "step_4_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            },
+            {
+              "pest": "Carrot Rust Fly",
+              "control": "Chlorpyriphos soil drench"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Alternaria Blight",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            },
+            {
+              "disease": "Powdery Mildew",
+              "control": "Wettable Sulphur @ 2 kg/ha"
+            },
+            {
+              "disease": "Soft Rot (Sclerotinia)",
+              "control": "Avoid over-irrigation; Carbendazim drench"
+            }
+          ]
+        },
+        "step_5_harvesting": {
+          "title": "Harvesting",
+          "timing": "February–March (Day 96–100)",
+          "steps": [
+            "Harvest when roots reach 2.5-3 cm diameter.",
+            "Irrigate 2 days before for easy pulling.",
+            "Pull manually; trim leaves to 2 cm.",
+            "Expected yield: 25-40 tonnes/ha."
+          ]
+        },
+        "step_6_post_harvest": {
+          "title": "Post-Harvest",
+          "steps": [
+            "Wash; remove soil.",
+            "Store at 0-4°C, 90-95% RH for 4-6 months.",
+            "Grade by length and diameter.",
+            "Process: juice, dehydrated, frozen."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Radish",
+      "scientific_name": "Raphanus sativus",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "15-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation": {
+          "title": "Soil Preparation for Radish",
+          "steps": [
+            "Sandy loam; pH 6.0–7.0.",
+            "Deep plough to 25-30 cm.",
+            "Apply 15 tonnes/ha FYM."
+          ]
+        },
+        "step_2_sowing": {
+          "title": "Sowing",
+          "timing": "October–November",
+          "steps": [
+            "Varieties: Pusa Chetki, Pusa Himani, Japanese White.",
+            "Seed rate: 8-10 kg/ha.",
+            "Row spacing: 30-45 cm; plant spacing: 10 cm.",
+            "Sowing depth: 2-3 cm."
+          ]
+        },
+        "step_3_fertilizer_and_irrigation": {
+          "title": "Fertilizer & Irrigation",
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 40:50:40 kg/ha"
+            }
+          ],
+          "irrigation_steps": [
+            "Irrigate every 4-5 days for tender roots."
+          ]
+        },
+        "step_4_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Mustard Sawfly",
+              "control": "Chlorpyriphos 1.5 litres/ha"
+            },
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Alternaria Blight",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            },
+            {
+              "disease": "White Rust",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre"
+            }
+          ]
+        },
+        "step_5_harvesting": {
+          "title": "Harvesting",
+          "timing": "Day 56–60",
+          "steps": [
+            "Harvest when root diameter 2.5-3 cm.",
+            "Pull manually; remove leaves.",
+            "Expected yield: 15-20 tonnes/ha."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Cabbage",
+      "scientific_name": "Brassica oleracea var. capitata",
+      "category": "Vegetables",
+      "total_duration_days": 110,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation_and_nursery": {
+          "title": "Soil Prep & Nursery",
+          "steps": [
+            "Sandy loam; pH 6.0–6.5.",
+            "Seed rate: 500-600 g/ha.",
+            "Nursery: Sow in raised beds; transplant at 35-40 days."
+          ]
+        },
+        "step_2_transplanting_and_fertilizer": {
+          "title": "Transplanting & Fertilizer",
+          "steps": [
+            "Spacing: 45 cm × 45 cm.",
+            "Basal: N:P:K = 100:60:60 kg/ha.",
+            "Top dressing: Urea 65 kg/ha at Day 30 and 55."
+          ]
+        },
+        "step_3_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Diamond Back Moth (Plutella xylostella)",
+              "control": "Spinosad 45 SC @ 73 ml/ha OR Btk 1 kg/ha"
+            },
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Club Root (Plasmodiophora)",
+              "control": "Lime application (raise pH to 7.0); avoid cabbage family rotation"
+            },
+            {
+              "disease": "Black Rot (Xanthomonas)",
+              "control": "Copper Oxychloride 2.5 kg/ha + Streptocycline 100 ppm"
+            }
+          ]
+        },
+        "step_4_harvesting": {
+          "title": "Harvesting",
+          "timing": "Day 106–110",
+          "steps": [
+            "Harvest when heads are firm and solid.",
+            "Cut head with 2-3 wrapper leaves.",
+            "Expected yield: 30-40 tonnes/ha."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Cauliflower",
+      "scientific_name": "Brassica oleracea var. botrytis",
+      "category": "Vegetables",
+      "total_duration_days": 110,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-20",
+      "complete_farming_guide": {
+        "step_1_nursery_and_transplanting": {
+          "title": "Nursery & Transplanting",
+          "steps": [
+            "Seed rate: 500-600 g/ha.",
+            "Sow in nursery; transplant at 35-40 days.",
+            "Spacing: 45 cm × 45 cm."
+          ]
+        },
+        "step_2_fertilizer": {
+          "title": "Fertilizer Schedule",
+          "schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 100:60:60 kg/ha"
+            },
+            {
+              "stage": "Top Dressing Day 30",
+              "fertilizers": "Urea 87 kg/ha"
+            },
+            {
+              "stage": "Top Dressing Day 55",
+              "fertilizers": "Urea 65 kg/ha"
+            },
+            {
+              "stage": "Boron",
+              "fertilizers": "Borax 10 kg/ha basal (prevents browning)"
+            }
+          ]
+        },
+        "step_3_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Diamond Back Moth",
+              "control": "Spinosad 45 SC @ 73 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Downy Mildew",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre"
+            },
+            {
+              "disease": "Black Rot",
+              "control": "Copper Oxychloride + Streptocycline"
+            }
+          ]
+        },
+        "step_4_harvesting": {
+          "title": "Harvesting",
+          "timing": "Day 106–110",
+          "steps": [
+            "Harvest when curd is compact, white, and 10-15 cm diameter.",
+            "Cut curd with 2-3 wrapper leaves.",
+            "Expected yield: 20-30 tonnes/ha."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Spinach",
+      "scientific_name": "Spinacia oleracea",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation_and_sowing": {
+          "title": "Soil Prep & Sowing",
+          "steps": [
+            "Sandy loam; pH 6.5–7.5.",
+            "Seed rate: 40-50 kg/ha.",
+            "Broadcast or row sowing at 25 cm spacing.",
+            "Treat seed with Thiram 3g/kg."
+          ]
+        },
+        "step_2_fertilizer": {
+          "title": "Fertilizer",
+          "schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 50:40:40 kg/ha"
+            },
+            {
+              "stage": "Top Dressing",
+              "fertilizers": "Urea 65 kg/ha at Day 20"
+            }
+          ]
+        },
+        "step_3_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Downy Mildew",
+              "control": "Metalaxyl + Mancozeb 72 WP @ 3 g/litre"
+            }
+          ]
+        },
+        "step_4_harvesting": {
+          "title": "Harvesting",
+          "timing": "Day 56–60",
+          "steps": [
+            "Harvest when leaves are 10-15 cm.",
+            "Cut leaves 2-3 cm above ground.",
+            "Expected yield: 12-15 tonnes/ha."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Fenugreek",
+      "scientific_name": "Trigonella foenum-graecum",
+      "category": "Vegetables",
+      "total_duration_days": 60,
+      "water_requirement_mm": 350,
+      "temperature_optimal_c": "10-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation_and_sowing": {
+          "title": "Soil Prep & Sowing",
+          "steps": [
+            "Sandy loam; pH 6.0–7.0.",
+            "Seed rate: 25-30 kg/ha.",
+            "Broadcast or row sowing at 20-25 cm spacing.",
+            "Soak seeds in water for 8-12 hours before sowing."
+          ]
+        },
+        "step_2_fertilizer": {
+          "title": "Fertilizer",
+          "schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 30:40:20 kg/ha"
+            }
+          ]
+        },
+        "step_3_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Powdery Mildew",
+              "control": "Wettable Sulphur @ 2 kg/ha"
+            }
+          ]
+        },
+        "step_4_harvesting": {
+          "title": "Harvesting",
+          "timing": "Day 56–60",
+          "steps": [
+            "Harvest for greens at 30-35 days.",
+            "For seed: harvest at 60 days when pods turn brown.",
+            "Expected yield: 8-10 tonnes/ha (greens)."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Beetroot",
+      "scientific_name": "Beta vulgaris",
+      "category": "Vegetables",
+      "total_duration_days": 90,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "15-20",
+      "complete_farming_guide": {
+        "step_1_soil_preparation_and_sowing": {
+          "title": "Soil Prep & Sowing",
+          "steps": [
+            "Sandy loam; pH 6.0–7.0.",
+            "Deep plough to 30 cm.",
+            "Seed rate: 8-10 kg/ha.",
+            "Row spacing: 30-45 cm; plant spacing: 10 cm.",
+            "Soak seeds in water for 12 hours before sowing."
+          ]
+        },
+        "step_2_fertilizer": {
+          "title": "Fertilizer",
+          "schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "N:P:K = 40:60:40 kg/ha"
+            },
+            {
+              "stage": "Top Dressing",
+              "fertilizers": "Urea 65 kg/ha at Day 30"
+            }
+          ]
+        },
+        "step_3_pest_and_disease": {
+          "title": "Pest & Disease",
+          "pests": [
+            {
+              "pest": "Aphid",
+              "control": "Imidacloprid 100 ml/ha"
+            }
+          ],
+          "diseases": [
+            {
+              "disease": "Cercospora Leaf Spot",
+              "control": "Mancozeb 75 WP @ 2 kg/ha"
+            }
+          ]
+        },
+        "step_4_harvesting": {
+          "title": "Harvesting",
+          "timing": "Day 86–90",
+          "steps": [
+            "Harvest when root diameter 5-7 cm.",
+            "Pull manually; trim leaves.",
+            "Expected yield: 25-35 tonnes/ha."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Berseem",
+      "scientific_name": "Trifolium alexandrinum",
+      "category": "Fodder Crops",
+      "total_duration_days": 120,
+      "water_requirement_mm": 500,
+      "temperature_optimal_c": "15-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation_and_sowing": {
+          "title": "Soil Prep & Sowing",
+          "steps": [
+            "Clay loam; pH 6.5–8.0.",
+            "Plough once; harrow 2 times.",
+            "Apply 5 tonnes/ha FYM.",
+            "Seed rate: 25 kg/ha (un-inoculated); 20 kg/ha (inoculated).",
+            "Inoculate with Rhizobium trifolii.",
+            "Row spacing: 20-25 cm; broadcast also works."
+          ]
+        },
+        "step_2_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "Irrigate every 10-15 days.",
+            "Critical at each cut regrowth."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "P2O5 60 kg/ha + K2O 40 kg/ha + N 20 kg/ha"
+            }
+          ]
+        },
+        "step_3_harvesting": {
+          "title": "Harvesting",
+          "timing": "December–March (5-6 cuts)",
+          "steps": [
+            "First cut at 50-60 days after sowing (30-40 cm height).",
+            "Subsequent cuts every 25-30 days.",
+            "Cut 5-7 cm above ground.",
+            "Expected yield: 80-120 tonnes/ha green fodder."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Lucerne",
+      "scientific_name": "Medicago sativa",
+      "category": "Fodder Crops",
+      "total_duration_days": 180,
+      "water_requirement_mm": 800,
+      "temperature_optimal_c": "15-25",
+      "complete_farming_guide": {
+        "step_1_soil_preparation_and_sowing": {
+          "title": "Soil Prep & Sowing",
+          "steps": [
+            "Deep, well-drained loamy soil; pH 6.5–7.5.",
+            "Deep plough to 30 cm.",
+            "Apply 10 tonnes/ha FYM.",
+            "Seed rate: 20-25 kg/ha (inoculated).",
+            "Inoculate with Rhizobium meliloti.",
+            "Row spacing: 25-30 cm; depth 2-3 cm."
+          ]
+        },
+        "step_2_irrigation_and_fertilizer": {
+          "title": "Irrigation & Fertilizer",
+          "irrigation_steps": [
+            "Irrigate every 10-15 days (summer); 15-20 days (winter).",
+            "Critical after each cut."
+          ],
+          "fertilizer_schedule": [
+            {
+              "stage": "Basal",
+              "fertilizers": "P2O5 80 kg/ha + K2O 60 kg/ha + N 30 kg/ha"
+            },
+            {
+              "stage": "After each cut",
+              "fertilizers": "N 20 kg/ha (Urea 43 kg/ha)"
+            }
+          ]
+        },
+        "step_3_harvesting": {
+          "title": "Harvesting",
+          "timing": "December–May (6-8 cuts per year)",
+          "steps": [
+            "First cut at 60-70 days (50-60 cm height).",
+            "Subsequent cuts every 28-35 days.",
+            "Cut 5-7 cm above ground.",
+            "Expected yield: 100-150 tonnes/ha green fodder/year."
+          ]
+        }
+      }
+    },
+    {
+      "crop_name": "Oats (fodder)",
+      "scientific_name": "Avena sativa",
+      "category": "Fodder Crops",
+      "total_duration_days": 100,
+      "water_requirement_mm": 400,
+      "temperature_optimal_c": "10-20",
+      "complete_farming_guide": {
+        "step_1_sowing_and_fertilizer": {
+          "title": "Sowing & Fertilizer",
+          "steps": [
+            "Seed rate: 100-120 kg/ha.",
+            "Row spacing: 20-25 cm.",
+            "Basal: N:P:K = 60:40:40 kg/ha."
+          ]
+        },
+        "step_2_harvesting": {
+          "title": "Harvesting",
+          "timing": "Day 96–100",
+          "steps": [
+            "Harvest at 50% flowering stage for best quality.",
+            "Cut at ground level.",
+            "Expected yield: 35-45 tonnes/ha green fodder."
+          ]
+        }
+      }
+    }
+  ]
+}

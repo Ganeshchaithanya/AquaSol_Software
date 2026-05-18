@@ -1,0 +1,1002 @@
+{
+    "version": "2.0",
+    "description": "Static hardware anomaly rule book for AquaSol irrigation system",
+    "note": "All thresholds are hardware-validated. Do not change without field testing.",
+    "flow": {
+        "no_flow_when_irrigating": {
+            "description": "Valve is open and command is IRRIGATE but flow sensor reads near zero",
+            "threshold_min": 0.5,
+            "check_after_seconds": 30,
+            "severity": "critical",
+            "action": "STOP_IRRIGATION",
+            "alert_code": "FL001",
+            "possible_causes": [
+                "pump failure",
+                "pipe blockage",
+                "valve stuck closed",
+                "flow sensor disconnected"
+            ],
+            "recommended_steps": [
+                "check pump power",
+                "inspect pipe for blockage",
+                "verify valve is physically open",
+                "test flow sensor continuity"
+            ]
+        },
+        "unexpected_flow_when_idle": {
+            "description": "Flow detected when system is IDLE \u2014 no irrigation command active",
+            "threshold_min": 0.3,
+            "severity": "high",
+            "action": "LEAK_DETECTED",
+            "alert_code": "FL002",
+            "possible_causes": [
+                "valve stuck open",
+                "pipe joint leak",
+                "illegal tapping"
+            ],
+            "recommended_steps": [
+                "close master valve",
+                "inspect all pipe joints",
+                "check valve seal"
+            ]
+        },
+        "flow_too_high": {
+            "description": "Flow rate exceeds maximum safe pipe capacity \u2014 possible burst",
+            "threshold_max": 5.0,
+            "unit": "L/min",
+            "severity": "critical",
+            "action": "PIPE_BURST",
+            "alert_code": "FL003",
+            "possible_causes": [
+                "pipe burst",
+                "pressure regulator failure",
+                "multiple valves open simultaneously"
+            ],
+            "recommended_steps": [
+                "close master valve immediately",
+                "inspect pipeline",
+                "check pressure regulator"
+            ]
+        },
+        "flow_too_low_during_irrigation": {
+            "description": "Flow is positive but significantly below expected rate during active irrigation",
+            "threshold_min": 0.5,
+            "expected_min": 1.0,
+            "severity": "medium",
+            "action": "PARTIAL_BLOCKAGE",
+            "alert_code": "FL004",
+            "possible_causes": [
+                "partial pipe blockage",
+                "drip emitter clogging",
+                "low pump pressure"
+            ],
+            "recommended_steps": [
+                "flush drip lines",
+                "check filter",
+                "test pump pressure"
+            ]
+        },
+        "flow_variation_unstable": {
+            "description": "Flow rate fluctuates beyond tolerance within a short window",
+            "tolerance": 0.5,
+            "window_seconds": 60,
+            "severity": "medium",
+            "action": "UNSTABLE_FLOW",
+            "alert_code": "FL005",
+            "possible_causes": [
+                "air in pipes",
+                "unstable pump",
+                "partial valve obstruction"
+            ],
+            "recommended_steps": [
+                "bleed air from pipes",
+                "check pump motor",
+                "inspect valve"
+            ]
+        },
+        "flow_sensor_out_of_range": {
+            "description": "Flow sensor reading is physically impossible",
+            "threshold_min": 0,
+            "threshold_max": 20,
+            "unit": "L/min",
+            "severity": "critical",
+            "action": "INVALID_SENSOR",
+            "alert_code": "FL006",
+            "possible_causes": [
+                "sensor disconnected",
+                "wiring short",
+                "sensor damaged"
+            ],
+            "recommended_steps": [
+                "check sensor wiring",
+                "replace flow sensor"
+            ]
+        },
+        "no_flow_stop_after_command": {
+            "description": "Flow continues after STOP command \u2014 valve not closing",
+            "threshold_min": 0.3,
+            "check_after_seconds": 15,
+            "severity": "high",
+            "action": "VALVE_STUCK_OPEN",
+            "alert_code": "FL007",
+            "possible_causes": [
+                "valve solenoid failure",
+                "debris in valve seat",
+                "controller wiring fault"
+            ],
+            "recommended_steps": [
+                "manually close valve",
+                "inspect solenoid",
+                "check controller output"
+            ]
+        }
+    },
+    "moisture": {
+        "out_of_range": {
+            "description": "Soil moisture reading outside physically possible range",
+            "threshold_min": 0,
+            "threshold_max": 100,
+            "unit": "%",
+            "severity": "critical",
+            "action": "INVALID_SENSOR",
+            "alert_code": "MO001",
+            "possible_causes": [
+                "sensor probe disconnected",
+                "wiring short circuit",
+                "sensor damaged by water ingress"
+            ],
+            "recommended_steps": [
+                "check probe insertion depth",
+                "inspect wiring",
+                "replace sensor"
+            ]
+        },
+        "sudden_drop": {
+            "description": "Soil moisture drops sharply in a short time \u2014 not normal evaporation",
+            "drop_value": 10,
+            "window_minutes": 10,
+            "unit": "%",
+            "severity": "high",
+            "action": "LEAK_OR_SENSOR_FAULT",
+            "alert_code": "MO002",
+            "possible_causes": [
+                "sensor pulled out of soil",
+                "pipe leak near sensor",
+                "sensor wiring fault"
+            ],
+            "recommended_steps": [
+                "verify sensor placement",
+                "inspect nearby pipes",
+                "cross-check with other zone sensors"
+            ]
+        },
+        "sudden_spike": {
+            "description": "Soil moisture jumps sharply \u2014 not normal from irrigation",
+            "spike_value": 20,
+            "window_minutes": 5,
+            "unit": "%",
+            "severity": "medium",
+            "action": "SENSOR_SPIKE",
+            "alert_code": "MO003",
+            "possible_causes": [
+                "sensor in contact with standing water",
+                "electrical interference",
+                "sensor calibration drift"
+            ],
+            "recommended_steps": [
+                "check sensor placement",
+                "verify no standing water",
+                "recalibrate sensor"
+            ]
+        },
+        "no_change_after_irrigation": {
+            "description": "Moisture did not increase after irrigation ran for expected duration",
+            "min_expected_increase": 2,
+            "duration_minutes": 15,
+            "unit": "%",
+            "severity": "high",
+            "action": "INEFFECTIVE_IRRIGATION",
+            "alert_code": "MO004",
+            "possible_causes": [
+                "drip emitter clogged",
+                "sensor not in root zone",
+                "soil too compacted",
+                "flow failure"
+            ],
+            "recommended_steps": [
+                "check drip emitters",
+                "reposition sensor to root zone",
+                "verify flow during irrigation"
+            ]
+        },
+        "constant_value_stuck": {
+            "description": "Moisture value unchanged beyond tolerance for extended period \u2014 sensor stuck",
+            "variance": 0.2,
+            "duration_minutes": 30,
+            "severity": "medium",
+            "action": "SENSOR_STUCK",
+            "alert_code": "MO005",
+            "possible_causes": [
+                "sensor probe corrosion",
+                "wiring intermittent fault",
+                "ADC failure on board"
+            ],
+            "recommended_steps": [
+                "clean sensor probe",
+                "check wiring connections",
+                "test with multimeter"
+            ]
+        },
+        "over_saturation": {
+            "description": "Soil moisture exceeds safe upper limit \u2014 overwatering risk",
+            "threshold": 90,
+            "unit": "%",
+            "severity": "medium",
+            "action": "OVERWATERING",
+            "alert_code": "MO006",
+            "possible_causes": [
+                "irrigation running too long",
+                "rain + irrigation overlap",
+                "poor drainage"
+            ],
+            "recommended_steps": [
+                "stop irrigation",
+                "check drainage",
+                "review irrigation schedule"
+            ]
+        },
+        "critically_dry_no_action": {
+            "description": "Moisture below critical threshold but no irrigation has been triggered",
+            "threshold": 15,
+            "unit": "%",
+            "severity": "high",
+            "action": "SYSTEM_NOT_RESPONDING",
+            "alert_code": "MO007",
+            "possible_causes": [
+                "decision engine not running",
+                "valve command not sent",
+                "backend offline"
+            ],
+            "recommended_steps": [
+                "check backend connectivity",
+                "verify decision service",
+                "trigger manual irrigation"
+            ]
+        }
+    },
+    "temperature": {
+        "sensor_out_of_range": {
+            "description": "Temperature reading is physically impossible for field conditions",
+            "threshold_min": -10,
+            "threshold_max": 80,
+            "unit": "C",
+            "severity": "critical",
+            "action": "INVALID_SENSOR",
+            "alert_code": "TP001",
+            "possible_causes": [
+                "sensor disconnected",
+                "wiring short",
+                "sensor damaged"
+            ],
+            "recommended_steps": [
+                "check sensor connections",
+                "replace temperature sensor"
+            ]
+        },
+        "extreme_high": {
+            "description": "Ambient temperature exceeds crop heat stress threshold",
+            "threshold": 45,
+            "unit": "C",
+            "severity": "high",
+            "action": "HEAT_STRESS",
+            "alert_code": "TP002",
+            "possible_causes": [
+                "extreme weather event",
+                "sensor placed in direct sun (not shaded)"
+            ],
+            "recommended_steps": [
+                "verify sensor placement in shade",
+                "check weather forecast",
+                "consider emergency irrigation"
+            ]
+        },
+        "crop_heat_stress": {
+            "description": "Temperature in range that causes crop stress \u2014 not critical but needs monitoring",
+            "threshold": 38,
+            "unit": "C",
+            "severity": "medium",
+            "action": "MONITOR_CROP",
+            "alert_code": "TP003",
+            "possible_causes": [
+                "afternoon peak temperature",
+                "heat wave"
+            ],
+            "recommended_steps": [
+                "monitor crop condition",
+                "schedule irrigation for early morning"
+            ]
+        },
+        "extreme_low": {
+            "description": "Temperature below frost risk threshold",
+            "threshold": 5,
+            "unit": "C",
+            "severity": "high",
+            "action": "COLD_STRESS",
+            "alert_code": "TP004",
+            "possible_causes": [
+                "winter frost",
+                "unexpected cold snap"
+            ],
+            "recommended_steps": [
+                "do not irrigate",
+                "protect crop if possible",
+                "check weather forecast"
+            ]
+        },
+        "constant_value_stuck": {
+            "description": "Temperature unchanged beyond tolerance \u2014 sensor stuck",
+            "variance": 0.5,
+            "duration_minutes": 60,
+            "unit": "C",
+            "severity": "medium",
+            "action": "SENSOR_STUCK",
+            "alert_code": "TP005",
+            "possible_causes": [
+                "sensor probe failure",
+                "wiring intermittent connection"
+            ],
+            "recommended_steps": [
+                "test sensor with multimeter",
+                "replace if faulty"
+            ]
+        }
+    },
+    "humidity": {
+        "out_of_range": {
+            "description": "Humidity reading outside physical bounds",
+            "threshold_min": 0,
+            "threshold_max": 100,
+            "unit": "%",
+            "severity": "critical",
+            "action": "INVALID_SENSOR",
+            "alert_code": "HU001",
+            "possible_causes": [
+                "DHT/SHT sensor disconnected",
+                "wiring fault",
+                "sensor water damage"
+            ],
+            "recommended_steps": [
+                "check sensor wiring",
+                "replace humidity sensor"
+            ]
+        },
+        "constant_value_stuck": {
+            "description": "Humidity unchanged for extended period \u2014 sensor stuck",
+            "variance": 1,
+            "duration_minutes": 60,
+            "unit": "%",
+            "severity": "medium",
+            "action": "SENSOR_STUCK",
+            "alert_code": "HU002",
+            "possible_causes": [
+                "DHT sensor lockup",
+                "wiring intermittent fault"
+            ],
+            "recommended_steps": [
+                "power cycle sensor",
+                "replace if stuck persists"
+            ]
+        },
+        "extremely_low": {
+            "description": "Humidity critically low \u2014 high evapotranspiration conditions",
+            "threshold": 15,
+            "unit": "%",
+            "severity": "medium",
+            "action": "HIGH_ET_CONDITIONS",
+            "alert_code": "HU003",
+            "possible_causes": [
+                "extreme dry weather",
+                "sensor in dry location"
+            ],
+            "recommended_steps": [
+                "increase irrigation frequency",
+                "check ET calculation"
+            ]
+        }
+    },
+    "rain": {
+        "rain_during_irrigation": {
+            "description": "Rain sensor triggered while irrigation is active",
+            "severity": "medium",
+            "action": "STOP_IRRIGATION",
+            "alert_code": "RN001",
+            "possible_causes": [
+                "rain event during scheduled irrigation"
+            ],
+            "recommended_steps": [
+                "stop irrigation immediately",
+                "log rainfall for ET adjustment"
+            ]
+        },
+        "rain_sensor_always_on": {
+            "description": "Rain sensor reports rain continuously for too long \u2014 stuck or faulty",
+            "duration_minutes": 120,
+            "severity": "medium",
+            "action": "SENSOR_STUCK",
+            "alert_code": "RN002",
+            "possible_causes": [
+                "sensor debris",
+                "waterlogged sensor",
+                "wiring short"
+            ],
+            "recommended_steps": [
+                "clean rain sensor",
+                "check wiring",
+                "replace if stuck"
+            ]
+        },
+        "rain_sensor_never_triggers": {
+            "description": "Rain sensor has never triggered despite rainfall in weather forecast",
+            "duration_days": 7,
+            "severity": "low",
+            "action": "SENSOR_CHECK_REQUIRED",
+            "alert_code": "RN003",
+            "possible_causes": [
+                "sensor disconnected",
+                "sensor covered by debris"
+            ],
+            "recommended_steps": [
+                "manually test rain sensor",
+                "check mounting position"
+            ]
+        }
+    },
+    "battery": {
+        "low_warning": {
+            "description": "Battery level low \u2014 system will continue but needs attention",
+            "threshold": 30,
+            "unit": "%",
+            "severity": "low",
+            "action": "WARNING",
+            "alert_code": "BT001",
+            "possible_causes": [
+                "reduced solar input",
+                "cloudy days",
+                "high power consumption"
+            ],
+            "recommended_steps": [
+                "monitor battery trend",
+                "check solar panel output"
+            ]
+        },
+        "critical_low": {
+            "description": "Battery critically low \u2014 reduce non-essential operations",
+            "threshold": 20,
+            "unit": "%",
+            "severity": "high",
+            "action": "LIMIT_OPERATION",
+            "alert_code": "BT002",
+            "possible_causes": [
+                "solar panel failure",
+                "extended cloudy period",
+                "battery degradation"
+            ],
+            "recommended_steps": [
+                "disable non-essential sensors",
+                "reduce reporting frequency",
+                "check solar panel"
+            ]
+        },
+        "shutdown_imminent": {
+            "description": "Battery near shutdown \u2014 stop all operations to protect hardware",
+            "threshold": 10,
+            "unit": "%",
+            "severity": "critical",
+            "action": "STOP_ALL",
+            "alert_code": "BT003",
+            "possible_causes": [
+                "solar panel not charging",
+                "battery failure",
+                "high current draw"
+            ],
+            "recommended_steps": [
+                "stop all irrigation",
+                "enter deep sleep",
+                "alert technician immediately"
+            ]
+        },
+        "not_charging": {
+            "description": "Battery not increasing despite daytime hours \u2014 solar panel issue",
+            "expected_charge_increase": 5,
+            "check_window_hours": 4,
+            "unit": "%",
+            "severity": "medium",
+            "action": "SOLAR_PANEL_CHECK",
+            "alert_code": "BT004",
+            "possible_causes": [
+                "solar panel disconnected",
+                "panel shading",
+                "charge controller fault"
+            ],
+            "recommended_steps": [
+                "check solar panel connections",
+                "inspect for shading",
+                "test charge controller"
+            ]
+        },
+        "rapid_drain": {
+            "description": "Battery draining faster than expected \u2014 possible short circuit or high load",
+            "drain_rate_per_hour": 10,
+            "unit": "%/hr",
+            "severity": "high",
+            "action": "POWER_AUDIT",
+            "alert_code": "BT005",
+            "possible_causes": [
+                "short circuit",
+                "valve solenoid stuck on",
+                "pump running continuously"
+            ],
+            "recommended_steps": [
+                "check all loads",
+                "inspect wiring for shorts",
+                "measure current draw"
+            ]
+        }
+    },
+    "solar": {
+        "low_input": {
+            "description": "Solar input below operational threshold \u2014 battery drain expected",
+            "threshold": 200,
+            "unit": "mW",
+            "severity": "low",
+            "action": "REDUCE_LOAD",
+            "alert_code": "SL001",
+            "possible_causes": [
+                "cloudy weather",
+                "panel partially shaded"
+            ],
+            "recommended_steps": [
+                "reduce sensor reporting frequency",
+                "defer non-critical irrigation"
+            ]
+        },
+        "very_low_input": {
+            "description": "Solar input critically low \u2014 enter power save mode",
+            "threshold": 100,
+            "unit": "mW",
+            "severity": "medium",
+            "action": "POWER_SAVE_MODE",
+            "alert_code": "SL002",
+            "possible_causes": [
+                "overcast/rainy day",
+                "panel covered by dust or debris"
+            ],
+            "recommended_steps": [
+                "enter power save mode",
+                "clean solar panel",
+                "check panel tilt angle"
+            ]
+        },
+        "panel_failure": {
+            "description": "Zero solar input during expected daylight hours",
+            "threshold": 0,
+            "daylight_hours_start": 7,
+            "daylight_hours_end": 18,
+            "severity": "high",
+            "action": "PANEL_FAULT",
+            "alert_code": "SL003",
+            "possible_causes": [
+                "panel disconnected",
+                "panel physically damaged",
+                "MPPT controller failure"
+            ],
+            "recommended_steps": [
+                "check panel wiring",
+                "measure panel output with multimeter",
+                "replace if damaged"
+            ]
+        }
+    },
+    "device_health": {
+        "no_data_received": {
+            "description": "Backend has not received data from device for extended period",
+            "duration_minutes": 15,
+            "severity": "medium",
+            "action": "DEVICE_INACTIVE",
+            "alert_code": "DH001",
+            "possible_causes": [
+                "device sleeping",
+                "network connectivity issue",
+                "device rebooting"
+            ],
+            "recommended_steps": [
+                "check device connectivity",
+                "verify WiFi/LoRa signal",
+                "check device power"
+            ]
+        },
+        "device_offline": {
+            "description": "Device completely offline \u2014 no response to pings or data",
+            "duration_minutes": 30,
+            "severity": "critical",
+            "action": "DEVICE_OFFLINE",
+            "alert_code": "DH002",
+            "possible_causes": [
+                "device powered off",
+                "firmware crash",
+                "hardware failure",
+                "battery shutdown"
+            ],
+            "recommended_steps": [
+                "power cycle device",
+                "check battery level",
+                "inspect hardware",
+                "reflash firmware"
+            ]
+        },
+        "frequent_reboots": {
+            "description": "Device has rebooted more than expected times \u2014 instability",
+            "max_reboots_per_hour": 3,
+            "severity": "high",
+            "action": "FIRMWARE_OR_POWER_ISSUE",
+            "alert_code": "DH003",
+            "possible_causes": [
+                "unstable power supply",
+                "firmware memory leak",
+                "watchdog reset loop"
+            ],
+            "recommended_steps": [
+                "check power stability",
+                "update firmware",
+                "inspect power supply"
+            ]
+        },
+        "clock_drift": {
+            "description": "Device timestamp is significantly out of sync with server time",
+            "max_drift_seconds": 60,
+            "severity": "low",
+            "action": "SYNC_TIME",
+            "alert_code": "DH004",
+            "possible_causes": [
+                "NTP sync failure",
+                "RTC battery dead",
+                "no internet connectivity"
+            ],
+            "recommended_steps": [
+                "force NTP sync",
+                "replace RTC battery if applicable"
+            ]
+        }
+    },
+    "communication": {
+        "delayed_packets": {
+            "description": "Data packets arriving with significant delay",
+            "threshold_seconds": 10,
+            "severity": "low",
+            "action": "NETWORK_DELAY",
+            "alert_code": "CM001",
+            "possible_causes": [
+                "weak WiFi signal",
+                "LoRa interference",
+                "network congestion"
+            ],
+            "recommended_steps": [
+                "check signal strength (RSSI)",
+                "move device closer to gateway",
+                "check network load"
+            ]
+        },
+        "packet_loss": {
+            "description": "High percentage of expected packets not received",
+            "loss_percentage": 20,
+            "severity": "medium",
+            "action": "UNSTABLE_CONNECTION",
+            "alert_code": "CM002",
+            "possible_causes": [
+                "weak signal",
+                "physical obstruction",
+                "interference from other devices"
+            ],
+            "recommended_steps": [
+                "check antenna",
+                "reposition device",
+                "check for RF interference"
+            ]
+        },
+        "out_of_sequence_packets": {
+            "description": "Packets arriving out of order \u2014 possible buffering issue",
+            "severity": "low",
+            "action": "BUFFER_ISSUE",
+            "alert_code": "CM003",
+            "possible_causes": [
+                "network congestion",
+                "multiple paths",
+                "LoRa multi-hop issues"
+            ],
+            "recommended_steps": [
+                "check network topology",
+                "review LoRa configuration"
+            ]
+        },
+        "rssi_too_low": {
+            "description": "Signal strength below reliable communication threshold",
+            "threshold_dbm": -100,
+            "unit": "dBm",
+            "severity": "medium",
+            "action": "WEAK_SIGNAL",
+            "alert_code": "CM004",
+            "possible_causes": [
+                "device too far from gateway",
+                "physical obstruction",
+                "antenna damage"
+            ],
+            "recommended_steps": [
+                "move device closer",
+                "add repeater/relay",
+                "check antenna connection"
+            ]
+        }
+    },
+    "valve": {
+        "valve_not_responding": {
+            "description": "Valve command sent but no state change confirmed",
+            "check_after_seconds": 10,
+            "severity": "high",
+            "action": "VALVE_FAULT",
+            "alert_code": "VL001",
+            "possible_causes": [
+                "solenoid failure",
+                "controller relay fault",
+                "wiring open circuit"
+            ],
+            "recommended_steps": [
+                "check solenoid resistance (should be 20-60 ohms)",
+                "test relay manually",
+                "inspect wiring"
+            ]
+        },
+        "valve_stuck_open": {
+            "description": "Valve commanded CLOSED but flow continues",
+            "flow_threshold": 0.3,
+            "check_after_seconds": 15,
+            "severity": "critical",
+            "action": "EMERGENCY_CLOSE",
+            "alert_code": "VL002",
+            "possible_causes": [
+                "debris in valve seat",
+                "solenoid coil burnt",
+                "mechanical failure"
+            ],
+            "recommended_steps": [
+                "close master valve",
+                "clean valve seat",
+                "replace solenoid"
+            ]
+        },
+        "valve_stuck_closed": {
+            "description": "Valve commanded OPEN but no flow detected",
+            "flow_threshold": 0.5,
+            "check_after_seconds": 30,
+            "severity": "critical",
+            "action": "IRRIGATION_FAILURE",
+            "alert_code": "VL003",
+            "possible_causes": [
+                "valve seized",
+                "solenoid not actuating",
+                "no water pressure"
+            ],
+            "recommended_steps": [
+                "check water supply pressure",
+                "test solenoid directly",
+                "replace valve"
+            ]
+        }
+    },
+    "pump": {
+        "pump_running_dry": {
+            "description": "Pump running but no flow output \u2014 possible dry run",
+            "flow_threshold": 0.3,
+            "check_after_seconds": 20,
+            "severity": "critical",
+            "action": "STOP_PUMP",
+            "alert_code": "PM001",
+            "possible_causes": [
+                "water tank empty",
+                "inlet pipe blocked",
+                "pump priming failure"
+            ],
+            "recommended_steps": [
+                "stop pump immediately",
+                "check water supply",
+                "prime pump before restart"
+            ]
+        },
+        "pump_overload": {
+            "description": "Pump current draw exceeds rated capacity",
+            "severity": "high",
+            "action": "PUMP_FAULT",
+            "alert_code": "PM002",
+            "possible_causes": [
+                "blocked outlet",
+                "impeller damage",
+                "motor winding fault"
+            ],
+            "recommended_steps": [
+                "stop pump",
+                "check outlet pressure",
+                "inspect impeller",
+                "measure motor current"
+            ]
+        },
+        "pump_not_starting": {
+            "description": "Pump command sent but no flow detected \u2014 pump not starting",
+            "check_after_seconds": 10,
+            "severity": "critical",
+            "action": "PUMP_FAILURE",
+            "alert_code": "PM003",
+            "possible_causes": [
+                "power supply fault",
+                "pump capacitor failure",
+                "pump seized"
+            ],
+            "recommended_steps": [
+                "check power supply to pump",
+                "test capacitor",
+                "inspect pump shaft"
+            ]
+        }
+    },
+    "irrigation_effectiveness": {
+        "no_moisture_gain": {
+            "description": "Moisture did not increase after irrigation completed",
+            "min_expected_increase": 2,
+            "duration_minutes": 20,
+            "unit": "%",
+            "severity": "high",
+            "action": "INEFFECTIVE_IRRIGATION",
+            "alert_code": "IE001",
+            "possible_causes": [
+                "drip emitters clogged",
+                "sensor not in root zone",
+                "pipe blockage",
+                "soil hydrophobic"
+            ],
+            "recommended_steps": [
+                "check all drip emitters",
+                "flush lines",
+                "reposition sensor",
+                "check soil condition"
+            ]
+        },
+        "over_irrigation": {
+            "description": "Soil moisture exceeded upper threshold during irrigation",
+            "moisture_threshold": 90,
+            "unit": "%",
+            "severity": "medium",
+            "action": "OVERWATERING",
+            "alert_code": "IE002",
+            "possible_causes": [
+                "irrigation duration too long",
+                "incorrect threshold configuration"
+            ],
+            "recommended_steps": [
+                "stop irrigation",
+                "review zone threshold settings",
+                "check drainage"
+            ]
+        },
+        "irrigation_too_long": {
+            "description": "Irrigation session has run beyond maximum expected duration",
+            "max_duration_minutes": 60,
+            "severity": "medium",
+            "action": "DURATION_EXCEEDED",
+            "alert_code": "IE003",
+            "possible_causes": [
+                "moisture target not reached due to system fault",
+                "decision engine stuck"
+            ],
+            "recommended_steps": [
+                "stop irrigation",
+                "check decision engine",
+                "audit moisture sensors"
+            ]
+        }
+    },
+    "combined_conditions": {
+        "flow_present_no_moisture_change": {
+            "description": "Water is flowing but soil moisture not increasing \u2014 water not reaching soil",
+            "severity": "critical",
+            "action": "PIPE_BLOCKAGE_OR_LEAK",
+            "alert_code": "CC001",
+            "possible_causes": [
+                "pipe leak before sensor zone",
+                "drip emitters all clogged",
+                "pipe disconnected"
+            ],
+            "recommended_steps": [
+                "walk the pipeline",
+                "inspect all joints",
+                "check drip emitters"
+            ]
+        },
+        "high_temperature_low_moisture": {
+            "description": "Temperature above heat stress AND moisture below critical \u2014 plant emergency",
+            "temp_threshold": 38,
+            "moisture_threshold": 20,
+            "severity": "critical",
+            "action": "EMERGENCY_IRRIGATION",
+            "alert_code": "CC002",
+            "possible_causes": [
+                "delayed irrigation",
+                "system failure during hot day"
+            ],
+            "recommended_steps": [
+                "irrigate immediately",
+                "verify system operation",
+                "check crop condition"
+            ]
+        },
+        "rain_and_high_moisture": {
+            "description": "Rain detected AND soil already saturated \u2014 waterlogging risk",
+            "moisture_threshold": 80,
+            "severity": "medium",
+            "action": "STOP_ALL_IRRIGATION",
+            "alert_code": "CC003",
+            "possible_causes": [
+                "rain event on already wet soil"
+            ],
+            "recommended_steps": [
+                "cancel all irrigation",
+                "monitor drainage",
+                "check field for standing water"
+            ]
+        },
+        "low_battery_high_demand": {
+            "description": "Battery critically low but irrigation is active \u2014 risk of mid-cycle shutdown",
+            "battery_threshold": 20,
+            "severity": "high",
+            "action": "POWER_RISK",
+            "alert_code": "CC004",
+            "possible_causes": [
+                "solar failure during irrigation cycle"
+            ],
+            "recommended_steps": [
+                "complete current irrigation cycle quickly",
+                "then enter power save mode"
+            ]
+        },
+        "multiple_sensors_offline": {
+            "description": "More than one sensor in a zone is offline \u2014 cannot make safe decision",
+            "min_offline_count": 2,
+            "severity": "critical",
+            "action": "HALT_AUTOMATION",
+            "alert_code": "CC005",
+            "possible_causes": [
+                "power bus failure",
+                "wiring harness fault",
+                "water ingress in junction box"
+            ],
+            "recommended_steps": [
+                "halt all automation",
+                "inspect junction box",
+                "check power bus",
+                "manual mode only"
+            ]
+        },
+        "flow_with_battery_critical": {
+            "description": "Active irrigation while battery is shutting down \u2014 risk of incomplete cycle",
+            "battery_threshold": 10,
+            "severity": "critical",
+            "action": "EMERGENCY_STOP",
+            "alert_code": "CC006",
+            "possible_causes": [
+                "solar failure during long irrigation"
+            ],
+            "recommended_steps": [
+                "stop irrigation",
+                "log state",
+                "enter emergency sleep"
+            ]
+        }
+    }
+}
