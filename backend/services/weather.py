@@ -31,7 +31,7 @@ async def get_weather(lat: float, lon: float, lang: str = "en") -> Dict[str, Any
             "appid": settings.WEATHER_API_KEY,
             "lang": lang
         }
-        async with httpx.AsyncClient(timeout=8.0) as client:
+        async with httpx.AsyncClient(timeout=1.5) as client:
             resp = await client.get(url, params=params)
             resp.raise_for_status()
             forecasts = resp.json()
