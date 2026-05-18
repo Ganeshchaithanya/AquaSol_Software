@@ -2,10 +2,12 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies for asyncpg and other libraries
+# Install system dependencies for asyncpg, pycairo, and other libraries
 RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
+    pkg-config \
+    libcairo2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install
