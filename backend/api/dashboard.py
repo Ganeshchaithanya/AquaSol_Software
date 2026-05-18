@@ -196,25 +196,32 @@ async def get_dashboard(
     weather = None
     metrics = {}
     
-    # 1. Calculate REAL Metrics from DB
+    # 1. Load Master Data FIRST to optimize queries using indexed device_id
+    master_status = None
+    master_res = await db.execute(
+        select(Device)
+        .where(Device.farm_id == farm.id, Device.is_master == True)
+        .order_by(Device.status == "active", Device.created_at.desc())
+    )
+    master_dev = master_res.scalars().first()
+    
+    # 2. Calculate REAL Metrics from DB
     from sqlalchemy import func
     today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
     
-    # Total Water Today (Sum of flow from master readings today)
-    water_res = await db.execute(
-        select(func.sum(SensorReading.total_water))
-        .where(SensorReading.farm_id == farm.id, SensorReading.time >= today_start)
-    )
-    total_water = water_res.scalar() or 0.0
+    # Total Water Today (Sum of flow from master readings today, optimized using indexed device_id)
+    total_water = 0.0
+    if master_dev:
+        water_res = await db.execute(
+            select(func.sum(SensorReading.total_water))
+            .where(SensorReading.device_id == master_dev.id, SensorReading.time >= today_start)
+        )
+        total_water = water_res.scalar() or 0.0
     
-    # Efficiency Score (Calculated based on moisture optimality)
-    # For now, a simplified live score based on active zones
-    moisture_res = await db.execute(
-        select(func.avg(SensorReading.soil_moisture))
-        .where(SensorReading.farm_id == farm.id, SensorReading.time >= today_start)
-    )
-    avg_moisture = moisture_res.scalar() or 50.0
-    efficiency = 85.0 + (min(avg_moisture, 100) / 10.0) # Placeholder live logic
+    # Efficiency Score (Calculated based on active zones moisture in memory, avoiding N-row table scans!)
+    valid_moistures = [z.current_moisture for z in zone_responses if z.current_moisture is not None]
+    avg_moisture = sum(valid_moistures) / len(valid_moistures) if valid_moistures else 50.0
+    efficiency = 85.0 + (min(avg_moisture, 100) / 10.0)
 
     metrics = {
         "water_used_today": water_metrics["total_liters"],
@@ -234,14 +241,6 @@ async def get_dashboard(
         except Exception as e:
             logger.warning(f"Weather fetch failed: {e}")
 
-    # Load Master Data
-    master_status = None
-    master_res = await db.execute(
-        select(Device)
-        .where(Device.farm_id == farm.id, Device.is_master == True)
-        .order_by(Device.status == "active", Device.created_at.desc())
-    )
-    master_dev = master_res.scalars().first()
     if master_dev:
         # Get latest reading for this master
         from sqlalchemy import desc
