@@ -40,15 +40,17 @@ def create_app() -> FastAPI:
     )
 
     # CORS Policy
-    # CORS Policy
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[
-            "http://10.51.17.176:5000",
-            "http://10.51.17.176:8000",
-            "http://10.51.17.176",
+            "http://10.22.57.176:5000",
+            "http://10.22.57.176:8000",
+            "http://10.22.57.176",
+            "http://localhost:3000",
+            "http://localhost:5000",
+            "http://localhost:8000",
         ],
-        allow_origin_regex="http://(localhost|127\.0\.0\.1|10\.51\.17\.176):.*",
+        allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)(:\d+)?",
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],

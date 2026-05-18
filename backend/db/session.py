@@ -33,10 +33,14 @@ socket.getaddrinfo = _patched_getaddrinfo
 engine = create_async_engine(
     _db_url,
     echo=settings.DEBUG,
-    pool_size=5,
-    max_overflow=10,
-    pool_pre_ping=True,
-    connect_args={"ssl": "require"},
+    pool_size=10,
+    max_overflow=20,
+    pool_recycle=120,             # Aggressively recycle idle pool connections every 2 minutes
+    pool_pre_ping=True,            # Automatically verify connection health before executing
+    connect_args={
+        "ssl": "require",
+        "statement_cache_size": 0  # CRITICAL: Disable prepared statement cache for PgBouncer/Neon compatibility
+    },
 )
 
 AsyncSessionLocal = async_sessionmaker(

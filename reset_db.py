@@ -1,22 +1,8 @@
 import asyncio
-from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy import MetaData, text
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-# Convert postgresql:// to postgresql+asyncpg:// if needed
-if DATABASE_URL and DATABASE_URL.startswith("postgresql://"):
-    # Strip query parameters that asyncpg doesn't like
-    base_url = DATABASE_URL.split("?")[0]
-    DATABASE_URL = base_url.replace("postgresql://", "postgresql+asyncpg://")
+from sqlalchemy import text
+from backend.db.session import engine
 
 async def reset_db():
-    engine = create_async_engine(DATABASE_URL, echo=True)
-    metadata = MetaData()
-    
     async with engine.begin() as conn:
         print("Dropping all tables...")
         # Get all table names
@@ -32,7 +18,8 @@ async def reset_db():
             print("No tables found.")
 
     await engine.dispose()
-    print("Database cleared. Run alembic upgrade head to recreate schema.")
+    print("Database cleared. Run recreate_schema.py to recreate all tables.")
 
 if __name__ == "__main__":
     asyncio.run(reset_db())
+
