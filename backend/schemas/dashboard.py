@@ -16,6 +16,8 @@ class NodeStatus(BaseModel):
     battery_pct: Optional[float]
     current_moisture: Optional[float] = None
     temperature: Optional[float] = None
+    humidity: Optional[float] = None
+    valve_status: Optional[bool] = None
 
     class Config:
         from_attributes = True

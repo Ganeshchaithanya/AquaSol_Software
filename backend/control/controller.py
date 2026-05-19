@@ -275,14 +275,19 @@ async def execute_manual_override(
     node_slot_id: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Manual override from user — bypasses AI but still logs."""
+    zone_state = await state_manager.get_zone_state(zone_id, db)
+    curr_moisture = zone_state.get("current_moisture") if zone_state else None
+    max_thresh = zone_state.get("target_moisture_max") if zone_state else 80.0
+
     override_decision = {
         "decision": action,
         "duration_min": duration_min,
-        "target_moisture": None,
+        "target_moisture": max_thresh or 80.0,
         "confidence": 1.0,
         "policy_applied": "manual_override",
         "policy_reason": reason,
         "feature_importance": {},
         "is_manual_override": True,
+        "current_moisture": curr_moisture,
     }
     return await execute_decision(zone_id, farm_id, override_decision, db, master_mac, node_slot_id)

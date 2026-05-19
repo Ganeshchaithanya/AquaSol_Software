@@ -36,7 +36,13 @@ async def _resolve_user(token: str, db: AsyncSession) -> User:
     except (JWTError, ValueError, TypeError):
         raise HTTPException(status_code=401, detail="Invalid or expired token.")
 
-    result = await db.execute(select(User).where(User.id == u_id))
+    import uuid
+    try:
+        uuid_obj = uuid.UUID(str(u_id))
+    except ValueError:
+        raise HTTPException(status_code=401, detail="Invalid user ID format in token.")
+
+    result = await db.execute(select(User).where(User.id == uuid_obj))
     user = result.scalar_one_or_none()
     if not user:
         raise HTTPException(status_code=401, detail="User not found.")

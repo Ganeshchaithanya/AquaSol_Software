@@ -109,6 +109,8 @@ async def get_dashboard(
                     battery_pct=latest_nr.battery_pct if latest_nr else getattr(n, "battery_pct", None),
                     current_moisture=latest_nr.soil_moisture if latest_nr else None,
                     temperature=latest_nr.temperature if latest_nr else None,
+                    humidity=latest_nr.humidity if latest_nr else None,
+                    valve_status=latest_nr.valve_status if latest_nr else False,
                 ))
 
             # Get state for this zone
@@ -120,6 +122,20 @@ async def get_dashboard(
                 valid_moistures = [n.current_moisture for n in node_statuses if n.current_moisture is not None]
                 if valid_moistures:
                     state_moisture = sum(valid_moistures) / len(valid_moistures)
+
+            # Calculate temperature fallback from active nodes
+            state_temp = state.get("weather_temp")
+            if state_temp is None and node_statuses:
+                valid_temps = [n.temperature for n in node_statuses if n.temperature is not None]
+                if valid_temps:
+                    state_temp = sum(valid_temps) / len(valid_temps)
+
+            # Calculate humidity fallback from active nodes
+            state_hum = state.get("humidity_avg")
+            if state_hum is None and node_statuses:
+                valid_hums = [n.humidity for n in node_statuses if n.humidity is not None]
+                if valid_hums:
+                    state_hum = sum(valid_hums) / len(valid_hums)
 
             z_resp = ZoneStateResponse(
                 zone_id=zone.id,
@@ -140,11 +156,12 @@ async def get_dashboard(
                 target_moisture_min=state.get("target_moisture_min") or float(zone.min_moisture_threshold or 40.0),
                 target_moisture_max=state.get("target_moisture_max") or float(zone.max_moisture_threshold or 80.0),
                 moisture_deficit=state.get("moisture_deficit", 0.0),
-                temperature_avg_6h=state.get("weather_temp"),
-                humidity_avg_6h=state.get("humidity_avg"),
+                temperature_avg_6h=state_temp,
+                humidity_avg_6h=state_hum,
                 rain_prob_6h=state.get("weather_rain_prob_6h"),
                 valve_state=state.get("valve_state", "closed") == "open",
                 trust_score_avg=1.0,
+
                 virtual_sensing_active=state.get("uncertainty_flag") == "node_failure",
                 master_battery_pct=None,
                 last_decision=state.get("ai_recommendation"),

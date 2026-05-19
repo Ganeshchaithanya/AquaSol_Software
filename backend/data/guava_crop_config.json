@@ -1,0 +1,54 @@
+{
+    "name": "Guava",
+    "season": "zaid",
+    "duration_days": 150,
+    "water_req_mm": 1000.0,
+    "osmotic_shock_sensitive": true,
+    "rrc_max_mm_per_cycle": 20.0,
+    "rrc_stage_split": [
+        0.5,
+        0.5
+    ],
+    "temp_stress_threshold_c": 38.0,
+    "temp_optimal_min_c": 20.0,
+    "temp_optimal_max_c": 35.0,
+    "tsi_threshold": 45.0,
+    "kc_json": {
+        "initial": 0.5,
+        "development": 0.65,
+        "mid": 0.8,
+        "late": 0.65,
+        "harvest": 0.5
+    },
+    "stages_json": [
+        {
+            "name": "Pruning & Shooting",
+            "start": 0,
+            "end": 30,
+            "min_m": 60,
+            "max_m": 75
+        },
+        {
+            "name": "Flowering & Fruit Set",
+            "start": 31,
+            "end": 60,
+            "min_m": 65,
+            "max_m": 80
+        },
+        {
+            "name": "Fruit Development",
+            "start": 61,
+            "end": 120,
+            "min_m": 70,
+            "max_m": 85
+        },
+        {
+            "name": "Maturity & Harvest",
+            "start": 121,
+            "end": 150,
+            "min_m": 50,
+            "max_m": 65
+        }
+    ],
+    "soil_type": "loam"
+}

@@ -1,0 +1,124 @@
+{
+    "season": "Zaid",
+    "crops": [
+        {
+            "crop_name": "Guava",
+            "scientific_name": "Psidium guajava",
+            "category": "Fruits",
+            "total_duration_days": 150,
+            "water_requirement_mm": 1000,
+            "temperature_optimal_c": "20-35",
+            "preferred_soils": [
+                "loam",
+                "sandy loam",
+                "clay loam"
+            ],
+            "complete_farming_guide": {
+                "step_1_soil_preparation": {
+                    "title": "Soil Preparation & Pit Digging",
+                    "timing": "1-2 months before planting",
+                    "steps": [
+                        "Select deep, well-drained loamy to sandy loam soil with pH 6.0 to 7.5. Dig pits of 60x60x60 cm or 1x1x1 m size during summer. Expose pits to sun for 15-20 days for solarization and sterilization. Fill each pit with a mixture of topsoil, 15-20 kg of well-decomposed Farmyard Manure (FYM), 1 kg Single Super Phosphate (SSP), and 100g Neem cake to prevent termite attacks. Ensure the soil is free from debris and weeds, and the pit is filled to the brim with the soil mixture, leaving a small depression in the center for watering."
+                    ]
+                },
+                "step_2_propagation_and_planting": {
+                    "title": "Propagation & High-Density Planting",
+                    "timing": "Onset of monsoon (June-August)",
+                    "steps": [
+                        "Use air-layered (gootee) or grafted plants from certified nurseries for early fruiting and uniform quality. Standard spacing: 5m x 5m or 6m x 6m (approx. 277-400 plants/ha). High-Density Planting (HDP): 3m x 2m (approx. 1666 plants/ha) or Meadow orchard system (2m x 1m). Carefully plant the sapling in the center of the pre-filled pit without damaging the root ball. Stake the young plants to protect them from strong winds and irrigate immediately after planting. Water the plants regularly, providing about 10-15 liters of water per plant per day during the first few weeks after planting."
+                    ]
+                },
+                "step_3_training_and_pruning": {
+                    "title": "Training & Pruning (Bahar Treatment)",
+                    "timing": "Throughout vegetative phase / post-harvest",
+                    "steps": [
+                        "Train young plants to a single stem up to 60-70 cm to form a strong framework of 3-4 primary branches. Perform regular pruning to remove dry, diseased, water sprouts, and crisscrossing branches. For Bahar treatment (regulating flowering), withhold water for 3-4 weeks to induce dormancy, followed by light root exposure or root pruning. Prune 50% of the current season's shoots to 10-15 cm to stimulate fresh vegetative growth and heavy flowering. Remove any weak or spindly growth, and thin out the branches to allow for good air circulation and sunlight penetration."
+                    ]
+                },
+                "step_4_irrigation_management": {
+                    "title": "Irrigation Management & Recovery Strategy",
+                    "timing": "Throughout production cycle",
+                    "steps": [
+                        "Apply drip irrigation: most efficient system, saving 50-60% water while boosting yield. Irrigate young plants every 2-3 days in summer and 7-10 days in winter. Critical moisture stages: Flowering and Fruit Development stages. Water stress during fruit set causes heavy fruit drop. Avoid waterlogging as Guava is sensitive to root rot and collar rot under saturated conditions. Total water requirement: 1000 mm annually. Frequency is managed via crop evapotranspiration coefficients. Monitor soil moisture levels regularly, and adjust irrigation schedules accordingly to prevent water stress and ensure optimal growth."
+                    ]
+                },
+                "step_5_fertilizer_application": {
+                    "title": "Fertilizer & Micronutrient Application",
+                    "schedule": [
+                        {
+                            "timing": "Basal / Pre-Pruning (at onset of monsoon)",
+                            "fertilizers": "Apply 20-30 kg of well-decomposed FYM, 300g Nitrogen (approx 650g Urea), 200g Phosphorus (approx 1.25 kg SSP), and 300g Potassium (approx 500g MOP) per fully mature tree (6 years and older) to ensure optimal canopy development and high yields."
+                        },
+                        {
+                            "timing": "Fruit Set Stage (October-November)",
+                            "fertilizers": "Apply a top dressing of 150g Nitrogen (325g Urea) and 150g Potassium (250g MOP) per tree to support rapid fruit bulking and size development."
+                        },
+                        {
+                            "timing": "Foliar Spray for Micronutrients",
+                            "fertilizers": "Apply a foliar spray of 0.5% Zinc Sulphate and 0.2% Boric Acid at pre-flowering and fruit set stages. This prevents zinc bronzing, reduces fruit cracking, and significantly improves fruit sweetness and Vitamin C content. Spray micronutrients at 15-day intervals during the fruit development stage to ensure optimal nutrient uptake and utilization."
+                        }
+                    ]
+                },
+                "step_6_weed_management": {
+                    "title": "Weed Management & Intercropping",
+                    "steps": [
+                        "Keep the tree basins weed-free by regular shallow hoeing and hand weeding. Apply organic mulching (paddy straw, coconut husk, or dry leaves) to a thickness of 8-10 cm around the tree basin to conserve moisture and suppress weeds. Grow short-duration leguminous crops (cowpea, black gram, green gram) or vegetables as intercrops in the interspaces during the first 3-4 years to enrich soil and earn additional income. Use a combination of physical and cultural methods to control weeds, and avoid using herbicides to prevent soil and water pollution."
+                    ]
+                },
+                "step_7_pest_management": {
+                    "title": "Pest Management",
+                    "pests": [
+                        {
+                            "pest": "Guava Fruit Fly",
+                            "symptoms": "Adult female oviposits under fruit skin; maggots feed on pulp causing fruit decay and premature drop.",
+                            "control": "Install methyl eugenol pheromone traps @ 10 traps/ha. Collect and destroy fallen infested fruits. Spray Dimethoate 30 EC @ 2 ml/litre. Use a combination of cultural, biological, and chemical methods to manage fruit fly populations, including the use of parasitoids and predators to control fruit fly larvae."
+                        },
+                        {
+                            "pest": "Bark Eating Caterpillar",
+                            "symptoms": "Winding galleries made of frass and silk on tree bark; boring holes into branches.",
+                            "control": "Clean the affected bark, insert a wire to kill caterpillar, or inject 5 ml of Dichlorvos (0.05%) or petrol into the tunnel and plug with wet mud. Monitor tree bark regularly for signs of infestation, and use a combination of physical and chemical methods to control bark eating caterpillar populations."
+                        },
+                        {
+                            "pest": "Tea Mosquito Bug",
+                            "symptoms": "Nymphs and adults suck sap from tender shoots and fruits; brown water-soaked spots on fruits, drying of shoots.",
+                            "control": "Spray Malathion 50 EC @ 2 ml/litre or Quinalphos 25 EC @ 2 ml/litre during early morning hours. Use a combination of cultural and chemical methods to manage tea mosquito bug populations, including the use of neem oil and insecticidal soap to control nymph and adult populations."
+                        }
+                    ]
+                },
+                "step_8_disease_management": {
+                    "title": "Disease Management",
+                    "diseases": [
+                        {
+                            "disease": "Guava Wilt",
+                            "symptoms": "Yellowing and wilting of leaves, rapid drying of twigs, root decay, discoloration of wood; fatal.",
+                            "control": "Maintain strict sanitation. Drench soil around infected trees with Carbendazim (0.2%) or apply Trichoderma viride @ 250g per tree mixed with FYM. Avoid waterlogging. Remove and destroy infected trees to prevent the spread of the disease. Use a combination of cultural and chemical methods to manage guava wilt, including the use of resistant rootstocks and grafting to prevent infection."
+                        },
+                        {
+                            "disease": "Anthracnose",
+                            "symptoms": "Sunken dark brown spots on leaves, branches, and fruits (mummified fruits). Dies back from tip.",
+                            "control": "Prune and burn infected twigs. Spray Copper Oxychloride (0.3%) or Carbendazim (0.1%) at 15-day intervals. Use a combination of cultural and chemical methods to manage anthracnose, including the use of resistant cultivars and sanitation to prevent the spread of the disease."
+                        },
+                        {
+                            "disease": "Fruit Canker",
+                            "symptoms": "Elevated, circular, corky brown lesions on fruit surface; reduces market value.",
+                            "control": "Spray Bordeaux mixture (1%) or Copper Oxychloride @ 3g/litre at monthly intervals during fruit development. Use a combination of cultural and chemical methods to manage fruit canker, including the use of resistant cultivars and sanitation to prevent the spread of the disease."
+                        }
+                    ]
+                },
+                "step_9_harvesting": {
+                    "title": "Harvesting",
+                    "timing": "Day 121-150 (production cycle)",
+                    "steps": [
+                        "Harvest fruits when they reach full maturity, indicated by a shift in skin color from dark green to light green or pale yellow. Harvest individually by hand-picking to avoid bruising. Expected yield is 20-25 tonnes per hectare for a well-maintained mature orchard. Monitor fruit maturity regularly, and harvest fruits at the optimal stage to ensure maximum quality and yield."
+                    ]
+                },
+                "step_10_post_harvest": {
+                    "title": "Post-Harvest Handling & Packaging",
+                    "steps": [
+                        "Sort fruits to remove bruised, deformed, or diseased ones. Grade according to size, weight, and color. Pre-cool fruits to 8-10°C to increase shelf life. Pack in corrugated fiberboard boxes lined with newsprint or foam sheets. Store at 8-10°C and 85-90% Relative Humidity for 2-3 weeks. Use a combination of physical and chemical methods to maintain fruit quality during storage and transportation, including the use of ethylene absorbents and modified atmosphere packaging to extend shelf life."
+                    ]
+                }
+            }
+        }
+    ]
+}

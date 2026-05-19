@@ -19,18 +19,7 @@ def evaluate_mid_cycle(
     Evaluates telemetry received while a valve is actively open.
     Returns dictates on whether to 'stop' early or abort due to physical failure.
     """
-    valve_start_time = zone_state.get("last_irrigation_at")
-    basline_moisture = zone_state.get("moisture_at_irrigation_start")
-    target_moisture = zone_state.get("target_moisture_max", 80.0) # Assume upper bound
-    expected_gain_mm = zone_state.get("expected_gain_mm", 0.0)
-    
-    if not valve_start_time or basline_moisture is None:
-        return {"action": "continue", "confidence": 1.0}
-
-    now = datetime.now(timezone.utc)
-    elapsed_minutes = (now - valve_start_time).total_seconds() / 60.0
-
-    # 1. EARLY STOP LOGIC (Goal Reached)
+    # 1. EARLY STOP LOGIC (Goal Reached) - ALWAYS verify this first!
     if current_moisture >= target_moisture:
         logger.info(f"[control_loop] Target moisture reached ({current_moisture}% >= {target_moisture}%). Triggering early stop.")
         return {
@@ -38,6 +27,9 @@ def evaluate_mid_cycle(
             "reason": "target_reached",
             "confidence": 1.0
         }
+    
+    if not valve_start_time or basline_moisture is None:
+        return {"action": "continue", "confidence": 1.0}
 
     # 2. FLOW ANOMALY DETECTION (Delivery Rate)
     # We expect moisture to rise over time while valve is open.

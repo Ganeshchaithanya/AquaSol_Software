@@ -403,9 +403,10 @@ async def get_farm_sensor_history(
     """Fetch the latest sensor readings across the entire farm."""
     # 1. Resolve Farm
     farm_res = await db.execute(select(Farm).where(Farm.user_id == current_user.id))
-    farm = farm_res.scalar_one_or_none()
-    if not farm:
+    farms = farm_res.scalars().all()
+    if not farms:
         raise HTTPException(status_code=404, detail="Farm not found")
+    farm = farms[0]
 
     # 2. Fetch Readings with Device info
     result = await db.execute(

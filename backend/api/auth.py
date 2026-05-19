@@ -144,8 +144,14 @@ async def update_preference(uid: str = Path(..., title="The ID of the user to up
     new_lang = payload.get("preferred_lang")
     if not new_lang or new_lang not in ("en", "kn", "hi", "te"):
         raise HTTPException(status_code=400, detail="Invalid language code")
+        
+    import uuid
+    try:
+        uuid_obj = uuid.UUID(str(uid))
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid user ID format.")
     
-    result = await db.execute(select(User).where(User.id == uid))
+    result = await db.execute(select(User).where(User.id == uuid_obj))
     user = result.scalar_one_or_none()
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
