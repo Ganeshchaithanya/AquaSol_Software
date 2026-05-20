@@ -104,9 +104,9 @@ def create_app() -> FastAPI:
 
     # Company-internal admin endpoints (protected by X-Admin-Key header)
     from backend.api.admin import router as admin_router
-from backend.api.profile import router as profile_router
-from backend.api.support import router as support_router
-from backend.api.notifications import router as notifications_router
+    from backend.api.profile import router as profile_router
+    from backend.api.support import router as support_router
+    from backend.api.notifications import router as notifications_router
     app.include_router(admin_router, prefix=api_prefix)
     # New routers
     app.include_router(profile_router, prefix=api_prefix)
