@@ -15,6 +15,7 @@ from passlib.context import CryptContext
 from typing import Dict, Any
 from backend.db.session import get_db
 from backend.models.user import User
+from backend.models.password_reset_token import PasswordResetToken
 from backend.schemas.auth import RegisterRequest, LoginRequest, GoogleLoginRequest, TokenResponse, UserResponse
 from backend.models.farm import Farm, Zone
 from backend.config.settings import get_settings
@@ -169,6 +170,58 @@ from backend.app.dependencies import get_current_user
 async def get_me(current_user = Depends(get_current_user)):
     return current_user
 
+    
+@router.post("/forgot-password", status_code=200)
+async def forgot_password(payload: dict, db: AsyncSession = Depends(get_db)):
+    """Generate a password reset token and (placeholder) send email.
+    Expected payload: {"email": "user@example.com"}
+    """
+    email = payload.get("email")
+    if not email:
+        raise HTTPException(status_code=400, detail="Email required")
+    # Find user
+    result = await db.execute(select(User).where(User.email == email))
+    user = result.scalar_one_or_none()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    # Create token
+    token_obj = PasswordResetToken(
+        user_id=user.id,
+        token=secrets.token_urlsafe(32),
+        expires_at=datetime.utcnow() + timedelta(hours=1)
+    )
+    db.add(token_obj)
+    await db.commit()
+    # TODO: integrate real email service
+    logger.info(f"[auth] Password reset token generated for {email}")
+    return {"status": "email_sent", "email": email}
+
+@router.post("/reset-password", status_code=200)
+async def reset_password(payload: dict, db: AsyncSession = Depends(get_db)):
+    """Reset password using a valid token.
+    Expected payload: {"token": "...", "new_password": "..."}
+    """
+    token = payload.get("token")
+    new_password = payload.get("new_password")
+    if not token or not new_password:
+        raise HTTPException(status_code=400, detail="Token and new_password required")
+    result = await db.execute(select(PasswordResetToken).where(PasswordResetToken.token == token))
+    token_obj = result.scalar_one_or_none()
+    if not token_obj:
+        raise HTTPException(status_code=400, detail="Invalid token")
+    if token_obj.expires_at < datetime.utcnow():
+        raise HTTPException(status_code=400, detail="Token expired")
+    # Update user password
+    user_res = await db.execute(select(User).where(User.id == token_obj.user_id))
+    user = user_res.scalar_one_or_none()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    user.hashed_password = await _hash(new_password)
+    # Invalidate token
+    await db.delete(token_obj)
+    await db.commit()
+    logger.info(f"[auth] Password reset successful for user {user.id}")
+    return {"status": "password_updated"}
 
 from fastapi import Path
 

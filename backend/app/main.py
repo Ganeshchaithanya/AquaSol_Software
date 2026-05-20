@@ -43,18 +43,15 @@ def create_app() -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[
-            "http://10.22.57.176:5000",
-            "http://10.22.57.176:8000",
-            "http://10.22.57.176",
-            "http://localhost:3000",
-            "http://localhost:5000",
-            "http://localhost:8000",
+            "https://irrigation-api-v2.onrender.com",
         ],
-        allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)(:\d+)?",
+        allow_origin_regex=r"https?://irrigation-api-v2\.onrender\.com(:\d+)?",
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
         expose_headers=["*"],
+        # No stray commas or duplicate regex
+        
     )
 
     # Request Logger for Debugging
@@ -107,8 +104,19 @@ def create_app() -> FastAPI:
 
     # Company-internal admin endpoints (protected by X-Admin-Key header)
     from backend.api.admin import router as admin_router
+from backend.api.profile import router as profile_router
+from backend.api.support import router as support_router
+from backend.api.notifications import router as notifications_router
     app.include_router(admin_router, prefix=api_prefix)
+    # New routers
+    app.include_router(profile_router, prefix=api_prefix)
+    app.include_router(support_router, prefix=api_prefix)
+    app.include_router(notifications_router, prefix=api_prefix)
 
     return app
 
 app = create_app()
+
+# Serve static avatar files
+from fastapi.staticfiles import StaticFiles
+app.mount("/static", StaticFiles(directory="static"), name="static")

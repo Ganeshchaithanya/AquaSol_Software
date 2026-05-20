@@ -49,7 +49,11 @@ async def truncate_all():
         # Disable constraints temporarily if possible, or just follow order
         for table in ORDERED_TABLES:
             try:
-                result = await conn.execute(text(f'DELETE FROM "{table}"'))
+                if table == "users":
+                    # Preserve admin users (is_admin = true)
+                    result = await conn.execute(text('DELETE FROM "users" WHERE is_admin = false'))
+                else:
+                    result = await conn.execute(text(f'DELETE FROM "{table}"'))
                 print(f"  Cleared  {table:<30} ({result.rowcount} rows deleted)")
             except Exception as e:
                 print(f"  Error clearing {table}: {e}")

@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: irrigation-api
+    env: docker
+    dockerfilePath: Dockerfile
+    buildCommand: ""
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DATABASE_URL
+        value: ${DATABASE_URL}
+      - key: SECRET_KEY
+        value: ${SECRET_KEY}
+      - key: GROQ_API_KEY
+        value: ${GROQ_API_KEY}
+      - key: WEATHER_API_KEY
+        value: ${WEATHER_API_KEY}
+      - key: UI_API_KEY
+        value: ${UI_API_KEY}
+      - key: AQUASOL_ADMIN_KEY
+        value: ${AQUASOL_ADMIN_KEY}
+    healthCheckPath: "/health"
+    autoDeploy: true
+    plan: starter
+    region: oregon

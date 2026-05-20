@@ -54,7 +54,7 @@ async def check_device_health():
         except Exception as e:
             logger.error(f"[scheduler] Error in health check loop: {e}")
             
-        await asyncio.sleep(60) # Check every 60 seconds
+        await asyncio.sleep(10) # Check every 10 seconds
 
 def start_scheduler():
     asyncio.create_task(check_device_health())

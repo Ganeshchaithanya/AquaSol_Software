@@ -254,6 +254,52 @@ async def get_system_health(db: AsyncSession = Depends(get_db)):
         "nodes": nodes
     }
 
+# ─── Node Detail Endpoint ────────────────────────────────────────────────────────
+@router.get("/node/{node_id}/latest")
+async def get_node_latest_reading(
+    node_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+) -> dict:
+    """Return the most recent sensor reading for a node.
+    The user must belong to a farm that owns the node.
+    """
+    # Resolve node slot
+    node_res = await db.execute(select(NodeSlot).where(NodeSlot.id == node_id))
+    node = node_res.scalar_one_or_none()
+    if not node:
+        raise HTTPException(status_code=404, detail="Node not found")
+    # Verify farm ownership
+    farm_res = await db.execute(
+        select(Farm)
+        .where(Farm.user_id == current_user.id)
+        .order_by(Farm.created_at.desc())
+        .limit(1)
+    )
+    farm = farm_res.scalar_one_or_none()
+    if not farm or node.farm_id != farm.id:
+        raise HTTPException(status_code=403, detail="Not authorized for this node")
+    # Latest sensor reading
+    reading_res = await db.execute(
+        select(SensorReading)
+        .where(SensorReading.node_slot_id == node_id)
+        .order_by(SensorReading.time.desc())
+        .limit(1)
+    )
+    reading = reading_res.scalar_one_or_none()
+    if not reading:
+        raise HTTPException(status_code=404, detail="No sensor data for this node")
+    return {
+        "node_id": str(node.id),
+        "timestamp": reading.time.isoformat(),
+        "soil_moisture": float(reading.soil_moisture) if reading.soil_moisture is not None else None,
+        "temperature": float(reading.temperature) if reading.temperature is not None else None,
+        "humidity": float(reading.humidity) if reading.humidity is not None else None,
+        "valve_status": reading.valve_status,
+        "is_virtual": reading.is_virtual,
+    }
+
+
 
 @router.get("/app/version")
 async def get_app_version():
