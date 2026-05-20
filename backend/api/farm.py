@@ -168,6 +168,19 @@ async def get_acre_zones(acre_id: uuid.UUID, db: AsyncSession = Depends(get_db))
     zones = res.scalars().all()
     return [{"id": str(z.id), "name": z.name} for z in zones]
 
+@router.get("/zones/{zone_id}/node_slots")
+async def get_zone_node_slots(
+    zone_id: uuid.UUID,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Get all node slots for a specific zone."""
+    res = await db.execute(
+        select(NodeSlot).where(NodeSlot.zone_id == zone_id).order_by(NodeSlot.name)
+    )
+    slots = res.scalars().all()
+    return [{"id": str(s.id), "name": s.name} for s in slots]
+
 @router.post("/node_slot", status_code=status.HTTP_201_CREATED)
 async def create_node_slot(
     zone_id: uuid.UUID = Body(..., embed=True),

@@ -71,8 +71,110 @@ async def get_dashboard(
     )
     all_zones = zones_result.scalars().all()
 
+    processed_zones = {}
+    for zone in all_zones:
+        # Get nodes for this zone
+        nodes_result = await db.execute(
+            select(Device)
+            .join(NodeSlot, NodeSlot.id == Device.node_slot_id)
+            .where(NodeSlot.zone_id == zone.id)
+        )
+        nodes = nodes_result.scalars().all()
+        node_statuses = []
+        for n in nodes:
+            # Get latest reading for this specific node
+            nr_res = await db.execute(
+                select(SensorReading)
+                .where(SensorReading.device_id == n.id)
+                .order_by(SensorReading.time.desc())
+                .limit(1)
+            )
+            latest_nr = nr_res.scalar_one_or_none()
+            
+            # Dynamically calculate online/offline status based on last seen time
+            is_online = False
+            if n.last_seen_at:
+                delta = (datetime.now(timezone.utc) - n.last_seen_at).total_seconds() / 60
+                if delta < 5.0: # 5 minutes freshness window
+                    is_online = True
+            
+            node_statuses.append(NodeStatus(
+                node_label=n.node_label or "Node",
+                mac_address=n.mac_address or "PENDING",
+                status="online" if is_online else "offline",
+                trust_score=n.trust_score or 1.0,
+                is_virtual=getattr(n, "is_virtual", False),
+                last_seen=n.last_seen_at,
+                battery_pct=latest_nr.battery_pct if latest_nr else getattr(n, "battery_pct", None),
+                current_moisture=latest_nr.soil_moisture if latest_nr else None,
+                temperature=latest_nr.temperature if latest_nr else None,
+                humidity=latest_nr.humidity if latest_nr else None,
+                valve_status=latest_nr.valve_status if latest_nr else False,
+            ))
+
+        # Get state for this zone
+        state = next((s for s in zone_states if s.get("zone_id") == str(zone.id)), {})
+
+        # Calculate moisture fallback
+        state_moisture = state.get("current_moisture")
+        if state_moisture is None and node_statuses:
+            valid_moistures = [n.current_moisture for n in node_statuses if n.current_moisture is not None]
+            if valid_moistures:
+                state_moisture = sum(valid_moistures) / len(valid_moistures)
+
+        # Calculate temperature fallback from active nodes
+        state_temp = state.get("weather_temp")
+        if state_temp is None and node_statuses:
+            valid_temps = [n.temperature for n in node_statuses if n.temperature is not None]
+            if valid_temps:
+                state_temp = sum(valid_temps) / len(valid_temps)
+
+        # Calculate humidity fallback from active nodes
+        state_hum = state.get("humidity_avg")
+        if state_hum is None and node_statuses:
+            valid_hums = [n.humidity for n in node_statuses if n.humidity is not None]
+            if valid_hums:
+                state_hum = sum(valid_hums) / len(valid_hums)
+
+        z_resp = ZoneStateResponse(
+            zone_id=zone.id,
+            name=zone.name,
+            crop_type=zone.crop_type,
+            season=zone.season, 
+            current_stage=state.get("current_stage") or "Vegetative",
+            days_after_planting=state.get("days_after_planting") or (
+                (datetime.now(timezone.utc).date() - zone.sowing_date).days if zone.sowing_date else 0
+            ),
+            current_moisture=state_moisture,
+            estimated_root_moisture=state.get("estimated_root_moisture") or state.get("current_moisture"),
+            operating_mode=zone.operating_mode or "active",
+            moisture_trend=state.get("moisture_trend", 0.0),
+            predicted_moisture_1h=state.get("predicted_moisture_1h"),
+            predicted_moisture_6h=state.get("predicted_moisture_6h"),
+            predicted_moisture_24h=state.get("predicted_moisture_24h"),
+            target_moisture_min=state.get("target_moisture_min") or float(zone.min_moisture_threshold or 40.0),
+            target_moisture_max=state.get("target_moisture_max") or float(zone.max_moisture_threshold or 80.0),
+            moisture_deficit=state.get("moisture_deficit", 0.0),
+            temperature_avg_6h=state_temp,
+            humidity_avg_6h=state_hum,
+            rain_prob_6h=state.get("weather_rain_prob_6h"),
+            valve_state=state.get("valve_state", "closed") == "open",
+            trust_score_avg=1.0,
+
+            virtual_sensing_active=state.get("uncertainty_flag") == "node_failure",
+            master_battery_pct=None,
+            last_decision=state.get("ai_recommendation"),
+            last_decision_at=state.get("updated_at"),
+            last_irrigation_at=state.get("last_irrigation_at"),
+            last_irrigation_duration_min=state.get("last_irrigation_duration"),
+            active_alerts=[],
+            nodes=node_statuses,
+            updated_at=state.get("updated_at"),
+        )
+        processed_zones[zone.id] = z_resp
+
     acre_responses = []
-    zone_responses = [] # For compatibility
+    zone_responses = list(processed_zones.values())
 
     for acre in acres:
         acre_zones = [z for z in all_zones if z.acre_id == acre.id]
@@ -81,110 +183,12 @@ async def get_dashboard(
         moisture_count = 0
 
         for zone in acre_zones:
-            # Get nodes for this zone
-            nodes_result = await db.execute(
-                select(Device)
-                .join(NodeSlot, NodeSlot.id == Device.node_slot_id)
-                .where(NodeSlot.zone_id == zone.id)
-            )
-            nodes = nodes_result.scalars().all()
-            node_statuses = []
-            for n in nodes:
-                # Get latest reading for this specific node
-                nr_res = await db.execute(
-                    select(SensorReading)
-                    .where(SensorReading.device_id == n.id)
-                    .order_by(SensorReading.time.desc())
-                    .limit(1)
-                )
-                latest_nr = nr_res.scalar_one_or_none()
-                
-                # Dynamically calculate online/offline status based on last seen time
-                is_online = False
-                if n.last_seen_at:
-                    delta = (datetime.now(timezone.utc) - n.last_seen_at).total_seconds() / 60
-                    if delta < 5.0: # 5 minutes freshness window
-                        is_online = True
-                
-                node_statuses.append(NodeStatus(
-                    node_label=n.node_label or "Node",
-                    mac_address=n.mac_address or "PENDING",
-                    status="online" if is_online else "offline",
-                    trust_score=n.trust_score or 1.0,
-                    is_virtual=getattr(n, "is_virtual", False),
-                    last_seen=n.last_seen_at,
-                    battery_pct=latest_nr.battery_pct if latest_nr else getattr(n, "battery_pct", None),
-                    current_moisture=latest_nr.soil_moisture if latest_nr else None,
-                    temperature=latest_nr.temperature if latest_nr else None,
-                    humidity=latest_nr.humidity if latest_nr else None,
-                    valve_status=latest_nr.valve_status if latest_nr else False,
-                ))
-
-            # Get state for this zone
-            state = next((s for s in zone_states if s.get("zone_id") == str(zone.id)), {})
-
-            # Calculate moisture fallback
-            state_moisture = state.get("current_moisture")
-            if state_moisture is None and node_statuses:
-                valid_moistures = [n.current_moisture for n in node_statuses if n.current_moisture is not None]
-                if valid_moistures:
-                    state_moisture = sum(valid_moistures) / len(valid_moistures)
-
-            # Calculate temperature fallback from active nodes
-            state_temp = state.get("weather_temp")
-            if state_temp is None and node_statuses:
-                valid_temps = [n.temperature for n in node_statuses if n.temperature is not None]
-                if valid_temps:
-                    state_temp = sum(valid_temps) / len(valid_temps)
-
-            # Calculate humidity fallback from active nodes
-            state_hum = state.get("humidity_avg")
-            if state_hum is None and node_statuses:
-                valid_hums = [n.humidity for n in node_statuses if n.humidity is not None]
-                if valid_hums:
-                    state_hum = sum(valid_hums) / len(valid_hums)
-
-            z_resp = ZoneStateResponse(
-                zone_id=zone.id,
-                name=zone.name,
-                crop_type=zone.crop_type,
-                season=zone.season, 
-                current_stage=state.get("current_stage") or "Vegetative",
-                days_after_planting=state.get("days_after_planting") or (
-                    (datetime.now(timezone.utc).date() - zone.sowing_date).days if zone.sowing_date else 0
-                ),
-                current_moisture=state_moisture,
-                estimated_root_moisture=state.get("estimated_root_moisture") or state.get("current_moisture"),
-                operating_mode=zone.operating_mode or "active",
-                moisture_trend=state.get("moisture_trend", 0.0),
-                predicted_moisture_1h=state.get("predicted_moisture_1h"),
-                predicted_moisture_6h=state.get("predicted_moisture_6h"),
-                predicted_moisture_24h=state.get("predicted_moisture_24h"),
-                target_moisture_min=state.get("target_moisture_min") or float(zone.min_moisture_threshold or 40.0),
-                target_moisture_max=state.get("target_moisture_max") or float(zone.max_moisture_threshold or 80.0),
-                moisture_deficit=state.get("moisture_deficit", 0.0),
-                temperature_avg_6h=state_temp,
-                humidity_avg_6h=state_hum,
-                rain_prob_6h=state.get("weather_rain_prob_6h"),
-                valve_state=state.get("valve_state", "closed") == "open",
-                trust_score_avg=1.0,
-
-                virtual_sensing_active=state.get("uncertainty_flag") == "node_failure",
-                master_battery_pct=None,
-                last_decision=state.get("ai_recommendation"),
-                last_decision_at=state.get("updated_at"),
-                last_irrigation_at=state.get("last_irrigation_at"),
-                last_irrigation_duration_min=state.get("last_irrigation_duration"),
-                active_alerts=[],
-                nodes=node_statuses,
-                updated_at=state.get("updated_at"),
-            )
-            acre_zone_responses.append(z_resp)
-            zone_responses.append(z_resp)
-
-            if z_resp.current_moisture is not None:
-                total_moisture += z_resp.current_moisture
-                moisture_count += 1
+            z_resp = processed_zones.get(zone.id)
+            if z_resp:
+                acre_zone_responses.append(z_resp)
+                if z_resp.current_moisture is not None:
+                    total_moisture += z_resp.current_moisture
+                    moisture_count += 1
 
         acre_responses.append(AcreStateResponse(
             acre_id=acre.id,

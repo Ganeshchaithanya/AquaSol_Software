@@ -35,24 +35,31 @@ def run_simulation():
         me_data = me_resp.json()
         print(f"Logged in as: {me_data.get('name')}")
         
-        # We need to hit a farms endpoint to get the user's farm
-        farms_resp = httpx.get(f"{API_URL}/farms", headers=headers)
-        farms = farms_resp.json()
+        # Get farm/zone from dashboard
+        dashboard_resp = httpx.get(f"{API_URL}/dashboard", headers=headers, timeout=30.0)
+        dashboard = dashboard_resp.json()
+        print(f"Dashboard response: {dashboard_resp.status_code}")
         
-        if not farms:
-            print("No farm found for user! Registering automatically creates one now, but admin user was seeded without one. Let's create one.")
-            farm_resp = httpx.post(f"{API_URL}/farms", headers=headers, json={"name": "Auto Farm", "location": "Test", "total_acres": 1})
-            farm_id = farm_resp.json()["id"]
-            zone_resp = httpx.post(f"{API_URL}/farms/{farm_id}/zones", headers=headers, json={"name": "Auto Zone", "area_acres": 1})
-            zone_id = zone_resp.json()["id"]
+        farm_id = dashboard.get("farm_id")
+        farm_name = dashboard.get("name", "")
+        zones = dashboard.get("zones", [])
+        
+        # If farm is a blank placeholder ("New User"), create a real one
+        if not farm_name or farm_name == "New User":
+            print("No real farm found. Creating one...")
+            farm_create = httpx.post(f"{API_URL}/farms/farm", headers=headers,
+                json={"name": "Simulator Farm", "location": "Auto", "total_acres": 1}, timeout=30.0)
+            print(f"Farm create: {farm_create.status_code} - {farm_create.text}")
+            farm_id = farm_create.json()["id"]
+        
+        if not zones:
+            print("No zone found. Creating one...")
+            zone_create = httpx.post(f"{API_URL}/farms/zone", headers=headers,
+                json={"farm_id": farm_id, "name": "Zone 1", "crop_type": "Paddy", "soil_type": "Loam", "area_acres": 1}, timeout=30.0)
+            print(f"Zone create: {zone_create.status_code} - {zone_create.text}")
+            zone_id = zone_create.json()["id"]
         else:
-            farm_id = farms[0]["id"]
-            zones = farms[0].get("zones", [])
-            if not zones:
-                zone_resp = httpx.post(f"{API_URL}/farms/{farm_id}/zones", headers=headers, json={"name": "Auto Zone", "area_acres": 1})
-                zone_id = zone_resp.json()["id"]
-            else:
-                zone_id = zones[0]["id"]
+            zone_id = zones[0]["zone_id"]
                 
         print(f"Using Farm: {farm_id}")
         print(f"Using Zone: {zone_id}")
@@ -155,9 +162,11 @@ def run_simulation():
             else:
                 print(f"Failed to send telemetry: {resp.status_code} {resp.text}")
                 
-            time.sleep(15) # Send every 15 seconds for rapid testing
+            time.sleep(30) # Send every 30 seconds to update readings in db
             
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         print(f"Simulation error: {e}")
 
 if __name__ == "__main__":
