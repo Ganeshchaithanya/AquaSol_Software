@@ -10,7 +10,7 @@ import os
 class Settings(BaseSettings):
     # ── Project ──────────────────────────────────────────────────────────
     PROJECT_NAME: str = "AquaSol Irrigation API"
-    VERSION: str = "2.0.0"
+    VERSION: str = "3.6.0"
     DEBUG: bool = False
 
     # ── Database ─────────────────────────────────────────────────────────
