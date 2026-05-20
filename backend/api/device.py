@@ -312,19 +312,9 @@ async def get_app_version():
 
 @router.get("/app/download")
 async def download_app():
-    """Serves the latest APK file directly to the client."""
-    import os
-    from fastapi.responses import FileResponse
-    
-    apk_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "app-release.apk"))
-    if not os.path.exists(apk_path):
-        raise HTTPException(
-            status_code=404, 
-            detail="APK file not found on server."
-        )
-    return FileResponse(
-        path=apk_path,
-        media_type="application/vnd.android.package-archive",
-        filename="aquasol-release.apk"
-    )
+    """Redirects the client to the latest app release on GitHub."""
+    from fastapi.responses import RedirectResponse
+    latest_release_url = "https://github.com/Ganeshchaithanya/AquaSol/releases/latest/download/app-release.apk"
+    return RedirectResponse(url=latest_release_url)
+
 
