@@ -64,6 +64,15 @@ async def create_farm(
     """Create a new farm for a user with auto-named acres."""
     user_id = current_user.id
     
+    # Clean up any existing default/seeded farms to ensure a clean, single-farm state
+    existing_farms_res = await db.execute(
+        select(Farm).where(Farm.user_id == user_id)
+    )
+    existing_farms = existing_farms_res.scalars().all()
+    for existing_farm in existing_farms:
+        await db.delete(existing_farm)
+    await db.flush()
+    
     farm = Farm(
         id=uuid.uuid4(),
         user_id=user_id,
