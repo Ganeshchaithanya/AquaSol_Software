@@ -50,8 +50,8 @@ async def ingest_sensors(
         )
     )
 
-    # Normalize codes
-    batch_code = batch.pairing_code.upper() if batch.pairing_code else None
+    # Normalize codes (with MAC fallback if pairing code is missing)
+    batch_code = batch.pairing_code.upper() if batch.pairing_code else batch.master_mac.replace(":", "")[-6:].upper()
 
     # 1. Resolve Master
     res = await db.execute(

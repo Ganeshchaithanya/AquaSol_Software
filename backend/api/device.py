@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update, func
+from typing import Optional
 from datetime import datetime, timezone, timedelta
 import traceback
 import secrets
@@ -24,11 +25,14 @@ class DiscoverRequest(BaseModel):
     role: str = "node" # master | node
 
 class AssignRequest(BaseModel):
-    pairing_code: str
+    pairing_code: Optional[str] = None
+    mac: Optional[str] = None
+    device_id: Optional[str] = None
     farm_id: str
-    acre_id: str
-    zone_id: str
-    node_slot_id: str
+    acre_id: Optional[str] = None
+    zone_id: Optional[str] = None
+    node_slot_id: Optional[str] = None
+    node_name: Optional[str] = None
 
 # ─── Endpoints ─────────────────────────────────────────────────────────────
 
@@ -137,14 +141,22 @@ async def assign_device(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    """App-side: Bind a physical Device to a logical NodeSlot using pairing code."""
+    """App-side: Bind a physical Device to a logical NodeSlot using pairing code or MAC address scanner."""
     try:
-        # 1. Resolve Device by Pairing Code
-        res = await db.execute(select(Device).where(Device.pairing_code == payload.pairing_code.upper()))
-        device = res.scalar_one_or_none()
-        
+        # 1. Resolve Device by Pairing Code, MAC, or Device ID
+        device = None
+        if payload.mac:
+            res = await db.execute(select(Device).where(Device.mac_address == payload.mac))
+            device = res.scalar_one_or_none()
+        elif payload.device_id:
+            res = await db.execute(select(Device).where(Device.device_uid == payload.device_id))
+            device = res.scalar_one_or_none()
+        elif payload.pairing_code:
+            res = await db.execute(select(Device).where(Device.pairing_code == payload.pairing_code.upper()))
+            device = res.scalar_one_or_none()
+            
         if not device:
-            raise HTTPException(status_code=404, detail="Invalid pairing code. Device not discovered.")
+            raise HTTPException(status_code=404, detail="Device not found/discovered yet. Please plug in the device first.")
 
         # 2. Validate IDs
         def safe_uuid(id_str: str) -> uuid.UUID:
@@ -152,22 +164,45 @@ async def assign_device(
             except: raise HTTPException(status_code=400, detail=f"Invalid UUID: {id_str}")
 
         farm_id = safe_uuid(payload.farm_id)
-        node_slot_id = safe_uuid(payload.node_slot_id)
-
+        
         # 3. If already claimed — only allow re-assignment to the SAME farm (reinstall/swap scenario)
-        #    Block attempts to steal a device that belongs to a different farm entirely.
         if device.is_claimed and device.farm_id and str(device.farm_id) != str(farm_id):
             raise HTTPException(
                 status_code=409,
                 detail="Device is already permanently assigned to a different farm."
             )
 
-        # 4. Bind Device to NodeSlot (first time or same-farm re-assignment)
+        # 4. Resolve NodeSlot
+        node_slot_id = None
+        if payload.node_slot_id:
+            node_slot_id = safe_uuid(payload.node_slot_id)
+        elif payload.zone_id and payload.node_name:
+            zone_uuid = safe_uuid(payload.zone_id)
+            slot_res = await db.execute(
+                select(NodeSlot).where(
+                    NodeSlot.zone_id == zone_uuid,
+                    NodeSlot.name == payload.node_name
+                )
+            )
+            slot = slot_res.scalar_one_or_none()
+            if not slot:
+                # Create it dynamically if missing
+                slot = NodeSlot(
+                    id=uuid.uuid4(),
+                    zone_id=zone_uuid,
+                    name=payload.node_name
+                )
+                db.add(slot)
+                await db.flush()
+            node_slot_id = slot.id
+
+        # 5. Bind Device to NodeSlot (first time or same-farm re-assignment)
         device.farm_id = farm_id
         device.node_slot_id = node_slot_id
         device.is_claimed = True
         device.status = "active"
         device.bound_at = datetime.now(timezone.utc)
+        device.node_label = payload.node_name or ("Main Controller" if device.is_master else "Acre Node")
         
         # Issue a secret if it's the first time
         if not device.device_secret:
@@ -177,7 +212,8 @@ async def assign_device(
         return {
             "status": "success", 
             "mac": device.mac_address,
-            "role": device.role
+            "role": device.role,
+            "node_label": device.node_label
         }
 
     except HTTPException:
