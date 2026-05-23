@@ -42,12 +42,17 @@ def _create_token(user_id, lang: str) -> str:
 
 @router.post("/register", response_model=TokenResponse, status_code=201)
 async def register(payload: RegisterRequest, db: AsyncSession = Depends(get_db)):
+    # Normalizing inputs to prevent trailing space / casing issues
+    email_clean = payload.email.strip().lower() if payload.email else None
+    phone_clean = payload.phone.strip() if payload.phone else None
+    name_clean = payload.name.strip() if payload.name else "Farmer"
+
     # Duplicate check
     conditions = []
-    if payload.phone:
-        conditions.append(User.phone == payload.phone)
-    if payload.email:
-        conditions.append(User.email == payload.email)
+    if phone_clean:
+        conditions.append(User.phone == phone_clean)
+    if email_clean:
+        conditions.append(User.email == email_clean)
     
     if conditions:
         result = await db.execute(select(User).where(or_(*conditions)))
@@ -55,9 +60,9 @@ async def register(payload: RegisterRequest, db: AsyncSession = Depends(get_db))
             raise HTTPException(status_code=409, detail="Phone or email already registered.")
 
     user = User(
-        name=payload.name,
-        phone=payload.phone,
-        email=payload.email,
+        name=name_clean,
+        phone=phone_clean,
+        email=email_clean,
         hashed_password=await _hash(payload.password),
         preferred_lang=payload.preferred_lang or "en",
     )
