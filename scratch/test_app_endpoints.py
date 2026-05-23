@@ -14,7 +14,7 @@ async def test_get_app_version():
     print("Testing get_app_version...")
     response = await get_app_version()
     print(f"Response: {response}")
-    assert response["version"] == "2.0.0"
+    assert response["version"] == "3.7.0+1"
     assert response["download_url"] == "https://irrigation-api-v2.onrender.com/api/v1/app/download"
     print("OK - get_app_version test passed successfully!\n")
 
@@ -28,10 +28,9 @@ async def test_download_app():
     try:
         response = await download_app()
         print(f"Response type: {type(response)}")
-        assert isinstance(response, FileResponse)
-        assert response.path == apk_path
-        assert response.media_type == "application/vnd.android.package-archive"
-        assert response.filename == "aquasol-release.apk"
+        from fastapi.responses import RedirectResponse
+        assert isinstance(response, RedirectResponse)
+        assert response.headers["location"] == "https://github.com/Ganeshchaithanya/AquaSol/releases/latest/download/app-release.apk"
         print("OK - download_app test passed successfully!\n")
     except HTTPException as e:
         print(f"Caught expected/unexpected HTTPException: {e.status_code} - {e.detail}")
