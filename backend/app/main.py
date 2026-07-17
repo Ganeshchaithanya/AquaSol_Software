@@ -40,18 +40,20 @@ def create_app() -> FastAPI:
     )
 
     # CORS Policy
+    # We allow the specific render domain, plus a wildcard regex to catch any render subdomain if it gets renamed, 
+    # as well as localhost for local development.
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[
             "https://irrigation-api-v2.onrender.com",
+            "http://localhost:3000",
+            "http://localhost:8000"
         ],
-        allow_origin_regex=r"https?://irrigation-api-v2\.onrender\.com(:\d+)?",
+        allow_origin_regex=r"https?://.*\.onrender\.com(:\d+)?",
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
         expose_headers=["*"],
-        # No stray commas or duplicate regex
-        
     )
 
     # Request Logger for Debugging
@@ -112,6 +114,22 @@ def create_app() -> FastAPI:
     app.include_router(profile_router, prefix=api_prefix)
     app.include_router(support_router, prefix=api_prefix)
     app.include_router(notifications_router, prefix=api_prefix)
+
+    # Root endpoint for health checks (Fixes the 404 on /)
+    @app.get("/")
+    async def root():
+        return {
+            "status": "online", 
+            "message": "AquaSol API is running",
+            "version": settings.VERSION
+        }
+
+    # Favicon endpoint (Fixes the 404 on /favicon.ico)
+    @app.get("/favicon.ico", include_in_schema=False)
+    async def favicon():
+        # Return 204 No Content for favicon requests from browsers
+        from fastapi import Response
+        return Response(status_code=204)
 
     return app
 
