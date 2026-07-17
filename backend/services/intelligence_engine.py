@@ -328,7 +328,8 @@ async def process_telemetry_and_decide(
         
         # ── Spatial Reasoning (Root-Zone Estimation) ───────────────────────
         temp_now = ndata.get("temperature") or 28.0
-        estimated_root = estimate_root_moisture(moisture_fused, soil_type, temp_now)
+        humid_now = ndata.get("humidity") or 65.0
+        estimated_root = estimate_root_moisture(moisture_fused, soil_type, temp_now, humid_now)
         depth_mismatch = detect_depth_mismatch(zone.sensor_depth_cm or 10, zone.root_depth_cm or 30)
         
         logger.info(f"[spatial] Zone {zone_id}: Fused={moisture_fused}% Estimated_Root={estimated_root}% Mismatch={depth_mismatch}")

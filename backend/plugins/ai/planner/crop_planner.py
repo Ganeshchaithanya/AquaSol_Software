@@ -1,6 +1,6 @@
 """
 AI Plugin — Crop Planner (v2)
-Memory = multilingual-e5-large + FAISS semantic search over ICAR crop guides
+Memory = multilingual-e5-small + FAISS semantic search over ICAR crop guides
 Brain  = HuggingFace Inference API (Mistral / LLaMA)
 
 Upgrades vs v1:
@@ -78,7 +78,7 @@ def load_planner():
         if os.environ.get("RENDER") == "true":
             logger.warning("[planner] Running on Render Free Tier — skipping heavy SentenceTransformer RAG indexing to prevent Out-Of-Memory (OOM) crash.")
         else:
-            logger.info("[planner] Loading multilingual-e5-large for RAG memory...")
+            logger.info("[planner] Loading multilingual-e5-small for RAG memory...")
             _e5_model = SentenceTransformer(settings.E5_MODEL_NAME)
             _build_guide_index()
             logger.info(f"[planner] Indexed {len(_guide_chunks)} guide chunks "
