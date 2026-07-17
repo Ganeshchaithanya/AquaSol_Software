@@ -34,7 +34,8 @@ pandas==2.2.2
 
 # ─── TTS & STT — Voice Output & Input (i18n) ───────────────────
 openai-whisper
-gTTS==2.5.1
+edge-tts
+duckduckgo-search
 aiofiles==23.2.1
 
 # ─── MQTT — Hardware Control ─────────────────────────────────

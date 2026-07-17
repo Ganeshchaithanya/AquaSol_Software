@@ -265,23 +265,32 @@ async def chat(
 
 async def _generate_tts(text: str, lang: str) -> Optional[str]:
     """
-    Multilingual TTS using gTTS.
+    Multilingual TTS using hyper-realistic Microsoft Azure Neural Voices via edge-tts.
     """
     try:
-        from gtts import gTTS
+        import edge_tts
         audio_dir = os.path.join(os.path.dirname(__file__), "..", "..", "static", "audio")
         os.makedirs(audio_dir, exist_ok=True)
 
         filename = f"solu_{uuid.uuid4().hex[:8]}.mp3"
         out_path = os.path.join(audio_dir, filename)
 
-        def _create_tts():
-            # gTTS expects 'en', 'hi', 'kn', 'te'
-            tts = gTTS(text=text, lang=lang)
-            tts.save(out_path)
-
-        await asyncio.to_thread(_create_tts)
+        # Map languages to premium Neural voices
+        voice_map = {
+            "en": "en-IN-NeerjaNeural",
+            "hi": "hi-IN-SwaraNeural",
+            "kn": "kn-IN-SapnaNeural",
+            "te": "te-IN-ShrutiNeural",
+            "ta": "ta-IN-PallaviNeural",
+            "mr": "mr-IN-AarohiNeural"
+        }
+        
+        voice = voice_map.get(lang, "en-IN-NeerjaNeural")
+        
+        communicate = edge_tts.Communicate(text, voice)
+        await communicate.save(out_path)
+        
         return f"/static/audio/{filename}"
     except Exception as e:
-        logger.warning(f"[tts] gTTS error: {e}")
+        logger.warning(f"[tts] edge-tts error: {e}")
         return None

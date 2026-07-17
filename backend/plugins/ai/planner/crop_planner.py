@@ -300,18 +300,26 @@ FARMER QUERY: {processed_query}
 Respond with the JSON plan block first, then the plain summary in {lang}.
 """
 
+    # ── Pre-search market trends (inject into prompt instead of tool calling) ───
+    market_search_query = f"latest market price and yield trend for crops in {farm.get('location', 'India')} {current_season} 2026"
+    market_data = _search_market_trends(market_search_query)
+
     # ── Groq inference ─────────────────────────────────────────────
     groq_model = getattr(settings, "GROQ_CHAT_MODEL", "llama-3.3-70b-versatile")
+
     try:
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user",   "content": user_message + f"\n\nLIVE MARKET DATA (from web search):\n{market_data}"},
+        ]
+        
         response = _groq_client.chat.completions.create(
             model=groq_model,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user",   "content": user_message},
-            ],
+            messages=messages,
             temperature=0.2,
             max_tokens=2200,
         )
+        
         raw = response.choices[0].message.content
 
         result = _extract_and_validate_json(raw)
@@ -326,6 +334,18 @@ Respond with the JSON plan block first, then the plain summary in {lang}.
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
+
+def _search_market_trends(query: str) -> str:
+    """Uses DuckDuckGo to search the live web for market trends."""
+    try:
+        from ddgs import DDGS
+        results = DDGS().text(query, max_results=3)
+        if not results:
+            return "No recent market data found."
+        return "\n".join([f"Source: {r.get('title', '')} - {r.get('body', '')}" for r in results])
+    except Exception as e:
+        logger.error(f"[planner] DuckDuckGo search failed: {e}")
+        return f"Search failed: {e}"
 
 def _build_system_prompt(lang: str, mode: str = "new_season") -> str:
     if mode == "existing_crop":
