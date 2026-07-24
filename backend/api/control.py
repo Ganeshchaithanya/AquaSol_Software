@@ -75,7 +75,8 @@ async def get_pending_commands(
     from backend.models.farm import NodeSlot
     
     cmd_result = await db.execute(
-        select(ValveCommand, Device.mac_address)
+        select(ValveCommand, Device.mac_address, NodeSlot.name)
+        .select_from(Device)
         .join(NodeSlot, Device.node_slot_id == NodeSlot.id)
         .join(
             ValveCommand,
@@ -94,11 +95,11 @@ async def get_pending_commands(
         return {}
 
     # Get the oldest pending command
-    c, mac = rows[0]
+    c, mac, slot_name = rows[0]
     c.status = "published"
     c.sent_at = datetime.now(timezone.utc)
     
-    # Map backend actions to Firmware v3 expected strings
+    # Map backend actions to expected strings
     action_map = {
         "open": "START_IRRIGATION",
         "closed": "STOP_IRRIGATION",
@@ -106,13 +107,17 @@ async def get_pending_commands(
         "stop": "STOP_IRRIGATION"
     }
 
-    # Identify if it's Zone 1 or 2 based on the hardcoded Node MACs in Firmware v3
-    # In a fully dynamic system we would fetch this, but for v3 strict order:
-    zone_num = 1 if mac == "E0:8C:FE:34:1B:18" else 2 if mac == "28:05:A5:24:D6:08" else 0
+    # Dynamically determine zone number from slot_name (e.g. "Node 1" -> 1, "Node 2" -> 2)
+    zone_num = 1
+    if slot_name and "2" in str(slot_name):
+        zone_num = 2
+    elif mac == "E0:8C:FE:34:1B:19":
+        zone_num = 2
 
     response = {
         "action": action_map.get(c.state, "SKIP"),
         "command_id": str(c.id),
+        "node_mac": mac or "",
         "zone": zone_num
     }
 
