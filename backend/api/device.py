@@ -37,6 +37,7 @@ class AssignRequest(BaseModel):
 # ─── Endpoints ─────────────────────────────────────────────────────────────
 
 @router.post("/discover")
+@router.post("/discover/", include_in_schema=False)
 async def discover_device(payload: DiscoverRequest, db: AsyncSession = Depends(get_db)):
     """Device-side: Hardware announces itself on boot with pairing code."""
     try:
@@ -136,6 +137,7 @@ async def get_my_devices(
     } for d in devices]
 
 @router.post("/assign")
+@router.post("/assign/", include_in_schema=False)
 async def assign_device(
     payload: AssignRequest, 
     db: AsyncSession = Depends(get_db),

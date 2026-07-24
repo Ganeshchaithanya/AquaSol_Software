@@ -55,6 +55,7 @@ async def manual_override(
 
 
 @router.get("/commands")
+@router.get("/commands/", include_in_schema=False)
 async def get_pending_commands(
     mac_address: str,
     db: AsyncSession = Depends(get_db),
@@ -121,6 +122,7 @@ async def get_pending_commands(
     return response
 
 @router.post("/commands/{command_id}/ack")
+@router.post("/commands/{command_id}/ack/", include_in_schema=False)
 async def acknowledge_command(
     command_id: str,
     master_mac: str,
@@ -147,6 +149,7 @@ async def acknowledge_command(
     return {"status": "acknowledged", "command_id": command_id}
 
 @router.post("/ack")
+@router.post("/ack/", include_in_schema=False)
 async def acknowledge_command_flat(
     payload: dict,
     db: AsyncSession = Depends(get_db),

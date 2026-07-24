@@ -30,6 +30,7 @@ from backend.app.dependencies import get_current_user
 router = APIRouter(prefix="/sensors", tags=["sensors"])
 
 @router.post("", response_model=TelemetryResponse)
+@router.post("/", response_model=TelemetryResponse, include_in_schema=False)
 async def ingest_sensors(
     request: Request,
     batch: SensorBatch,
