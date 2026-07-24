@@ -23,11 +23,11 @@ ALERT_TYPES = {
 
 async def create_alert(
     farm_id: str,
-    zone_id: Optional[str],
     alert_type: str,
     title: str,
     description: str,
     db: AsyncSession,
+    zone_id: Optional[str] = None,
     metadata: Optional[Dict] = None,
 ):
     """Persist an alert as a FarmDiaryEntry."""

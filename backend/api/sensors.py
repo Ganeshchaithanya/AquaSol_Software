@@ -143,6 +143,7 @@ async def ingest_sensors(
                 await db.flush()
 
     farm_id = master.farm_id
+    master_device_id = master.id
     
     # 2. Process Events
     zone_aggregates: Dict[uuid.UUID, ZoneAggregator] = {}
@@ -390,7 +391,7 @@ async def ingest_sensors(
         if farm_id:
             master_reading = SensorReading(
                 time=datetime.now(timezone.utc),
-                device_id=master.id,
+                device_id=master_device_id,
                 zone_id=None, # Master-only readings are farm-wide
                 farm_id=farm_id,
                 flow_rate=batch.flow_rate,
