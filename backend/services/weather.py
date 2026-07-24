@@ -24,11 +24,26 @@ async def get_weather(lat: float, lon: float, lang: str = "en") -> Dict[str, Any
         if now - ts < CACHE_TTL:
             return data
             
+    # Return static fallback if no API key is configured
+    if not settings.WEATHER_API_KEY:
+        return {
+            "temperature": 28.0,
+            "humidity": 65.0,
+            "condition": "Sunny",
+            "description": "clear sky",
+            "rain_prob_6h": 0.0,
+            "rain_prob_24h": 0.1,
+            "rain_mm_6h": 0.0,
+            "wind_speed": 2.0,
+            "status": "static",
+        }
+
     try:
         url = f"{settings.WEATHER_BASE_URL}/weather/forecast"
         params = {
             "lat": lat, "lon": lon,
             "appid": settings.WEATHER_API_KEY,
+            "units": "metric",  # Fix: return Celsius, not Kelvin
             "lang": lang
         }
         async with httpx.AsyncClient(timeout=1.5) as client:
@@ -61,7 +76,18 @@ async def get_weather(lat: float, lon: float, lang: str = "en") -> Dict[str, Any
         return result
     except Exception as e:
         logger.warning(f"[weather] API error: {e}")
-        return {"rain_prob_6h": 0.1, "rain_prob_24h": 0.2, "status": "error", "error": str(e)}
+        return {
+            "temperature": 28.0,
+            "humidity": 65.0,
+            "condition": "Sunny",
+            "description": "clear sky",
+            "rain_prob_6h": 0.1,
+            "rain_prob_24h": 0.2,
+            "rain_mm_6h": 0.0,
+            "wind_speed": 2.0,
+            "status": "error",
+            "error": str(e)
+        }
 
 
 def _max_rain_prob(forecasts: list) -> float:
