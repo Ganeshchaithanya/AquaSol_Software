@@ -344,7 +344,7 @@ async def get_app_version():
     """Returns the latest app version and download URL."""
     return {
         "version": "3.7.0+1",
-        "download_url": "https://irrigation-api-v2.onrender.com/api/v1/app/download"
+        "download_url": "https://aquasol-software.onrender.com/api/v1/app/download"
     }
 
 
@@ -352,7 +352,7 @@ async def get_app_version():
 async def download_app():
     """Redirects the client to the latest app release on GitHub."""
     from fastapi.responses import RedirectResponse
-    latest_release_url = "https://github.com/Ganeshchaithanya/AquaSol/releases/latest/download/app-release.apk"
+    latest_release_url = "https://github.com/Ganeshchaithanya/AquaSol_Software/raw/main/app-release.apk"
     return RedirectResponse(url=latest_release_url)
 
 
