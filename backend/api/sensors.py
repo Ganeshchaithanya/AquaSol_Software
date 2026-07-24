@@ -105,27 +105,42 @@ async def ingest_sensors(
         await db.flush()
     else:
         master.last_seen_at = datetime.now(timezone.utc)
-        # Try to pair/re-pair if session exists
-        session = None
-        if batch_code:
-            session_res = await db.execute(
-                select(PairingSession).where(
-                    PairingSession.pairing_code == batch_code,
-                    PairingSession.is_used == False,
-                    PairingSession.expires_at > datetime.now(timezone.utc)
-                )
-            )
-            session = session_res.scalar_one_or_none()
-            
-        if session:
-            logger.info(f"[sensors] Pairing/Updating Master {batch.master_mac} to Farm {session.farm_id}")
-            master.farm_id = session.farm_id
+        # If master was previously marked as failed/offline, trigger reconnect alert
+        if master.status == "failed":
             master.status = "active"
-            master.is_claimed = True
-            master.node_label = "Main Controller"
-            session.is_used = True
-            session.device_id = master.id
-            await db.flush()
+            master.trust_score = 1.0
+            if master.farm_id:
+                from backend.services.alerts import create_alert
+                await create_alert(
+                    farm_id=str(master.farm_id),
+                    alert_type="device_online",
+                    title="🟢 Master Gateway Reconnected",
+                    description=f"Master Gateway {master.node_label or master.mac_address} is back online.",
+                    db=db
+                )
+        
+        # Only pair if NOT already claimed
+        if not master.is_claimed:
+            session = None
+            if batch_code:
+                session_res = await db.execute(
+                    select(PairingSession).where(
+                        PairingSession.pairing_code == batch_code,
+                        PairingSession.is_used == False,
+                        PairingSession.expires_at > datetime.now(timezone.utc)
+                    )
+                )
+                session = session_res.scalar_one_or_none()
+                
+            if session:
+                logger.info(f"[sensors] Pairing Master {batch.master_mac} to Farm {session.farm_id}")
+                master.farm_id = session.farm_id
+                master.status = "active"
+                master.is_claimed = True
+                master.node_label = "Main Controller"
+                session.is_used = True
+                session.device_id = master.id
+                await db.flush()
 
     farm_id = master.farm_id
     
@@ -148,7 +163,7 @@ async def ingest_sensors(
         )
         device = res.scalar_one_or_none()
         
-        if device and node_code:
+        if device and node_code and not device.is_claimed:
             device.pairing_code = node_code
 
         if not device:
@@ -167,7 +182,6 @@ async def ingest_sensors(
                 session = session_res.scalar_one_or_none()
             
             target_farm_id = session.farm_id if session else None
-            target_zone_id = session.zone_id if session else None
             
             device = Device(
                 id=uuid.uuid4(),
@@ -188,33 +202,47 @@ async def ingest_sensors(
             if session:
                 session.is_used = True
                 session.device_id = device.id
-                # If we have a zone/slot in mind, we'd bind it here too
                 
             await db.flush()
         else:
             device.last_seen_at = datetime.now(timezone.utc)
-            # Try to pair/re-pair if session exists
-            session = None
-            if node_code:
-                session_res = await db.execute(
-                    select(PairingSession).where(
-                        PairingSession.pairing_code == node_code,
-                        PairingSession.is_used == False,
-                        PairingSession.expires_at > datetime.now(timezone.utc)
-                    )
-                )
-                session = session_res.scalar_one_or_none()
-                
-            if session:
-                logger.info(f"[sensors] Pairing/Updating Node {event.node_mac} to Farm {session.farm_id}")
-                device.farm_id = session.farm_id
-                device.node_slot_id = session.node_slot_id
+            # If node was previously marked offline, trigger reconnect alert
+            if device.status == "failed":
                 device.status = "active"
-                device.is_claimed = True
-                device.node_label = "Acre Node"
-                session.is_used = True
-                session.device_id = device.id
-                await db.flush()
+                device.trust_score = 1.0
+                if device.farm_id:
+                    from backend.services.alerts import create_alert
+                    await create_alert(
+                        farm_id=str(device.farm_id),
+                        alert_type="device_online",
+                        title="🟢 Node Reconnected",
+                        description=f"Node {device.node_label or device.mac_address} is back online.",
+                        db=db
+                    )
+
+            # Only pair if NOT already claimed to preserve ownership
+            if not device.is_claimed:
+                session = None
+                if node_code:
+                    session_res = await db.execute(
+                        select(PairingSession).where(
+                            PairingSession.pairing_code == node_code,
+                            PairingSession.is_used == False,
+                            PairingSession.expires_at > datetime.now(timezone.utc)
+                        )
+                    )
+                    session = session_res.scalar_one_or_none()
+                    
+                if session:
+                    logger.info(f"[sensors] Pairing Node {event.node_mac} to Farm {session.farm_id}")
+                    device.farm_id = session.farm_id
+                    device.node_slot_id = session.node_slot_id
+                    device.status = "active"
+                    device.is_claimed = True
+                    device.node_label = "Acre Node"
+                    session.is_used = True
+                    session.device_id = device.id
+                    await db.flush()
 
         # Resolve logical topology
         zone_id = None
@@ -326,6 +354,7 @@ async def ingest_sensors(
         
         cmd_result = await db.execute(
             select(ValveCommand, Device.mac_address)
+            .select_from(Device)
             .join(NodeSlot, Device.node_slot_id == NodeSlot.id)
             .join(
                 ValveCommand,
@@ -352,7 +381,7 @@ async def ingest_sensors(
                 "payload": cmd.payload
             })
             if mac:
-                node_targets[mac] = (cmd.state == "open")
+                node_targets[mac] = (cmd.state in ("open", "irrigate", "START_IRRIGATION"))
             
             cmd.status = "published"
             cmd.sent_at = datetime.now(timezone.utc)
