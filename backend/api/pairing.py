@@ -40,7 +40,7 @@ async def claim_code(
         zone_id=payload.zone_id,
         node_slot_id=payload.node_slot_id if hasattr(payload, 'node_slot_id') else None,
         is_master=payload.is_master if hasattr(payload, 'is_master') else (payload.zone_id is None),
-        expires_at=datetime.now(timezone.utc) + timedelta(minutes=10)
+        expires_at=datetime.now(timezone.utc) + timedelta(hours=24)
     )
     db.add(session)
     
