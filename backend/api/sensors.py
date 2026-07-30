@@ -245,6 +245,29 @@ async def ingest_sensors(
                     session.device_id = device.id
                     await db.flush()
 
+        # Auto-link node to master's farm if unclaimed
+        if farm_id and not device.farm_id:
+            device.farm_id = farm_id
+            device.is_claimed = True
+            device.status = "active"
+            await db.flush()
+
+        # Auto-bind node to an available NodeSlot in the farm if unassigned
+        if device.farm_id and not device.node_slot_id:
+            slots_res = await db.execute(select(NodeSlot).where(NodeSlot.farm_id == device.farm_id))
+            all_slots = slots_res.scalars().all()
+            if all_slots:
+                # Find slot not currently used by an active device
+                used_slot_ids_res = await db.execute(
+                    select(Device.node_slot_id).where(Device.farm_id == device.farm_id, Device.node_slot_id.isnot(None))
+                )
+                used_slot_ids = set(used_slot_ids_res.scalars().all())
+                avail_slots = [s for s in all_slots if s.id not in used_slot_ids]
+                target_slot = avail_slots[0] if avail_slots else all_slots[0]
+                device.node_slot_id = target_slot.id
+                device.node_label = target_slot.name or "Acre Node"
+                await db.flush()
+
         # Resolve logical topology
         zone_id = None
         node_slot_id = device.node_slot_id
@@ -254,8 +277,8 @@ async def ingest_sensors(
             slot_res = await db.execute(select(NodeSlot.zone_id).where(NodeSlot.id == node_slot_id))
             zone_id = slot_res.scalar_one_or_none()
 
-        # If node is unassigned to a slot, we still record data but skip AI aggregation
-        if not zone_id or not farm_id:
+        # If node is unassigned to a slot/farm, skip aggregation but keep loop going
+        if not farm_id:
             continue 
 
         # Aggregate for AI Decision
