@@ -340,18 +340,16 @@ async def get_node_latest_reading(
 
 
 
-from cachetools import TTLCache
-import httpx
-
-# Cache latest release info for 10 minutes to avoid hitting GitHub API limits
-_release_cache = TTLCache(maxsize=1, ttl=600)
+# In-memory release cache (10 minutes)
+_release_cache = {"data": None, "timestamp": 0.0}
 
 
 @router.get("/app/version")
 async def get_app_version():
     """Dynamically fetches the latest app version and download URL from GitHub Releases."""
-    if "latest" in _release_cache:
-        return _release_cache["latest"]
+    now = datetime.now(timezone.utc).timestamp()
+    if _release_cache["data"] and (now - _release_cache["timestamp"] < 600):
+        return _release_cache["data"]
 
     try:
         async with httpx.AsyncClient(timeout=4.0) as client:
@@ -374,16 +372,20 @@ async def get_app_version():
                         "version": tag_name,
                         "download_url": download_url
                     }
-                    _release_cache["latest"] = res
+                    _release_cache["data"] = res
+                    _release_cache["timestamp"] = now
                     return res
     except Exception as e:
         logger.warning(f"[device] GitHub release check fallback: {e}")
 
     # Fallback to static current version if no GitHub tag is available
-    return {
+    res = {
         "version": "3.8.0+1",
         "download_url": "https://aquasol-software.onrender.com/api/v1/app/download"
     }
+    _release_cache["data"] = res
+    _release_cache["timestamp"] = now
+    return res
 
 
 @router.get("/app/download")
