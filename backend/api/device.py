@@ -7,6 +7,7 @@ from datetime import datetime, timezone, timedelta
 import traceback
 import secrets
 import uuid
+import httpx
 
 from backend.db.session import get_db
 from backend.models.device import Device
@@ -340,52 +341,13 @@ async def get_node_latest_reading(
 
 
 
-# In-memory release cache (10 minutes)
-_release_cache = {"data": None, "timestamp": 0.0}
-
-
 @router.get("/app/version")
 async def get_app_version():
-    """Dynamically fetches the latest app version and download URL from GitHub Releases."""
-    now = datetime.now(timezone.utc).timestamp()
-    if _release_cache["data"] and (now - _release_cache["timestamp"] < 600):
-        return _release_cache["data"]
-
-    try:
-        async with httpx.AsyncClient(timeout=4.0) as client:
-            resp = await client.get(
-                "https://api.github.com/repos/Ganeshchaithanya/AquaSol_Software/releases/latest",
-                headers={"User-Agent": "AquaSol-Backend"}
-            )
-            if resp.status_code == 200:
-                data = resp.json()
-                tag_name = data.get("tag_name", "").lstrip("v").strip()
-                assets = data.get("assets", [])
-                download_url = "https://aquasol-software.onrender.com/api/v1/app/download"
-                for asset in assets:
-                    if asset.get("name", "").endswith(".apk"):
-                        download_url = asset.get("browser_download_url")
-                        break
-                
-                if tag_name:
-                    res = {
-                        "version": tag_name,
-                        "download_url": download_url
-                    }
-                    _release_cache["data"] = res
-                    _release_cache["timestamp"] = now
-                    return res
-    except Exception as e:
-        logger.warning(f"[device] GitHub release check fallback: {e}")
-
-    # Fallback to static current version if no GitHub tag is available
-    res = {
-        "version": "3.8.0+1",
+    """Returns the latest app version and download URL."""
+    return {
+        "version": "3.7.0+1",
         "download_url": "https://aquasol-software.onrender.com/api/v1/app/download"
     }
-    _release_cache["data"] = res
-    _release_cache["timestamp"] = now
-    return res
 
 
 @router.get("/app/download")
