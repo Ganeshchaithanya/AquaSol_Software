@@ -11,6 +11,7 @@ import uuid
 from backend.db.session import get_db
 from backend.models.device import Device
 from backend.models.farm import Farm, Zone, Acre, NodeSlot
+from backend.models.sensor_data import SensorReading
 from backend.api.auth import get_current_user
 from backend.models.user import User
 from backend.utils.logger import logger
