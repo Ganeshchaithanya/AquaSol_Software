@@ -34,12 +34,6 @@ class Settings(BaseSettings):
     WEATHER_API_KEY: str = Field(..., validation_alias="WEATHER_API_KEY")
     WEATHER_BASE_URL: str = "http://api.agromonitoring.com/agro/1.0"
 
-    # ── LEGACY MQTT (Decommissioned) ────────────────────────────────────
-    MQTT_BROKER_HOST: str = Field(default="localhost", validation_alias="MQTT_BROKER_HOST")
-    MQTT_BROKER_PORT: int = Field(default=1883, validation_alias="MQTT_BROKER_PORT")
-    MQTT_USERNAME: str = Field(default="", validation_alias="MQTT_USERNAME")
-    MQTT_PASSWORD: str = Field(default="", validation_alias="MQTT_PASSWORD")
-    MQTT_ENABLED: bool = Field(default=False, validation_alias="MQTT_ENABLED")
 
     # ── ML Model paths ────────────────────────────────────────────────────
     MODELS_DIR: str = Field(

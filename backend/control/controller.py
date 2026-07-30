@@ -1,6 +1,6 @@
 """
 Control — Execution Controller
-Orchestrates: Final Decision → Policy Gate → MQTT Publish → DB Log
+Orchestrates: Final Decision → Policy Gate → DB Log
 This is the ONLY component that sends hardware commands.
 """
 from datetime import datetime, timezone
@@ -27,7 +27,7 @@ async def execute_decision(
     """
     Takes a validated final decision dict and executes it:
     1. Save DecisionLog to DB
-    2. If irrigate → publish MQTT + save ValveCommand
+    2. If irrigate → save ValveCommand
     3. Update ZoneState
     4. Return execution result
     """
@@ -73,8 +73,7 @@ async def execute_decision(
     await db.flush()
     logger.info(f"[controller] Decision saved id={decision_record.id} action={action} zone={zone_id}")
 
-    # ── Step 2: MQTT Publish & ValveCommand ──────────────────────────────
-    mqtt_sent = False
+    # ── Step 2: ValveCommand ──────────────────────────────
     operating_mode = final_decision.get("operating_mode", "active")
     action_now = final_decision.get("action_now", "SKIP")
     
@@ -96,7 +95,6 @@ async def execute_decision(
         if operating_mode == "shadow":
             logger.info(f"[controller] SHADOW MODE ACTIVE: Bypassing hardware actuation for Zone {zone_id}.")
         else:
-            # Note: We no longer publish via MQTT. The command is queued in DB for HTTP polling.
             pass
 
         import uuid
@@ -108,7 +106,6 @@ async def execute_decision(
             source="manual" if is_manual else "ai",
             state="open",
             duration_min=dur_per_cycle,
-            mqtt_topic=None, # No longer needed for HTTP
             payload=payload,
             status="pending" if operating_mode != "shadow" else "shadow_skip",
         )
@@ -128,7 +125,6 @@ async def execute_decision(
                 source="manual" if is_manual else "ai",
                 state="closed",
                 duration_min=0,
-                mqtt_topic=None,
                 payload={"action": "stop"},
                 status="pending" if operating_mode != "shadow" else "shadow_skip",
             )
@@ -190,10 +186,11 @@ async def execute_decision(
             is_subsidy=True
         )
 
+    saved_decision_id = str(decision_record.id) if decision_record.id else None
     await db.commit()
 
     return {
-        "decision_id": decision_record.id,
+        "decision_id": saved_decision_id,
         "decision": final_decision.get("decision", action),
         "action_now": final_decision.get("action_now", "SKIP"),
         "applied_now_mm": final_decision.get("applied_now_mm", 0.0),
@@ -204,7 +201,6 @@ async def execute_decision(
         "recheck_in": final_decision.get("recheck_in", "unknown"),
         "confidence": final_decision.get("confidence", confidence),
         "duration_min": duration_min,
-        "mqtt_sent": mqtt_sent,
         "status": "executed",
         "policy_reason": final_decision.get("policy_reason"),
         "ood_flag": final_decision.get("ood_flag"),
@@ -235,7 +231,6 @@ async def emergency_abort(
         source="safety",
         state="closed",
         duration_min=0,
-        mqtt_topic=None,
         payload={"action": "emergency_stop", "reason": "spike_detected"},
         status="pending"
     )

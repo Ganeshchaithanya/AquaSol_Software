@@ -9,6 +9,24 @@ from sqlalchemy import select, desc
 from backend.models.state import FarmDiaryEntry
 from backend.utils.logger import logger
 
+# ── Alert-only entry types ────────────────────────────────────────────────────
+# These are the ONLY entry types treated as alerts.
+# Any other entry_type (e.g. "irrigation", "fertilizer", "note") is a diary log
+# and must NOT appear in the alerts feed.
+ALERT_ENTRY_TYPES = {
+    "anomaly",
+    "low_moisture",
+    "high_moisture",
+    "node_failure",
+    "battery_low",
+    "irrigation_complete",
+    "stage_change",
+    "virtual_sensing",
+    "device_online",    # Node/master reconnected
+    "delivery_failure", # Valve delivery failure
+    "weather_alert",    # Extreme weather warnings
+}
+
 ALERT_TYPES = {
     "anomaly": "🔴 Sensor Anomaly",
     "low_moisture": "💧 Low Moisture",
@@ -18,6 +36,9 @@ ALERT_TYPES = {
     "irrigation_complete": "✅ Irrigation Done",
     "stage_change": "🌱 Stage Changed",
     "virtual_sensing": "⚡ Virtual Sensing Active",
+    "device_online": "🟢 Device Online",
+    "delivery_failure": "❌ Valve Failure",
+    "weather_alert": "🌩️ Weather Alert",
 }
 
 
@@ -30,7 +51,7 @@ async def create_alert(
     zone_id: Optional[str] = None,
     metadata: Optional[Dict] = None,
 ):
-    """Persist an alert as a FarmDiaryEntry."""
+    """Persist an alert as a FarmDiaryEntry with an alert-only entry_type."""
     entry = FarmDiaryEntry(
         farm_id=farm_id,
         zone_id=zone_id,
@@ -49,9 +70,16 @@ async def get_recent_alerts(
     db: AsyncSession,
     limit: int = 20,
 ) -> List[Dict[str, Any]]:
+    """
+    Returns only real alert entries for the farm — diary logs are excluded.
+    Filtered by ALERT_ENTRY_TYPES to prevent activity logs from polluting the feed.
+    """
     result = await db.execute(
         select(FarmDiaryEntry)
-        .where(FarmDiaryEntry.farm_id == farm_id)
+        .where(
+            FarmDiaryEntry.farm_id == farm_id,
+            FarmDiaryEntry.entry_type.in_(ALERT_ENTRY_TYPES),
+        )
         .order_by(desc(FarmDiaryEntry.created_at))
         .limit(limit)
     )
@@ -68,6 +96,19 @@ async def get_recent_alerts(
         }
         for r in rows
     ]
+
+
+async def get_unread_alert_count(farm_id: str, db: AsyncSession) -> int:
+    """Returns the count of recent real alerts for badge display."""
+    from sqlalchemy import func
+    result = await db.execute(
+        select(func.count(FarmDiaryEntry.id))
+        .where(
+            FarmDiaryEntry.farm_id == farm_id,
+            FarmDiaryEntry.entry_type.in_(ALERT_ENTRY_TYPES),
+        )
+    )
+    return result.scalar() or 0
 
 
 def build_anomaly_alert(node_label: str, sensor: str, value: float,

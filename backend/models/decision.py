@@ -16,7 +16,6 @@ class ValveCommand(Base):
     source = Column(String, nullable=False) # 'ai', 'manual'
     state = Column(String, nullable=False)  # 'open', 'closed'
     duration_min = Column(Integer)
-    mqtt_topic = Column(String, nullable=True) # Legacy - now optional
     payload = Column(JSONB, nullable=False)
     
     status = Column(String, nullable=False, default="pending")

@@ -34,7 +34,6 @@ class HealthMonitor:
         for zid, state in states.items():
             # Find node Macs associated with this zone? 
             # This would require a DB lookup or cached map.
-            # For now, we'll rely on the proactive check in MqttBridge.
             pass
 
 health_monitor = HealthMonitor(ttl_minutes=30)

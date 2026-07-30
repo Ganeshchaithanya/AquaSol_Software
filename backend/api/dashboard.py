@@ -24,6 +24,7 @@ from backend.core.state.state_manager import state_manager
 from backend.services.weather import get_weather
 from backend.services.alerts import get_recent_alerts
 from backend.schemas.dashboard import DashboardResponse, ZoneStateResponse, NodeStatus, ZonePatchRequest, AcreStateResponse, MasterGatewayData
+from backend.services.alerts import get_recent_alerts, create_alert
 
 router = APIRouter(tags=["Farm Dashboard"])
 @router.get("/dashboard", response_model=DashboardResponse)
@@ -90,14 +91,55 @@ async def get_dashboard(
                 .limit(1)
             )
             latest_nr = nr_res.scalar_one_or_none()
-            
+
             # Dynamically calculate online/offline status based on last seen time
             is_online = False
+            minutes_offline = None
             if n.last_seen_at:
                 delta = (datetime.now(timezone.utc) - n.last_seen_at).total_seconds() / 60
-                if delta < 5.0: # 5 minutes freshness window
+                minutes_offline = round(delta, 1)
+                if delta < 5.0:  # 5-minute freshness window
                     is_online = True
-            
+
+            # Generate offline alert with 60-minute cooldown to avoid spam
+            if not is_online and farm and n.farm_id == farm.id:
+                cooldown_key = f"last_offline_alert_{n.id}"
+                should_alert = True
+                # Check last offline alert for this node in the last 60 minutes
+                from sqlalchemy import desc as _desc
+                from backend.models.state import FarmDiaryEntry as _FDE
+                last_alert_res = await db.execute(
+                    select(_FDE)
+                    .where(
+                        _FDE.farm_id == str(farm.id),
+                        _FDE.entry_type == "node_failure",
+                        _FDE.body.contains(n.mac_address or ""),
+                    )
+                    .order_by(_desc(_FDE.created_at))
+                    .limit(1)
+                )
+                last_alert = last_alert_res.scalar_one_or_none()
+                if last_alert and last_alert.created_at:
+                    mins_since = (datetime.now(timezone.utc) - last_alert.created_at).total_seconds() / 60
+                    if mins_since < 60:
+                        should_alert = False
+
+                if should_alert:
+                    offline_str = f"{int(minutes_offline)}m" if minutes_offline else "unknown time"
+                    await create_alert(
+                        farm_id=str(farm.id),
+                        zone_id=str(zone.id),
+                        alert_type="node_failure",
+                        title=f"📡 Node Offline: {n.node_label or 'Node'}",
+                        description=(
+                            f"Node '{n.node_label or n.mac_address}' ({n.mac_address}) "
+                            f"has not reported data for {offline_str}. "
+                            f"Check power supply and RF connection."
+                        ),
+                        db=db,
+                    )
+                    logger.warning(f"[dashboard] Node offline alert created for {n.mac_address}")
+
             node_statuses.append(NodeStatus(
                 node_label=n.node_label or "Node",
                 mac_address=n.mac_address or "PENDING",
@@ -135,6 +177,14 @@ async def get_dashboard(
             valid_hums = [n.humidity for n in node_statuses if n.humidity is not None]
             if valid_hums:
                 state_hum = sum(valid_hums) / len(valid_hums)
+
+        # Share zone microclimate (temp & humidity) with neighbor nodes of the SAME zone
+        if state_temp is not None or state_hum is not None:
+            for ns in node_statuses:
+                if ns.temperature is None and state_temp is not None:
+                    ns.temperature = round(float(state_temp), 1)
+                if ns.humidity is None and state_hum is not None:
+                    ns.humidity = round(float(state_hum), 1)
 
         z_resp = ZoneStateResponse(
             zone_id=zone.id,
@@ -293,6 +343,10 @@ async def get_dashboard(
             status=master_dev.status
         )
 
+    # Count real alerts (alert-type entries only, not diary logs)
+    recent_alerts = await get_recent_alerts(str(farm.id), db, limit=50)
+    real_alert_count = len(recent_alerts)
+
     return DashboardResponse(
         farm_id=farm.id,
         name=farm.name,
@@ -304,7 +358,7 @@ async def get_dashboard(
         weather=weather,
         master_status=master_status,
         metrics=metrics,
-        total_alerts=0,
+        total_alerts=real_alert_count,
         updated_at=datetime.now(timezone.utc),
     )
 

@@ -1,6 +1,6 @@
 """
 Application Lifespan (Startup / Shutdown)
-Loads ML models, connects MQTT, builds E5 RAG index.
+Loads ML models and builds E5 RAG index.
 """
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
@@ -54,14 +54,6 @@ async def lifespan(app: FastAPI):
     # Kick off model loading in background
     import asyncio
     asyncio.create_task(load_models_async())
-
-    # Init MQTT (fast) - DISABLED for HTTP migration
-    # logger.info("Initializing MQTT client...")
-    # init_mqtt()
-
-    # Start MQTT Bridge listener - DISABLED for HTTP migration
-    # from backend.services.mqtt_bridge import mqtt_bridge
-    # asyncio.create_task(mqtt_bridge.start_listening())
     
     # Start the offline node monitor loop
     start_scheduler()

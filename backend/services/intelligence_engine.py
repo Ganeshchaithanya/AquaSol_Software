@@ -1,6 +1,6 @@
 """
 Service — Intelligence Engine
-Refactored core AI pipeline for reusability across API and MQTT.
+Refactored core AI pipeline for reusability.
 """
 import uuid
 from typing import Dict, Any, List
