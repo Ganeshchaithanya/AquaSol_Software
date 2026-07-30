@@ -63,44 +63,23 @@ LANG_NAMES = {
 }
 
 
-SOLU_SYSTEM_PROMPT = """You are Solu, AquaSol's expert agricultural digital twin.
+SOLU_SYSTEM_PROMPT = """You are Solu, AquaSol's expert agricultural digital twin assistant.
 
-PERSONALITY:
-- Warm, patient, and highly knowledgeable.
-- Speak like a trusted local expert with a PhD in Agronomy.
-- Use simple analogies but provide precise data when possible.
-- Match language exactly: {lang_name}.
+PERSONALITY & CONCISE TONE:
+- Warm, practical, highly knowledgeable agronomy expert.
+- Match language strictly: {lang_name}.
+- CONCISE BY DEFAULT: Keep responses direct, crisp, and brief (2 to 3 sentences maximum). Avoid generic pleasantries, filler phrases, or repetitive intros.
+- If the user asks for short answers, be ultra-concise (1 to 2 crisp sentences with exact metrics).
 
-PLAN AWARENESS:
-- Always check the "active_plan_task" in the context.
-- If a plan task exists for the current zone, prioritize explaining it as the primary recommendation.
-- The Intelligence Engine has already validated this plan against real-time sensor data.
+OPERATOR CAPABILITIES & ACTION TAGS (CRITICAL):
+- ONLY generate an action tag if the user EXPLICITLY asks you to perform a control action (e.g., "irrigate zone 1", "turn off water", "stop irrigation", "set zone to auto").
+- Do NOT generate an action tag for general questions, greetings, or when the user asks for advice or short answers!
+- If a control action IS explicitly requested by the user, attach the tag ONLY at the very end of your message in this exact format:
+  `[ACTION: {{"type": "irrigate"|"stop"|"set_mode", "zone_id": "<zone_id>", "duration_min": <minutes_if_irrigate>, "mode": "<manual|auto>"}}]`
+- Extract the exact `zone_id` from the FARM STATE context matching the zone name/number mentioned by the user.
 
-AGRONOMIC GUARDRAILS (STRICT):
-- RICE (Paddy) is HIGH WATER INTENSITY. It requires constant moisture (1200mm+).
-- SUGARCANE is HIGH WATER INTENSITY (1500mm+).
-- MILLETS and PULSES are LOW WATER INTENSITY.
-- Never recommend Rice or Sugarcane if the user mentions water scarcity or limited supply.
-- If you recommend a crop, ensure it aligns with the current season ({lang_name} context).
-
-OPERATOR CAPABILITIES (NEW):
-- You have the authority to control irrigation and change zone configurations. If the user commands you to open a valve, start watering, stop watering, or configure the zone mode (auto/manual), you MUST generate a structured action tag.
-- Include the exact tag `[ACTION: {{"type": "irrigate"|"stop"|"set_mode", "zone_id": "<zone_id>", "duration_min": <minutes_if_irrigate>, "mode": "<manual|auto_if_set_mode>"}}]` at the absolute end of your reply.
-- Extract the correct `zone_id` from the FARM STATE context by matching the zone name or number mentioned by the user. If the user refers to "Zone 1", find the zone whose name or label contains "Zone 1" or matches in the context list. Do not make up a zone ID!
-- Keep the rest of your reply natural and confirm to the user that you are initiating this action.
-
-AGENTIC RAG CAPABILITIES:
-1. You have real-time access to the farm system state (sensors, stages, anomalies).
-2. You have "Expert Memory" — context provided from ICAR agricultural guides.
-3. Use the Expert Memory to ground your answers in technical reality.
-
-RULES:
-- If the user greets you (e.g., "hi", "hello"), respond warmly and ask how you can help with their farm today.
-- If the user asks questions UNRELATED to farming, agriculture, crops, soil, or the AquaSol system, politely decline and redirect them to ask about their farm or crops.
-- End every response with ONE actionable suggestion based on the active plan or sensor data.
-- If an anomaly is detected, prioritize explaining the risk.
-- Do NOT mention AI, tokens, or retrieved chunks.
-- Tone: Empathetic but practical.
+AGRONOMIC DATA & CONTEXT:
+- Base all crop, soil, and irrigation recommendations dynamically on the real-time FARM STATE data and EXPERT MEMORY guides provided in the context.
 """
 
 LANG_VOICE_MAP = {
@@ -202,53 +181,66 @@ async def chat(
     # ── 3.5 Intercept and execute Actions ────────────────────────────────────
     import re
     action_match = re.search(r'\[ACTION:\s*({.*?})\]', reply)
-    if action_match and db is not None:
-        try:
-            action_data = json.loads(action_match.group(1))
-            action_type = action_data.get("type")
-            zone_id = action_data.get("zone_id")
-            
-            from backend.control.controller import execute_manual_override
-            from backend.models.farm import Zone
-            
-            # Verify zone exists
-            z_res = await db.execute(select(Zone).where(Zone.id == zone_id))
-            zone = z_res.scalar_one_or_none()
-            
-            if zone:
-                if action_type == "irrigate":
-                    duration = int(action_data.get("duration_min", 15))
-                    await execute_manual_override(
-                        zone_id=zone_id,
-                        farm_id=str(zone.farm_id),
-                        action="irrigate",
-                        duration_min=duration,
-                        reason="Executed by Solu AI Chatbot Agent",
-                        db=db
-                    )
-                    reply = reply.replace(action_match.group(0), "").strip()
-                    reply += f"\n\n*(Command executed: Starting irrigation on {zone.name} for {duration} minutes)*"
-                
-                elif action_type == "stop":
-                    await execute_manual_override(
-                        zone_id=zone_id,
-                        farm_id=str(zone.farm_id),
-                        action="stop",
-                        reason="Stopped by Solu AI Chatbot Agent",
-                        db=db
-                    )
-                    reply = reply.replace(action_match.group(0), "").strip()
-                    reply += f"\n\n*(Command executed: Stopped irrigation on {zone.name})*"
-                
-                elif action_type == "set_mode":
-                    target_mode = action_data.get("mode", "auto")
-                    zone.mode = target_mode
-                    await db.commit()
-                    reply = reply.replace(action_match.group(0), "").strip()
-                    reply += f"\n\n*(Command executed: Configured {zone.name} to {target_mode.upper()} mode)*"
+    executed_notice = ""
+
+    if action_match:
+        tag_str = action_match.group(0)
+        json_str = action_match.group(1)
+        reply = reply.replace(tag_str, "").strip()
+
+        if db is not None:
+            try:
+                action_data = json.loads(json_str)
+                action_type = action_data.get("type")
+                zone_id = action_data.get("zone_id")
+
+                if zone_id and action_type in ("irrigate", "stop", "set_mode"):
+                    from backend.control.controller import execute_manual_override
+                    from backend.models.farm import Zone
                     
-        except Exception as e:
-            logger.error(f"[chatbot] Failed to execute agentic action: {e}")
+                    z_res = await db.execute(select(Zone).where(Zone.id == zone_id))
+                    zone = z_res.scalar_one_or_none()
+                    
+                    if zone:
+                        z_name = zone.name or "Zone"
+                        if action_type == "irrigate":
+                            duration = int(action_data.get("duration_min", 15))
+                            await execute_manual_override(
+                                zone_id=str(zone_id),
+                                farm_id=str(zone.farm_id),
+                                action="irrigate",
+                                duration_min=duration,
+                                reason="Executed by Solu AI Chatbot Agent",
+                                db=db
+                            )
+                            executed_notice = f"\n\n✅ Started irrigation on {z_name} for {duration} minutes."
+                        
+                        elif action_type == "stop":
+                            await execute_manual_override(
+                                zone_id=str(zone_id),
+                                farm_id=str(zone.farm_id),
+                                action="stop",
+                                duration_min=0,
+                                reason="Stopped by Solu AI Chatbot Agent",
+                                db=db
+                            )
+                            executed_notice = f"\n\n🛑 Stopped irrigation on {z_name}."
+                        
+                        elif action_type == "set_mode":
+                            target_mode = action_data.get("mode", "auto")
+                            zone.mode = target_mode
+                            await db.commit()
+                            executed_notice = f"\n\n⚙️ Configured {z_name} to {target_mode.upper()} mode."
+            except Exception as e:
+                logger.error(f"[chatbot] Failed to execute agentic action: {e}")
+
+    # Append clean human-readable execution notice if an action was executed
+    if executed_notice and executed_notice not in reply:
+        reply += executed_notice
+
+    # Absolute Safety Purge: Strip any residual [ACTION: ...] or raw debug strings from final reply
+    reply = re.sub(r'\[ACTION:\s*({.*?})\]', '', reply).strip()
+    reply = re.sub(r'\*\([^)]*Command executed:[^)]*\)\*', '', reply).strip()
 
     # ── 4. TTS ───────────────────────────────────────────────────────────────
     audio_path = None
