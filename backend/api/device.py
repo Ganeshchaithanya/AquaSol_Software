@@ -339,9 +339,46 @@ async def get_node_latest_reading(
 
 
 
+from cachetools import TTLCache
+import httpx
+
+# Cache latest release info for 10 minutes to avoid hitting GitHub API limits
+_release_cache = TTLCache(maxsize=1, ttl=600)
+
+
 @router.get("/app/version")
 async def get_app_version():
-    """Returns the latest app version and download URL."""
+    """Dynamically fetches the latest app version and download URL from GitHub Releases."""
+    if "latest" in _release_cache:
+        return _release_cache["latest"]
+
+    try:
+        async with httpx.AsyncClient(timeout=4.0) as client:
+            resp = await client.get(
+                "https://api.github.com/repos/Ganeshchaithanya/AquaSol_Software/releases/latest",
+                headers={"User-Agent": "AquaSol-Backend"}
+            )
+            if resp.status_code == 200:
+                data = resp.json()
+                tag_name = data.get("tag_name", "").lstrip("v").strip()
+                assets = data.get("assets", [])
+                download_url = "https://aquasol-software.onrender.com/api/v1/app/download"
+                for asset in assets:
+                    if asset.get("name", "").endswith(".apk"):
+                        download_url = asset.get("browser_download_url")
+                        break
+                
+                if tag_name:
+                    res = {
+                        "version": tag_name,
+                        "download_url": download_url
+                    }
+                    _release_cache["latest"] = res
+                    return res
+    except Exception as e:
+        logger.warning(f"[device] GitHub release check fallback: {e}")
+
+    # Fallback to static current version if no GitHub tag is available
     return {
         "version": "3.8.0+1",
         "download_url": "https://aquasol-software.onrender.com/api/v1/app/download"
