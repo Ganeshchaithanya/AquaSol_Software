@@ -98,37 +98,78 @@ async def execute_decision(
             pass
 
         import uuid
-        cmd = ValveCommand(
-            id=uuid.uuid4(),
-            zone_id=uuid.UUID(str(zone_id)) if zone_id else None,
-            node_slot_id=uuid.UUID(str(node_slot_id)) if node_slot_id else None,
-            farm_id=uuid.UUID(str(farm_id)) if farm_id else None,
-            source="manual" if is_manual else "ai",
-            state="open",
-            duration_min=dur_per_cycle,
-            payload=payload,
-            status="pending" if operating_mode != "shadow" else "shadow_skip",
-        )
-        db.add(cmd)
+        from backend.models.farm import NodeSlot
+        from sqlalchemy import select
+
+        target_slot_ids = []
+        if node_slot_id:
+            target_slot_ids.append(uuid.UUID(str(node_slot_id)))
+        elif zone_id:
+            try:
+                slots_res = await db.execute(
+                    select(NodeSlot).where(NodeSlot.zone_id == uuid.UUID(str(zone_id)))
+                )
+                slots = slots_res.scalars().all()
+                if slots:
+                    target_slot_ids = [s.id for s in slots]
+            except Exception as e:
+                logger.warning(f"[controller] Node slots query failed: {e}")
+
+        if not target_slot_ids:
+            target_slot_ids = [None]
+
+        for slot_id in target_slot_ids:
+            cmd = ValveCommand(
+                id=uuid.uuid4(),
+                zone_id=uuid.UUID(str(zone_id)) if zone_id else None,
+                node_slot_id=slot_id,
+                farm_id=uuid.UUID(str(farm_id)) if farm_id else None,
+                source="manual" if is_manual else "ai",
+                state="open",
+                duration_min=dur_per_cycle,
+                payload=payload,
+                status="pending" if operating_mode != "shadow" else "shadow_skip",
+            )
+            db.add(cmd)
 
     elif action == "stop":
         if operating_mode == "shadow":
             logger.info(f"[controller] SHADOW MODE ACTIVE: Bypassing Stop Command.")
         else:
-            # Create a stop command in DB for HTTP polling
             import uuid
-            cmd = ValveCommand(
-                id=uuid.uuid4(),
-                zone_id=uuid.UUID(str(zone_id)) if zone_id else None,
-                node_slot_id=uuid.UUID(str(node_slot_id)) if node_slot_id else None,
-                farm_id=uuid.UUID(str(farm_id)) if farm_id else None,
-                source="manual" if is_manual else "ai",
-                state="closed",
-                duration_min=0,
-                payload={"action": "stop"},
-                status="pending" if operating_mode != "shadow" else "shadow_skip",
-            )
-            db.add(cmd)
+            from backend.models.farm import NodeSlot
+            from sqlalchemy import select
+
+            target_slot_ids = []
+            if node_slot_id:
+                target_slot_ids.append(uuid.UUID(str(node_slot_id)))
+            elif zone_id:
+                try:
+                    slots_res = await db.execute(
+                        select(NodeSlot).where(NodeSlot.zone_id == uuid.UUID(str(zone_id)))
+                    )
+                    slots = slots_res.scalars().all()
+                    if slots:
+                        target_slot_ids = [s.id for s in slots]
+                except Exception as e:
+                    logger.warning(f"[controller] Node slots query failed: {e}")
+
+            if not target_slot_ids:
+                target_slot_ids = [None]
+
+            for slot_id in target_slot_ids:
+                cmd = ValveCommand(
+                    id=uuid.uuid4(),
+                    zone_id=uuid.UUID(str(zone_id)) if zone_id else None,
+                    node_slot_id=slot_id,
+                    farm_id=uuid.UUID(str(farm_id)) if farm_id else None,
+                    source="manual" if is_manual else "ai",
+                    state="closed",
+                    duration_min=0,
+                    payload={"action": "stop"},
+                    status="pending" if operating_mode != "shadow" else "shadow_skip",
+                )
+                db.add(cmd)
 
     # ── Step 3: Update ZoneState ─────────────────────────────────────────
     state_updates: Dict[str, Any] = {
