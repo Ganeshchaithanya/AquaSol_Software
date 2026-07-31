@@ -18,6 +18,7 @@ class NodeStatus(BaseModel):
     temperature: Optional[float] = None
     humidity: Optional[float] = None
     valve_status: Optional[bool] = None
+    node_slot_id: Optional[str] = None
 
     class Config:
         from_attributes = True

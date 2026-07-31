@@ -17,7 +17,7 @@ from backend.app.dependencies import get_current_user
 from backend.models.user import User
 from backend.models.farm import Farm, Zone, Acre, NodeSlot
 from backend.models.device import Device
-from backend.models.decision import DecisionLog
+from backend.models.decision import DecisionLog, ValveCommand
 from backend.models.state import FarmDiaryEntry
 from backend.models.sensor_data import SensorReading
 from backend.core.state.state_manager import state_manager
@@ -140,6 +140,24 @@ async def get_dashboard(
                     )
                     logger.warning(f"[dashboard] Node offline alert created for {n.mac_address}")
 
+            # Determine node-specific valve status
+            node_valve_on = False
+            if n.node_slot_id:
+                cmd_res = await db.execute(
+                    select(ValveCommand)
+                    .where(
+                        ValveCommand.node_slot_id == n.node_slot_id,
+                        ValveCommand.state == "open",
+                        ValveCommand.status.in_(["pending", "sent", "acknowledged", "executing"])
+                    )
+                    .order_by(ValveCommand.issued_at.desc())
+                    .limit(1)
+                )
+                active_cmd = cmd_res.scalar_one_or_none()
+                node_valve_on = True if active_cmd else (latest_nr.valve_status if latest_nr else False)
+            else:
+                node_valve_on = latest_nr.valve_status if latest_nr else False
+
             node_statuses.append(NodeStatus(
                 node_label=n.node_label or "Node",
                 mac_address=n.mac_address or "PENDING",
@@ -149,9 +167,10 @@ async def get_dashboard(
                 last_seen=n.last_seen_at,
                 battery_pct=latest_nr.battery_pct if latest_nr else getattr(n, "battery_pct", None),
                 current_moisture=latest_nr.soil_moisture if latest_nr else None,
-                temperature=latest_nr.temperature if latest_nr else None,
-                humidity=latest_nr.humidity if latest_nr else None,
-                valve_status=latest_nr.valve_status if latest_nr else False,
+                temperature=latest_nr.temperature if (latest_nr and latest_nr.temperature and float(latest_nr.temperature) > 0) else None,
+                humidity=latest_nr.humidity if (latest_nr and latest_nr.humidity and float(latest_nr.humidity) > 0) else None,
+                valve_status=node_valve_on,
+                node_slot_id=str(n.node_slot_id) if n.node_slot_id else None,
             ))
 
         # Get state for this zone
@@ -160,30 +179,30 @@ async def get_dashboard(
         # Calculate moisture fallback
         state_moisture = state.get("current_moisture")
         if state_moisture is None and node_statuses:
-            valid_moistures = [n.current_moisture for n in node_statuses if n.current_moisture is not None]
+            valid_moistures = [n.current_moisture for n in node_statuses if n.current_moisture is not None and float(n.current_moisture) > 0]
             if valid_moistures:
                 state_moisture = sum(valid_moistures) / len(valid_moistures)
 
-        # Calculate temperature fallback from active nodes
+        # Calculate temperature fallback from active nodes (filtering out <= 0)
         state_temp = state.get("weather_temp")
-        if state_temp is None and node_statuses:
-            valid_temps = [n.temperature for n in node_statuses if n.temperature is not None]
+        if (state_temp is None or float(state_temp) <= 0) and node_statuses:
+            valid_temps = [n.temperature for n in node_statuses if n.temperature is not None and float(n.temperature) > 0]
             if valid_temps:
                 state_temp = sum(valid_temps) / len(valid_temps)
 
-        # Calculate humidity fallback from active nodes
+        # Calculate humidity fallback from active nodes (filtering out <= 0)
         state_hum = state.get("humidity_avg")
-        if state_hum is None and node_statuses:
-            valid_hums = [n.humidity for n in node_statuses if n.humidity is not None]
+        if (state_hum is None or float(state_hum) <= 0) and node_statuses:
+            valid_hums = [n.humidity for n in node_statuses if n.humidity is not None and float(n.humidity) > 0]
             if valid_hums:
                 state_hum = sum(valid_hums) / len(valid_hums)
 
         # Share zone microclimate (temp & humidity) with neighbor nodes of the SAME zone
         if state_temp is not None or state_hum is not None:
             for ns in node_statuses:
-                if ns.temperature is None and state_temp is not None:
+                if (ns.temperature is None or float(ns.temperature) <= 0) and state_temp is not None:
                     ns.temperature = round(float(state_temp), 1)
-                if ns.humidity is None and state_hum is not None:
+                if (ns.humidity is None or float(ns.humidity) <= 0) and state_hum is not None:
                     ns.humidity = round(float(state_hum), 1)
 
         z_resp = ZoneStateResponse(
