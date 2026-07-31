@@ -315,6 +315,12 @@ async def execute_manual_override(
     curr_moisture = zone_state.get("current_moisture") if zone_state else None
     max_thresh = zone_state.get("target_moisture_max") if zone_state else 80.0
 
+    from backend.models.farm import Zone
+    from sqlalchemy import select
+    zone_res = await db.execute(select(Zone).where(Zone.id == zone_id))
+    zone_obj = zone_res.scalar_one_or_none()
+    op_mode = zone_obj.operating_mode if zone_obj and zone_obj.operating_mode else "active"
+
     override_decision = {
         "decision": action,
         "duration_min": duration_min,
@@ -325,5 +331,6 @@ async def execute_manual_override(
         "feature_importance": {},
         "is_manual_override": True,
         "current_moisture": curr_moisture,
+        "operating_mode": op_mode,
     }
     return await execute_decision(zone_id, farm_id, override_decision, db, master_mac, node_slot_id)
