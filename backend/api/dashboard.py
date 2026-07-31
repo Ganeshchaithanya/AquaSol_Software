@@ -57,6 +57,20 @@ async def get_dashboard(
         )
 
     logger.info(f"[dashboard] Found farm: {farm.id} ({farm.name})")
+    # ── Master Gateway Online Status ─────────────────────────────────────────
+    # Nodes relay data through the master gateway via RF. If the master is
+    # offline (no data in 5 min), all nodes are ALSO offline regardless of
+    # their own last_seen_at — because data cannot reach the backend without it.
+    master_result = await db.execute(
+        select(Device).where(Device.farm_id == farm.id, Device.is_master == True).limit(1)
+    )
+    master_device = master_result.scalar_one_or_none()
+    master_is_online = False
+    if master_device and master_device.last_seen_at:
+        master_delta = (datetime.now(timezone.utc) - master_device.last_seen_at).total_seconds() / 60
+        master_is_online = master_delta < 5.0
+    logger.info(f"[dashboard] Master gateway online={master_is_online} (farm={farm.id})")
+
     # Load all zone states
     zone_states = await state_manager.get_all_zone_states(str(farm.id), db)
 
@@ -92,13 +106,15 @@ async def get_dashboard(
             )
             latest_nr = nr_res.scalar_one_or_none()
 
-            # Dynamically calculate online/offline status based on last seen time
+            # Node online = master online AND node reported in last 5 min.
+            # Nodes relay via RF through the master gateway; if master is offline
+            # no data can reach the backend, so nodes must also be offline.
             is_online = False
             minutes_offline = None
             if n.last_seen_at:
                 delta = (datetime.now(timezone.utc) - n.last_seen_at).total_seconds() / 60
                 minutes_offline = round(delta, 1)
-                if delta < 5.0:  # 5-minute freshness window
+                if delta < 5.0 and master_is_online:  # Both node freshness AND master must be online
                     is_online = True
 
             # Generate offline alert with 60-minute cooldown to avoid spam
