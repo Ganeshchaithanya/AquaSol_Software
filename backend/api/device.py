@@ -354,6 +354,7 @@ async def get_app_version():
 async def download_app():
     """Redirects the client to the latest app release on GitHub."""
     from fastapi.responses import RedirectResponse
+    # github.com raw file URL for direct APK download
     latest_release_url = "https://github.com/Ganeshchaithanya/AquaSol_Software/raw/main/app-release.apk"
     return RedirectResponse(url=latest_release_url)
 
