@@ -500,37 +500,49 @@ async def get_pending_commands_for_master(
     Poll pending commands for nodes managed by a Master Gateway.
     Fast, lightweight endpoint to avoid timeout issues and payload bloating.
     """
-    # 1. Resolve master device and its farm
-    res = await db.execute(
-        select(Device).where(Device.mac_address == master_mac, Device.is_master == True)
-    )
-    master = res.scalar_one_or_none()
-    if not master or not master.farm_id:
-        return {"status": "success", "node_targets": {}}
-
-    # 2. Fetch pending valve commands for this farm
-    cmd_result = await db.execute(
-        select(ValveCommand, Device.mac_address)
-        .join(NodeSlot, NodeSlot.id == ValveCommand.node_slot_id)
-        .join(Device, Device.node_slot_id == NodeSlot.id)
-        .where(
-            ValveCommand.farm_id == master.farm_id,
-            ValveCommand.status == "pending"
+    try:
+        # 1. Resolve master device and its farm
+        res = await db.execute(
+            select(Device).where(Device.mac_address == master_mac, Device.is_master == True)
         )
-    )
-    rows = cmd_result.all()
+        master = res.scalar_one_or_none()
+        if not master or not master.farm_id:
+            return {"status": "success", "node_targets": {}}
 
-    node_targets = {}
-    for cmd, mac in rows:
-        if mac:
-            node_targets[mac] = (cmd.state in ("open", "irrigate", "START_IRRIGATION"))
-        cmd.status = "published"
-        cmd.sent_at = datetime.now(timezone.utc)
+        # 2. Fetch pending valve commands for this farm
+        cmd_result = await db.execute(
+            select(ValveCommand, Device.mac_address)
+            .select_from(Device)
+            .join(NodeSlot, Device.node_slot_id == NodeSlot.id)
+            .join(
+                ValveCommand,
+                or_(
+                    ValveCommand.node_slot_id == NodeSlot.id,
+                    and_(ValveCommand.node_slot_id.is_(None), ValveCommand.zone_id == NodeSlot.zone_id)
+                )
+            )
+            .where(
+                ValveCommand.farm_id == master.farm_id,
+                ValveCommand.status == "pending"
+            )
+        )
+        rows = cmd_result.all()
 
-    await db.commit()
+        node_targets = {}
+        for cmd, mac in rows:
+            if mac:
+                node_targets[mac] = (cmd.state in ("open", "irrigate", "START_IRRIGATION"))
+            cmd.status = "published"
+            cmd.sent_at = datetime.now(timezone.utc)
 
-    return {
-        "status": "success",
-        "node_targets": node_targets
-    }
+        await db.commit()
+
+        return {
+            "status": "success",
+            "node_targets": node_targets
+        }
+    except Exception as e:
+        logger.error(f"[sensors] Failed to poll pending commands: {e}")
+        return {"status": "error", "node_targets": {}, "message": str(e)}
+
 
