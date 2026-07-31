@@ -39,7 +39,7 @@ async def _get_user_context(current_user: User, db: AsyncSession) -> dict:
     if farm.latitude and farm.longitude:
         weather = await get_weather(farm.latitude, farm.longitude, lang=current_user.preferred_lang)
 
-    return await build_chat_context(str(farm.id), farm.name, zone_ids, weather)
+    return await build_chat_context(str(farm.id), farm.name, zone_ids, weather, db=db)
 
 
 @router.post("", response_model=ChatResponse)

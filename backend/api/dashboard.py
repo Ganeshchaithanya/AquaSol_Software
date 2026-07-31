@@ -404,21 +404,137 @@ async def get_zone_biology(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """Returns biological intelligence data for a specific zone."""
-    # Mock data for now, ideally derived from sensor trends + crop models
+    """Returns real biological intelligence data derived from zone crop model + live sensor state."""
+    from datetime import date
+    from backend.plugins.ai.stage.stage_model import predict_stage, _season_data
+
+    # 1. Load zone from DB
+    zone_res = await db.execute(select(Zone).where(Zone.id == zone_id))
+    zone = zone_res.scalar_one_or_none()
+    if not zone:
+        raise HTTPException(404, "Zone not found")
+
+    crop_type = zone.crop_type or "unknown"
+    season = zone.season or "kharif"
+    sowing_date = zone.sowing_date  # date | None
+
+    # 2. Compute DAP (days after planting)
+    dap = 0
+    if sowing_date:
+        dap = max(0, (date.today() - sowing_date).days)
+
+    # 3. Pull live sensor state from cache
+    cached = state_manager.get_cached_zone_context(zone_id) or {}
+    moisture = float(cached.get("current_moisture") or 50.0)
+    temp_c = float(cached.get("temperature_avg_6h") or cached.get("temperature") or 25.0)
+    humidity_pct = float(cached.get("humidity_avg_6h") or cached.get("humidity") or 60.0)
+
+    # 4. Run stage prediction
+    stage_result = predict_stage(
+        crop=crop_type,
+        season=season,
+        days_after_planting=dap,
+        soil_moisture_avg_24h=moisture,
+    )
+
+    stage_name = stage_result.get("stage", "Vegetative")
+    kc = float(stage_result.get("kc", 1.0))
+    stage_sensitive = bool(stage_result.get("stage_sensitivity", False))
+    moisture_min = float(stage_result.get("target_moisture_min", 50.0))
+    moisture_max = float(stage_result.get("target_moisture_max", 70.0))
+    irrigation_freq = stage_result.get("irrigation", "Every 5-7 days")
+
+    # 5. Compute VPD (Vapour Pressure Deficit) — kPa
+    # VPD = SVP × (1 − RH/100), SVP = 0.6108 × e^(17.27*T / (T+237.3))
+    import math
+    svp = 0.6108 * math.exp((17.27 * temp_c) / (temp_c + 237.3))
+    vpd = round(svp * (1.0 - humidity_pct / 100.0), 2)
+
+    # 6. Compute reference ETo via simplified Hargreaves (temp-only proxy)
+    # ETo ≈ 0.0023 × (T + 17.8) × (Tmax−Tmin)^0.5 × Ra  — we use a simplified version
+    # Here we use a simpler Blaney-Criddle-like proxy for daily ETo in mm/day
+    eto_proxy = round(0.0135 * (temp_c + 17.8), 2)  # rough mm/day
+    etc_rate = round(kc * eto_proxy, 2)
+
+    # 7. Thermal Stress Index (0-100): penalise when temp > crop optimum
+    # We use 28°C as the broad optimum centre; TSI = clamp((T-28)*3, 0, 100)
+    tsi = round(min(100.0, max(0.0, (temp_c - 28.0) * 3.0)), 1)
+    bio_score = max(0, min(100, int(100 - tsi - max(0, moisture_min - moisture) * 0.5)))
+
+    # 8. Build stage-aware recovery plan based on current bio_score + stage
+    recovery_plan: list = []
+    if bio_score < 80:
+        if moisture < moisture_min:
+            recovery_plan.append({"task": "Emergency Irrigation", "day": "Today", "done": False})
+        recovery_plan.append({"task": f"{stage_name}-Stage Soil Flush", "day": "Day 1", "done": False})
+        if tsi > 20:
+            recovery_plan.append({"task": "Heat Stress Mitigation (Mulching)", "day": "Day 2", "done": False})
+        recovery_plan.append({"task": "Nitrogen Top-Dress", "day": "Day 3", "done": False})
+        recovery_plan.append({"task": "Deep Irrigation (if >5mm deficit)", "day": "Day 5", "done": False})
+    else:
+        recovery_plan.append({"task": "Maintain Optimal Moisture Band", "day": "Ongoing", "done": True})
+        recovery_plan.append({"task": f"Next {irrigation_freq} Irrigation", "day": "Scheduled", "done": False})
+
+    # 9. Build all-stage timeline for the crop from season JSON
+    all_stages: list = []
+    crop_data_found: dict = {}
+    for season_key, season_obj in _season_data.items():
+        for c in season_obj.get("crops", []):
+            if c.get("name", "").lower() == crop_type.lower():
+                crop_data_found = c
+                break
+        if crop_data_found:
+            break
+
+    total_duration = crop_data_found.get("total_duration_days", 120)
+    for i, s in enumerate(crop_data_found.get("growth_stages", [])):
+        sn = s["stage"]
+        is_done = dap > s["days_end"]
+        is_current = s["days_start"] <= dap <= s["days_end"]
+        days_remaining = max(0, s["days_end"] - dap) if is_current else None
+        all_stages.append({
+            "index": i + 1,
+            "name": sn,
+            "days_start": s["days_start"],
+            "days_end": s["days_end"],
+            "is_done": is_done,
+            "is_current": is_current,
+            "days_remaining": days_remaining,
+            "irrigation_frequency": s.get("irrigation_frequency", ""),
+            "critical_ops": s.get("critical_operations", []),
+        })
+
+    # Current stage index for display
+    stage_index = next((s["index"] for s in all_stages if s["is_current"]), 1)
+    total_stages = len(all_stages)
+
+    growth_progress_pct = min(100, round(dap / max(1, total_duration) * 100, 1))
+
     return {
         "zone_id": zone_id,
-        "etc_rate": 4.8,
-        "vpd": 1.2,
-        "kc": 0.85,
-        "tsi": 12.0, # Thermal Stress Index
-        "growth_stage": "Vegetative",
-        "health_score": 0,
-        "recommendations": [
-            "Increase moisture baseline by 5%",
-            "Apply nitrogen-rich fertilizer",
-            "Monitor for early signs of heat stress"
-        ]
+        "crop_type": crop_type,
+        "season": season,
+        "dap": dap,
+        "growth_stage": stage_name,
+        "stage_index": stage_index,
+        "total_stages": total_stages,
+        "growth_progress_pct": growth_progress_pct,
+        "stage_sensitive": stage_sensitive,
+        "irrigation_frequency": irrigation_freq,
+        "etc_rate": etc_rate,
+        "vpd": vpd,
+        "kc": kc,
+        "tsi": tsi,
+        "bio_score": bio_score,
+        "moisture_now": round(moisture, 1),
+        "moisture_target_min": moisture_min,
+        "moisture_target_max": moisture_max,
+        "temperature": round(temp_c, 1),
+        "humidity": round(humidity_pct, 1),
+        "recovery_plan": recovery_plan,
+        "stages": all_stages,
+        "ai_recommendation": cached.get("ai_recommendation"),
+        "last_irrigation_at": str(cached.get("last_irrigation_at") or "N/A"),
     }
 
 
