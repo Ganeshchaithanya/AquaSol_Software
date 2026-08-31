@@ -18,6 +18,12 @@ dataset_xgb.json
 backend/data/bio_dataset_*.json
 backend/data/dataset_*.json
 
+# Allowed Datasets for AI/ML Training
+!backend/data/dataset_lstm_training.json
+!backend/data/dataset_sensor_trust.json
+!backend/data/dataset_stage_awareness.json
+!backend/data/dataset_xgb_decision.json
+
 # ─── Ignore Entire Flutter App Folder ──────────────────────────────────────
 aquasol_app/
 .DS_Store
