@@ -118,7 +118,9 @@ def detect_sensor_anomaly(
             time_diff_hours = (now - last_aware).total_seconds() / 3600.0
 
         if time_diff_hours >= 0.1:
-            drop = previous_moisture - current_moisture
+            prev = float(previous_moisture) if previous_moisture is not None else 0.0
+            curr = float(current_moisture) if current_moisture is not None else 0.0
+            drop = prev - curr
             mc_rate = -drop / time_diff_hours  # negative = dropping
 
     # ── Full multi-layer anomaly check ────────────────────────────────────────

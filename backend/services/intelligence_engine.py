@@ -79,7 +79,7 @@ async def process_telemetry_and_decide(
         
         # B: Hydraulic Continuity Guard (Drift Detection)
         # Fetch previous moisture from DB state
-        prev_moisture = zone_state.get("current_moisture") if zone_state else None
+        prev_moisture = float(zone_state["current_moisture"]) if (zone_state and zone_state.get("current_moisture") is not None) else None
         last_update = zone_state.get("updated_at") if zone_state else None
         
         # Check for Anomaly

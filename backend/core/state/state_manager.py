@@ -5,6 +5,7 @@ All AI modules read from state, never from raw DB.
 """
 from typing import Dict, Any, Optional, List
 from datetime import datetime, timezone
+from decimal import Decimal
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update
 from backend.models.state import ZoneState
@@ -87,7 +88,13 @@ class StateManager:
         await db.flush()
 
     def _row_to_dict(self, row: ZoneState) -> Dict[str, Any]:
-        return {c.name: getattr(row, c.name) for c in row.__table__.columns}
+        result = {}
+        for c in row.__table__.columns:
+            val = getattr(row, c.name)
+            if val is not None and (isinstance(val, Decimal) or hasattr(val, "as_tuple")):
+                val = float(val)
+            result[c.name] = val
+        return result
 
     def get_cached_zone_context(self, zone_id: str) -> Optional[Dict[str, Any]]:
         """Non-async — for chatbot context builder."""

@@ -45,11 +45,13 @@ def create_app() -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[
+            "https://aquasol-software.onrender.com",
             "https://irrigation-api-v2.onrender.com",
             "http://localhost:3000",
-            "http://localhost:8000"
+            "http://localhost:8000",
+            "http://127.0.0.1:8000",
         ],
-        allow_origin_regex=r"https?://.*\.onrender\.com(:\d+)?",
+        allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|10\.0\.2\.2|172\.\d+\.\d+\.\d+|.*\.onrender\.com)(:\d+)?",
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
